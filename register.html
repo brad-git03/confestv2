@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Pampanga Events</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,700&family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  /* Festival fire palette */
+  --crimson:    #C41E3A;
+  --ember:      #D4460A;
+  --gold:       #D4920A;
+  --amber:      #F0B429;
+  --lantern-glow: #FF6B1A;
+
+  /* Eco earth palette */
+  --forest:     #1B3A2D;
+  --moss:       #2D5A3D;
+  --sage:       #4A7C5F;
+  --fern:       #6B9E7A;
+  --mist:       #C8DDD0;
+
+  /* Neutral */
+  --ink:        #120808;
+  --charcoal:   #2A1515;
+  --parchment:  #FBF4E8;
+  --cream:      #FFF8EF;
+  --bone:       #F5EDD8;
+
+  /* Gradients */
+  --g-fire:   linear-gradient(135deg, #8B0000 0%, #C41E3A 40%, #D4920A 100%);
+  --g-ember:  linear-gradient(160deg, #5C0010 0%, #C41E3A 50%, #D4920A 100%);
+  --g-eco:    linear-gradient(135deg, #1B3A2D 0%, #2D5A3D 60%, #4A7C5F 100%);
+  --g-dusk:   linear-gradient(180deg, #120808 0%, #2A1515 50%, #1B3A2D 100%);
+  --g-split:  linear-gradient(160deg, #1B0A08 0%, #3A1010 35%, #1B3A2D 70%, #0D2018 100%);
+
+  /* Shadows & glows */
+  --glow-fire:  0 0 40px rgba(196,30,58,0.4), 0 8px 32px rgba(196,30,58,0.2);
+  --glow-gold:  0 0 30px rgba(212,146,10,0.45), 0 4px 20px rgba(212,146,10,0.25);
+  --glow-eco:   0 0 30px rgba(27,58,45,0.5), 0 4px 20px rgba(75,124,95,0.25);
+  --shadow-card: 0 2px 16px rgba(18,8,8,0.1), 0 1px 4px rgba(18,8,8,0.06);
+  --shadow-lift: 0 20px 60px rgba(18,8,8,0.2), 0 4px 16px rgba(18,8,8,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--parchment);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+
+/* ─── LANTERN PATTERN ─── */
+.lantern-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='80' viewBox='0 0 60 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='30' cy='42' rx='16' ry='22' fill='none' stroke='rgba(212,146,10,0.08)' stroke-width='1'/%3E%3Crect x='27' y='12' width='6' height='12' rx='2' fill='rgba(212,146,10,0.06)'/%3E%3Cline x1='30' y1='64' x2='30' y2='72' stroke='rgba(212,146,10,0.06)' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size: 60px 80px;
+}
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 Q60 20 55 40 Q50 60 30 65 Q10 70 15 50 Q20 30 40 10 Z' fill='rgba(75,124,95,0.07)' /%3E%3Cpath d='M40 10 L40 65' stroke='rgba(75,124,95,0.05)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* ─── NAVBAR ─── */
+.navbar {
+  background: rgba(18, 8, 8, 0.96);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(212,146,10,0.18);
+  position: sticky; top: 0; z-index: 1000;
+  height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  text-decoration: none;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem; font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-lantern {
+  width: 30px; height: 38px;
+  position: relative; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-lantern .body {
+  width: 20px; height: 26px;
+  background: var(--g-fire);
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  animation: lantern-sway 4s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(212,146,10,0.6), 0 0 30px rgba(196,30,58,0.3);
+}
+.logo-lantern .top  { width: 10px; height: 6px; background: var(--gold); border-radius: 2px 2px 0 0; position: absolute; top: 0; }
+.logo-lantern .tail { width: 2px; height: 6px; background: var(--gold); position: absolute; bottom: 0; }
+@keyframes lantern-sway {
+  0%,100% { transform: rotate(-4deg); box-shadow: 0 0 12px rgba(212,146,10,0.6), 0 0 30px rgba(196,30,58,0.3); }
+  50%      { transform: rotate(4deg);  box-shadow: 0 0 20px rgba(212,146,10,0.9), 0 0 50px rgba(196,30,58,0.5); }
+}
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  color: rgba(251,244,232,0.65); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--amber); }
+.nav-links a:hover::after, .nav-links a.nav-active::after { width: 100%; }
+.nav-links a.nav-active { color: var(--amber); }
+.btn-nav-outline {
+  color: rgba(251,244,232,0.75); background: transparent;
+  border: 1px solid rgba(212,146,10,0.4);
+  padding: 0.45rem 1.2rem; border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s; text-decoration: none;
+  display: inline-flex; align-items: center;
+}
+.btn-nav-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-nav-primary {
+  background: var(--g-fire); color: white; border: none;
+  padding: 0.5rem 1.3rem; border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  box-shadow: 0 4px 16px rgba(196,30,58,0.35);
+}
+.btn-nav-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,30,58,0.5); }
+.nav-mobile-toggle {
+  display: none; background: none; border: none;
+  color: var(--bone); cursor: pointer; font-size: 1.35rem; padding: 4px;
+}
+.mobile-menu {
+  display: none; position: fixed;
+  top: 66px; left: 0; right: 0;
+  background: rgba(18,8,8,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212,146,10,0.15);
+  padding: 1.5rem 2rem; z-index: 999;
+  flex-direction: column; gap: 0.875rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: rgba(251,244,232,0.75); text-decoration: none;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em;
+  padding: 0.5rem 0; border-bottom: 1px solid rgba(212,146,10,0.1);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 92vh;
+  background: var(--g-split);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+}
+/* Diagonal divider */
+.hero::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 100px;
+  background: var(--parchment);
+  clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+}
+/* Radial glows */
+.hero-glow-fire {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(196,30,58,0.18) 0%, transparent 70%);
+  top: -100px; right: -100px; pointer-events: none;
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+.hero-glow-eco {
+  position: absolute; width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(27,58,45,0.3) 0%, transparent 70%);
+  bottom: 0; left: -100px; pointer-events: none;
+}
+@keyframes glow-pulse {
+  0%,100% { transform: scale(1); opacity: 0.8; }
+  50%      { transform: scale(1.1); opacity: 1; }
+}
+/* Decorative lantern circles */
+.hero-lantern-deco {
+  position: absolute; right: 8%; top: 15%;
+  width: 220px; height: 280px; pointer-events: none; opacity: 0.12;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 4rem 2rem 7rem;
+  display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center;
+}
+/* .hero-left {} */
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  background: rgba(212,146,10,0.12);
+  border: 1px solid rgba(212,146,10,0.3);
+  padding: 0.4rem 1rem; border-radius: 4px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1.5rem;
+}
+.hero-eyebrow .pulse {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(240,180,41,0.6); }
+  50%      { transform: scale(1.3); opacity: 0.8; box-shadow: 0 0 0 4px rgba(240,180,41,0); }
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 900; line-height: 1.0; letter-spacing: -0.02em;
+  margin-bottom: 1.5rem; color: white;
+}
+.hero h1 .fire-text {
+  display: block;
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .eco-text {
+  display: block; font-style: italic; color: var(--mist);
+  font-size: 0.8em; letter-spacing: 0em;
+}
+.hero-desc {
+  color: rgba(200,221,208,0.75); font-size: 1rem; line-height: 1.75;
+  max-width: 500px; margin-bottom: 2rem; font-weight: 400;
+}
+.hero-desc strong { color: var(--amber); font-weight: 600; }
+.hero-ctas { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats {
+  display: flex; gap: 0;
+  border: 1px solid rgba(212,146,10,0.15);
+  border-radius: 10px; overflow: hidden;
+}
+.hero-stat {
+  flex: 1; padding: 0.875rem 1rem;
+  border-right: 1px solid rgba(212,146,10,0.15);
+  background: rgba(255,255,255,0.03);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.hero-stat-l {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(200,221,208,0.45); margin-top: 0.2rem;
+}
+/* Hero right panel */
+.hero-right {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,146,10,0.2);
+  border-radius: 16px; padding: 1.75rem;
+  backdrop-filter: blur(12px);
+}
+.hero-right-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.eco-ticker {
+  background: rgba(27,58,45,0.5);
+  border: 1px solid rgba(75,124,95,0.25);
+  border-radius: 8px; padding: 0.75rem 1rem;
+  margin-bottom: 1rem; overflow: hidden;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.eco-ticker-label {
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fern);
+  white-space: nowrap; flex-shrink: 0;
+}
+.eco-ticker-scroll {
+  display: flex; gap: 2rem; animation: scroll-ticker 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes scroll-ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.eco-ticker-item {
+  font-size: 0.75rem; font-weight: 600; color: rgba(200,221,208,0.7);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+/* Floating lantern particles */
+.particle {
+  position: absolute; border-radius: 50% 50% 40% 40%;
+  animation: float-up linear infinite; opacity: 0; pointer-events: none;
+}
+@keyframes float-up {
+  0%   { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-20vh) rotate(20deg) scale(1); opacity: 0; }
+}
+
+/* ─── SECTION ANATOMY ─── */
+.section { padding: 5rem 0; }
+.section-warm { background: var(--cream); }
+.section-eco  { background: var(--forest); position: relative; overflow: hidden; }
+.section-bone { background: var(--bone); }
+.section-dark { background: var(--ink); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; margin-bottom: 0.875rem;
+  color: var(--crimson);
+}
+.section-label.eco { color: var(--fern); }
+.section-label::before {
+  content: ''; display: inline-block;
+  width: 20px; height: 1.5px;
+  background: currentColor; border-radius: 2px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.1; color: var(--ink);
+}
+.section-title .italic { font-style: italic; }
+.section-title .fire {
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-title.light { color: white; }
+.section-title.light .fire {
+  background: linear-gradient(135deg, #FFD080, #FF8040);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub { font-size: 0.9rem; color: var(--sage); margin-top: 0.6rem; max-width: 460px; line-height: 1.7; }
+.section-sub.light { color: rgba(200,221,208,0.65); }
+
+/* ─── EVENT CARDS ─── */
+.event-card {
+  background: white; border-radius: 14px; overflow: hidden;
+  border: 1px solid rgba(212,146,10,0.12);
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative; cursor: pointer;
+}
+.event-card::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(196,30,58,0.08) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
+  pointer-events: none; z-index: 1;
+}
+.event-card:hover { transform: translateY(-10px) rotate(0.4deg); box-shadow: var(--shadow-lift); border-color: rgba(212,146,10,0.3); }
+.event-card:hover::before { opacity: 1; }
+.card-banner {
+  height: 195px; display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; position: relative; overflow: hidden;
+}
+.card-banner-shimmer {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 70%);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+.event-card:hover .card-banner-shimmer { transform: translateX(100%); }
+.card-ribbon {
+  position: absolute; top: 12px; left: 0;
+  background: var(--g-fire); color: white;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.28rem 0.875rem 0.28rem 1rem;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+.card-eco-flag {
+  position: absolute; top: 12px; right: 0;
+  background: var(--g-eco); color: white;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em;
+  padding: 0.28rem 1rem 0.28rem 0.75rem;
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%);
+}
+.card-body { padding: 1.3rem; position: relative; z-index: 2; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700; color: var(--ink);
+  margin-bottom: 0.5rem; line-height: 1.25;
+}
+.card-meta {
+  display: flex; align-items: center; gap: 0.35rem;
+  font-size: 0.75rem; color: var(--sage); margin-bottom: 0.3rem; font-weight: 500;
+}
+.card-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.7rem; margin-top: 0.5rem; }
+.tag {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  padding: 0.18rem 0.55rem; border-radius: 4px;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.tag-eco   { background: rgba(27,58,45,0.1);  color: var(--moss);   border: 1px solid rgba(45,90,61,0.2); }
+.tag-local { background: rgba(139,69,19,0.09); color: #8B4513; border: 1px solid rgba(139,69,19,0.2); }
+.tag-free  { background: rgba(27,58,45,0.12); color: var(--forest); border: 1px solid rgba(75,124,95,0.25); }
+.tag-fest  { background: rgba(196,30,58,0.08); color: var(--crimson); border: 1px solid rgba(196,30,58,0.18); }
+.tag-food  { background: rgba(212,146,10,0.1); color: #92521A; border: 1px solid rgba(212,146,10,0.2); }
+.tag-cult  { background: rgba(107,158,122,0.12); color: var(--sage); border: 1px solid rgba(107,158,122,0.2); }
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1rem; padding-top: 0.875rem;
+  border-top: 1px solid rgba(212,146,10,0.1);
+}
+.card-price {
+  font-family: 'Playfair Display', serif; font-size: 1.25rem;
+  font-weight: 700; color: var(--ember);
+}
+.card-price.free { color: var(--moss); font-size: 1rem; font-family: 'Instrument Sans', sans-serif; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.capacity-bar { margin: 0.5rem 0 0.25rem; height: 3px; background: rgba(27,58,45,0.12); border-radius: 4px; overflow: hidden; }
+.capacity-fill { height: 100%; background: var(--g-eco); border-radius: 4px; transition: width 0.8s; }
+
+/* ─── PRODUCT CARDS ─── */
+.product-card {
+  background: white; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(163,142,90,0.15);
+  box-shadow: var(--shadow-card); transition: all 0.3s;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.product-img {
+  height: 170px; display: flex; align-items: center; justify-content: center;
+  font-size: 3.2rem; position: relative;
+  background: linear-gradient(135deg, rgba(196,30,58,0.05) 0%, rgba(212,146,10,0.07) 50%, rgba(27,58,45,0.05) 100%);
+}
+.product-img .origin-badge {
+  position: absolute; bottom: 8px; left: 8px;
+  background: var(--g-eco); color: white;
+  font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em;
+  padding: 0.2rem 0.55rem; border-radius: 4px;
+}
+.product-body { padding: 1rem; }
+.product-cat {
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fern); margin-bottom: 0.25rem;
+}
+.product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem;
+}
+.product-seller { font-size: 0.72rem; color: var(--sage); margin-bottom: 0.6rem; font-style: italic; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; }
+.product-price { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ember); }
+
+/* ─── BUTTONS ─── */
+.btn-fire {
+  background: var(--g-fire); color: white; border: none;
+  padding: 0.75rem 1.75rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem;
+  box-shadow: 0 4px 16px rgba(196,30,58,0.35);
+  position: relative; overflow: hidden;
+}
+.btn-fire::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+  transform: translateX(-100%); transition: transform 0.5s;
+}
+.btn-fire:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,30,58,0.5); }
+.btn-fire:hover::after { transform: translateX(100%); }
+.btn-eco {
+  background: var(--g-eco); color: white; border: none;
+  padding: 0.75rem 1.75rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem;
+  box-shadow: 0 4px 16px rgba(27,58,45,0.3);
+}
+.btn-eco:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,58,45,0.45); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: var(--ink); border: none;
+  padding: 0.65rem 1.5rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  box-shadow: 0 4px 14px rgba(212,146,10,0.35);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,146,10,0.5); }
+.btn-outline {
+  background: transparent; color: var(--crimson);
+  border: 1.5px solid var(--crimson);
+  padding: 0.65rem 1.5rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-outline:hover { background: var(--crimson); color: white; }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid rgba(18,8,8,0.18);
+  padding: 0.6rem 1.4rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.73rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.btn-ghost:hover { border-color: var(--ember); color: var(--ember); }
+.btn-sm { padding: 0.45rem 1rem; font-size: 0.68rem; }
+.btn-danger { background: #b91c1c; color: white; border: none; padding: 0.4rem 0.875rem; border-radius: 6px; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: 'Instrument Sans', sans-serif; }
+.btn-primary  { background: var(--g-fire); color: white; border: none; padding: 0.7rem 1.6rem; border-radius: 8px; font-family: 'Instrument Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 16px rgba(196,30,58,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,30,58,0.45); }
+.btn-secondary { background: transparent; color: var(--ember); border: 1.5px solid var(--ember); padding: 0.68rem 1.5rem; border-radius: 8px; font-family: 'Instrument Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+.btn-secondary:hover { background: var(--ember); color: white; }
+
+/* ─── FORMS ─── */
+.form-group { margin-bottom: 1.1rem; }
+.form-label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.4rem; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 0.7rem 0.95rem;
+  border: 1.5px solid rgba(212,146,10,0.2); border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem;
+  color: var(--ink); background: white; transition: all 0.2s; outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,146,10,0.1); }
+.form-textarea { resize: vertical; min-height: 88px; }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(18,8,8,0.78);
+  backdrop-filter: blur(12px); z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; opacity: 0; visibility: hidden; transition: all 0.3s;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal {
+  background: var(--cream); border-radius: 20px;
+  width: 100%; max-width: 520px; max-height: 90vh;
+  overflow-y: auto; padding: 2.25rem;
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 40px 80px rgba(18,8,8,0.35);
+  border: 1px solid rgba(212,146,10,0.18);
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1.5px solid rgba(212,146,10,0.12);
+}
+.modal-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; }
+.modal-close {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: rgba(18,8,8,0.07); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; color: var(--ink); transition: all 0.2s;
+}
+.modal-close:hover { background: rgba(196,30,58,0.1); color: var(--crimson); }
+
+/* ─── TICKET ─── */
+.ticket {
+  background: white; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(18,8,8,0.2);
+  max-width: 370px; margin: 0 auto;
+  border: 1px solid rgba(212,146,10,0.18);
+}
+.ticket-header {
+  background: var(--g-fire); padding: 1.35rem 1.5rem;
+  color: white; text-align: center; position: relative; overflow: hidden;
+}
+.ticket-header::before { content: '🏮'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; opacity: 0.12; }
+.ticket-header h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; }
+.ticket-sep { display: flex; align-items: center; background: var(--cream); }
+.ticket-notch { width: 22px; height: 22px; border-radius: 50%; background: var(--cream); border: 1px solid rgba(212,146,10,0.12); flex-shrink: 0; }
+.ticket-dashes { flex: 1; height: 1.5px; background: repeating-linear-gradient(90deg, rgba(212,146,10,0.25) 0, rgba(212,146,10,0.25) 5px, transparent 5px, transparent 10px); }
+.ticket-body { padding: 1.35rem 1.5rem; }
+.ticket-row { display: flex; justify-content: space-between; margin-bottom: 0.65rem; }
+.ticket-label { font-size: 0.6rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.ticket-value { font-weight: 700; font-size: 0.82rem; color: var(--ink); }
+.ticket-qr { display: flex; justify-content: center; padding: 0.75rem; }
+
+/* ─── DASHBOARD ─── */
+.dashboard-layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 252px; background: var(--g-dusk);
+  position: fixed; top: 0; left: 0; height: 100vh;
+  overflow-y: auto; z-index: 100;
+  border-right: 1px solid rgba(212,146,10,0.1);
+  display: flex; flex-direction: column;
+}
+.sidebar-logo { padding: 1.3rem 1.4rem; border-bottom: 1px solid rgba(212,146,10,0.1); }
+.sidebar-role { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,221,208,0.3); margin-top: 0.2rem; font-weight: 700; }
+.sidebar-user {
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid rgba(212,146,10,0.08);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.sidebar-avatar {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--g-fire);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 700; color: white;
+  box-shadow: 0 4px 12px rgba(196,30,58,0.3); flex-shrink: 0;
+}
+.sidebar-name { font-size: 0.8rem; font-weight: 700; color: var(--bone); }
+.sidebar-email { font-size: 0.65rem; color: rgba(200,221,208,0.3); }
+.sidebar-nav { padding: 0.75rem 0; flex: 1; }
+.sidebar-section { font-size: 0.57rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(200,221,208,0.22); font-weight: 700; padding: 0.75rem 1.4rem 0.35rem; }
+.sidebar-link {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.65rem 1.4rem;
+  color: rgba(200,221,208,0.5); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; transition: all 0.2s;
+  cursor: pointer; border: none; background: none;
+  width: 100%; text-align: left;
+  border-left: 2.5px solid transparent;
+}
+.sidebar-link:hover { background: rgba(212,146,10,0.07); color: var(--amber); border-left-color: rgba(212,146,10,0.3); }
+.sidebar-link.active { background: rgba(196,30,58,0.14); color: #FFC9A0; border-left-color: var(--lantern-glow); }
+.sidebar-link .icon { font-size: 0.95rem; width: 20px; text-align: center; }
+.sidebar-eco {
+  margin: auto 1.2rem 1.2rem;
+  background: rgba(27,58,45,0.3);
+  border: 1px solid rgba(75,124,95,0.2);
+  border-radius: 10px; padding: 0.875rem;
+}
+.sidebar-eco p { font-size: 0.68rem; color: rgba(200,221,208,0.6); line-height: 1.55; }
+.dashboard-main { margin-left: 252px; flex: 1; background: var(--bone); min-height: 100vh; }
+.dashboard-topbar {
+  background: var(--cream); padding: 0.875rem 2rem;
+  border-bottom: 1px solid rgba(212,146,10,0.1);
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 50;
+  box-shadow: 0 2px 10px rgba(18,8,8,0.05);
+}
+.topbar-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+.dashboard-content { padding: 1.75rem; }
+.dashboard-page { display: none; }
+.dashboard-page.active { display: block; }
+
+/* STAT CARDS */
+.stat-card { background: white; border-radius: 12px; padding: 1.3rem; border: 1px solid rgba(212,146,10,0.1); display: flex; align-items: center; gap: 0.875rem; box-shadow: var(--shadow-card); }
+.stat-icon { width: 46px; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+.stat-icon.fire { background: rgba(196,30,58,0.1); }
+.stat-icon.gold { background: rgba(212,146,10,0.1); }
+.stat-icon.eco  { background: rgba(27,58,45,0.1); }
+.stat-icon.blue { background: rgba(37,99,235,0.08); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--ink); line-height: 1; }
+.stat-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); margin-top: 0.15rem; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { padding: 0.65rem 0.875rem; text-align: left; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 800; color: var(--sage); background: rgba(212,146,10,0.04); border-bottom: 1.5px solid rgba(212,146,10,0.1); }
+.data-table td { padding: 0.75rem 0.875rem; border-bottom: 1px solid rgba(212,146,10,0.07); font-size: 0.8rem; }
+.data-table tr:hover td { background: rgba(212,146,10,0.02); }
+
+/* CALENDAR */
+.calendar { background: white; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid rgba(212,146,10,0.12); }
+.calendar-header { background: var(--g-fire); color: white; padding: 1rem 1.3rem; display: flex; align-items: center; justify-content: space-between; }
+.calendar-header h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+.cal-nav { background: rgba(255,255,255,0.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 0.85rem; transition: background 0.2s; }
+.cal-nav:hover { background: rgba(255,255,255,0.28); }
+.calendar-grid-days { display: grid; grid-template-columns: repeat(7,1fr); background: rgba(212,146,10,0.05); }
+.calendar-grid-days span { text-align: center; padding: 0.5rem; font-size: 0.6rem; font-weight: 800; color: var(--sage); text-transform: uppercase; letter-spacing: 0.07em; }
+.calendar-dates { display: grid; grid-template-columns: repeat(7,1fr); padding: 0.35rem; gap: 1px; }
+.cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; position: relative; }
+.cal-day:hover { background: rgba(196,30,58,0.1); color: var(--crimson); }
+.cal-day.today { background: var(--crimson); color: white; font-weight: 700; }
+.cal-day.has-event::after { content: ''; position: absolute; bottom: 2px; width: 4px; height: 4px; border-radius: 50%; background: var(--moss); }
+.cal-day.other-month { color: rgba(18,8,8,0.2); }
+
+/* FEATURE CARDS */
+.feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,146,10,0.12); border-radius: 18px; padding: 2.1rem 1.75rem; text-align: center; transition: all 0.3s; position: relative; overflow: hidden; }
+.feature-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--g-fire); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+.feature-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.3rem; font-size: 1.7rem; }
+.fi-fire { background: rgba(196,30,58,0.15); border: 1px solid rgba(196,30,58,0.2); }
+.fi-eco  { background: rgba(27,58,45,0.25); border: 1px solid rgba(75,124,95,0.3); }
+.fi-gold { background: rgba(212,146,10,0.12); border: 1px solid rgba(212,146,10,0.2); }
+
+/* ALERT */
+.alert { padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.875rem; font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+.alert-info    { background: rgba(37,99,235,0.07);   color: #1d4ed8; border: 1px solid rgba(37,99,235,0.18); }
+.alert-success { background: rgba(27,58,45,0.1);     color: var(--moss); border: 1px solid rgba(27,58,45,0.2); }
+.alert-warning { background: rgba(212,146,10,0.1);   color: var(--gold); border: 1px solid rgba(212,146,10,0.22); }
+
+/* PROGRESS */
+.progress-bar { height: 5px; background: rgba(212,146,10,0.1); border-radius: 50px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--g-fire); border-radius: 50px; transition: width 0.6s; }
+
+/* SEARCH / FILTER */
+.search-bar { display: flex; align-items: center; background: white; border: 1.5px solid rgba(212,146,10,0.18); border-radius: 8px; padding: 0.5rem 0.5rem 0.5rem 1.1rem; gap: 0.5rem; transition: all 0.2s; box-shadow: 0 2px 10px rgba(18,8,8,0.05); }
+.search-bar:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,146,10,0.1); }
+.search-bar input { flex: 1; border: none; outline: none; font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem; background: transparent; color: var(--ink); }
+.search-bar input::placeholder { color: var(--sage); }
+.filter-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.filter-tab { padding: 0.45rem 1.1rem; border: 1.5px solid rgba(212,146,10,0.18); border-radius: 6px; background: white; color: var(--sage); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; cursor: pointer; transition: all 0.2s; font-family: 'Instrument Sans', sans-serif; text-transform: uppercase; }
+.filter-tab:hover, .filter-tab.active { border-color: var(--crimson); background: var(--crimson); color: white; }
+
+/* AUTH */
+/* AUTH - SPLIT PANEL (matches login.html) */
+.auth-page { min-height:100vh; background:var(--bone); display:flex; align-items:center; justify-content:center; padding:2rem; position:relative; }
+.auth-page::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg width='60' height='80' viewBox='0 0 60 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='30' cy='42' rx='14' ry='20' fill='none' stroke='rgba(212,146,10,0.04)' stroke-width='1'/%3E%3C/svg%3E") repeat; background-size:60px 80px; pointer-events:none; }
+
+.auth-split { display:grid; grid-template-columns:1fr 1.1fr; width:100%; max-width:1000px; min-height:660px; border-radius:24px; overflow:hidden; box-shadow:0 40px 100px rgba(18,8,8,0.28), 0 8px 32px rgba(18,8,8,0.14); position:relative; z-index:1; }
+
+/* LEFT PANEL */
+.auth-left { background:var(--g-split); position:relative; display:flex; flex-direction:column; justify-content:center; padding:3.5rem 3rem; overflow:hidden; }
+.auth-left::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg width='60' height='80' viewBox='0 0 60 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='30' cy='42' rx='14' ry='20' fill='none' stroke='rgba(212,146,10,0.05)' stroke-width='1'/%3E%3Cline x1='30' y1='12' x2='30' y2='22' stroke='rgba(212,146,10,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat; background-size:60px 80px; }
+.auth-deco { position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.auth-deco span { position:absolute; border-radius:100px; }
+.auth-deco span:nth-child(1)  { width:180px; height:52px; background:linear-gradient(135deg,#8B0000,#C41E3A,#D4920A); opacity:0.55; top:8%;    left:-40px;  transform:rotate(-22deg); animation:driftA 8s  ease-in-out infinite; }
+.auth-deco span:nth-child(2)  { width:110px; height:34px; background:linear-gradient(135deg,#C41E3A,#F0B429);           opacity:0.45; top:20%;   left:52%;    transform:rotate(14deg);  animation:driftB 10s ease-in-out infinite 1s; }
+.auth-deco span:nth-child(3)  { width:220px; height:62px; background:linear-gradient(135deg,#8B0000,#C41E3A);           opacity:0.40; bottom:22%; left:-50px;  transform:rotate(-12deg); animation:driftA 12s ease-in-out infinite 0.5s; }
+.auth-deco span:nth-child(4)  { width:75px;  height:24px; background:linear-gradient(135deg,#D4920A,#F0B429);           opacity:0.50; bottom:38%; right:6%;    transform:rotate(28deg);  animation:driftB 7s  ease-in-out infinite 2s; }
+.auth-deco span:nth-child(5)  { width:130px; height:40px; background:linear-gradient(135deg,#C41E3A,#D4920A);           opacity:0.35; top:52%;   left:22%;    transform:rotate(-6deg);  animation:driftA 11s ease-in-out infinite 1.5s; }
+.auth-deco span:nth-child(6)  { width:55px;  height:18px; background:linear-gradient(135deg,#8B0000,#C41E3A);           opacity:0.45; top:38%;   left:8%;     transform:rotate(38deg);  animation:driftB 6s  ease-in-out infinite 3s; }
+.auth-deco span:nth-child(7)  { width:150px; height:44px; background:linear-gradient(135deg,#1B3A2D,#4A7C5F);           opacity:0.40; bottom:10%; left:18%;    transform:rotate(10deg);  animation:driftA 13s ease-in-out infinite 2s; }
+.auth-deco span:nth-child(8)  { width:85px;  height:26px; background:linear-gradient(135deg,#2D5A3D,#6B9E7A);           opacity:0.35; top:70%;   right:4%;    transform:rotate(-18deg); animation:driftB 8s  ease-in-out infinite 0.8s; }
+.auth-deco span:nth-child(9)  { width:60px;  height:18px; background:linear-gradient(135deg,#D4920A,#F0B429);           opacity:0.45; top:62%;   left:62%;    transform:rotate(20deg);  animation:driftA 9s  ease-in-out infinite 1.2s; }
+.auth-deco span:nth-child(10) { width:95px;  height:28px; background:linear-gradient(135deg,#8B0000,#D4920A);           opacity:0.30; bottom:30%; left:38%;    transform:rotate(-30deg); animation:driftB 11s ease-in-out infinite 0.3s; }
+@keyframes driftA { 0%,100%{transform:rotate(-22deg) translateY(0)}  50%{transform:rotate(-22deg) translateY(-16px)} }
+@keyframes driftB { 0%,100%{transform:rotate(14deg)  translateY(0)}  50%{transform:rotate(14deg)  translateY(12px)} }
+
+.auth-left-glow-fire { position:absolute; top:15%; right:-8%;  width:300px; height:300px; background:radial-gradient(ellipse,rgba(196,30,58,0.20) 0%,transparent 70%); pointer-events:none; z-index:0; }
+.auth-left-glow-eco  { position:absolute; bottom:8%; left:-8%;  width:260px; height:260px; background:radial-gradient(ellipse,rgba(27,58,45,0.30) 0%,transparent 70%);  pointer-events:none; z-index:0; }
+.auth-left-content { position:relative; z-index:1; }
+.auth-left-eyebrow { display:inline-flex; align-items:center; gap:0.45rem; background:rgba(212,146,10,0.12); border:1px solid rgba(212,146,10,0.3); color:var(--amber); padding:0.3rem 0.85rem; border-radius:4px; font-size:0.6rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:1.6rem; }
+.auth-left-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:900; color:white; line-height:1.15; margin-bottom:1rem; }
+.auth-left-title em { font-style:italic; background:linear-gradient(135deg,#FFD080,#FF8040); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.auth-left-desc { color:rgba(200,221,208,0.65); font-size:0.87rem; line-height:1.75; margin-bottom:2rem; }
+.auth-left-perks { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
+.auth-left-perks li { display:flex; align-items:center; gap:0.65rem; font-size:0.83rem; color:rgba(200,221,208,0.75); }
+.auth-left-perks li span.perk-icon { width:28px; height:28px; border-radius:8px; background:rgba(212,146,10,0.14); border:1px solid rgba(212,146,10,0.25); display:flex; align-items:center; justify-content:center; font-size:0.85rem; flex-shrink:0; }
+
+/* RIGHT PANEL */
+.auth-right { background:var(--cream); display:flex; align-items:center; justify-content:center; padding:2.5rem 2.75rem; position:relative; z-index:2; overflow-y:auto; }
+.auth-card { width:100%; max-width:420px; }
+.auth-logo { text-align:left; margin-bottom:1.5rem; }
+.auth-card-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:var(--ink); margin-bottom:0.3rem; }
+.auth-card-sub { font-size:0.82rem; color:var(--sage); margin-bottom:1.5rem; }
+.divider { display:flex; align-items:center; gap:0.875rem; margin:1.1rem 0; }
+.divider::before, .divider::after { content:''; flex:1; height:1px; background:rgba(212,146,10,0.15); }
+.divider span { font-size:0.68rem; color:var(--sage); font-weight:700; letter-spacing:0.08em; }
+@media(max-width:820px) {
+  .auth-split { grid-template-columns:1fr; max-width:480px; }
+  .auth-left  { display:none; }
+  .auth-right { padding:2.5rem 2rem; }
+  .auth-logo  { text-align:center; }
+}
+
+/* TOAST */
+.toast { position: fixed; bottom: 1.75rem; right: 1.75rem; background: var(--ink); color: var(--bone); padding: 0.875rem 1.3rem; border-radius: 10px; box-shadow: 0 10px 40px rgba(18,8,8,0.35); z-index: 9999; display: flex; align-items: center; gap: 0.65rem; transform: translateY(80px); opacity: 0; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); border-left: 3px solid var(--gold); max-width: 330px; font-size: 0.82rem; font-weight: 600; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.success { border-left-color: var(--moss); }
+.toast.error   { border-left-color: var(--crimson); }
+
+/* PAGE HEADER */
+.page-header { background: var(--g-split); padding: 4.5rem 0 3rem; position: relative; overflow: hidden; }
+.page-header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 80px; background: var(--parchment); clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%); }
+.page-header.bone::after { background: var(--bone); }
+.page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: white; line-height: 1.1; position: relative; }
+.page-header h1 em { font-style: italic; background: linear-gradient(135deg,#FFD080,#FF8040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.page-header p { color: rgba(200,221,208,0.6); margin-top: 0.7rem; position: relative; font-size: 0.92rem; }
+.phdr-tag { display: inline-flex; align-items: center; gap: 0.45rem; background: rgba(27,58,45,0.4); border: 1px solid rgba(75,124,95,0.3); color: var(--fern); padding: 0.3rem 0.85rem; border-radius: 4px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.875rem; }
+
+/* FOOTER */
+.footer { background: var(--ink); color: rgba(200,221,208,0.6); padding: 4rem 0 2rem; border-top: 1px solid rgba(212,146,10,0.1); position: relative; overflow: hidden; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--g-fire); }
+.footer-logo { font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; font-weight: 900; background: var(--g-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.4rem; }
+.footer-links a { color: rgba(200,221,208,0.45); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--amber); }
+.footer-head { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--lantern-glow); font-weight: 800; margin-bottom: 1rem; }
+.social-btn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,146,10,0.12); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(200,221,208,0.45); font-size: 0.9rem; transition: all 0.2s; }
+.social-btn:hover { background: rgba(212,146,10,0.12); color: var(--amber); border-color: rgba(212,146,10,0.3); }
+.footer-bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.72rem; color: rgba(200,221,208,0.28); }
+.eco-note { display: flex; align-items: center; gap: 0.4rem; background: rgba(27,58,45,0.2); border: 1px solid rgba(75,124,95,0.15); border-radius: 4px; padding: 0.28rem 0.75rem; font-size: 0.65rem; font-weight: 700; color: rgba(107,158,122,0.7); letter-spacing: 0.05em; }
+
+/* GRIDS */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.1rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.4rem; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(212,146,10,0.2); border-radius: 50px; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+.anim { animation: fadeInUp 0.55s ease forwards; opacity: 0; }
+.d1{animation-delay:0.05s}.d2{animation-delay:0.12s}.d3{animation-delay:0.19s}
+.d4{animation-delay:0.26s}.d5{animation-delay:0.33s}
+
+/* RESPONSIVE */
+@media(max-width:1024px) { .grid-4{grid-template-columns:repeat(2,1fr)} .grid-3{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:768px) {
+  .nav-links{display:none} .nav-mobile-toggle{display:block}
+  .grid-3,.grid-2{grid-template-columns:1fr} .grid-4{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:2.5rem} .hero-content{grid-template-columns:1fr!important}
+  .hero-right{display:none}
+  .sidebar{transform:translateX(-100%);transition:transform 0.3s} .sidebar.open{transform:translateX(0)}
+  .dashboard-main{margin-left:0} .section{padding:3rem 0}
+  .page-header::after{display:none}
+}
+@media(max-width:480px) { .grid-4{grid-template-columns:1fr} .hero-ctas{flex-direction:column} }
+</style>
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-split">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="auth-deco">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span>
+      </div>
+      <div class="auth-left-glow-fire"></div>
+      <div class="auth-left-glow-eco"></div>
+      <div class="auth-left-content">
+        <div class="auth-left-eyebrow">🌿 Join the Community</div>
+        <h1 class="auth-left-title">Be Part of<br><em>Pampanga's Story</em></h1>
+        <p class="auth-left-desc">Create a free account and unlock access to hundreds of festivals, food events, and cultural experiences across the Heart of Luzon.</p>
+        <ul class="auth-left-perks">
+          <li><span class="perk-icon">🏮</span> Browse & book local festivals and events</li>
+          <li><span class="perk-icon">🌿</span> Discover eco-certified experiences</li>
+          <li><span class="perk-icon">🛒</span> Shop direct from Kapampangan vendors</li>
+          <li><span class="perk-icon">🎫</span> Manage your tickets in one place</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="auth-right">
+      <div class="auth-card">
+        <div class="auth-logo">
+          <a href="index.html" style="display:inline-flex;align-items:center;text-decoration:none;margin-bottom:0.4rem">
+            <svg width="200" height="44" viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="al-fire" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#8B0000"/>
+                  <stop offset="45%" style="stop-color:#C41E3A"/>
+                  <stop offset="100%" style="stop-color:#D4920A"/>
+                </linearGradient>
+                <linearGradient id="al-eco" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#1B3A2D"/>
+                  <stop offset="100%" style="stop-color:#4A7C5F"/>
+                </linearGradient>
+                <linearGradient id="al-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#D4920A"/>
+                  <stop offset="100%" style="stop-color:#F0B429"/>
+                </linearGradient>
+              </defs>
+              <g transform="translate(2,2)">
+                <ellipse cx="16" cy="20" rx="9" ry="12" fill="url(#al-fire)" opacity="0.12"/>
+                <ellipse cx="16" cy="20" rx="8" ry="11" fill="none" stroke="url(#al-fire)" stroke-width="1.8"/>
+                <rect x="12" y="7" width="9" height="4" rx="1.5" fill="url(#al-gold)"/>
+                <path d="M16 7 L16 3 Q16 1 19.5 1" fill="none" stroke="url(#al-gold)" stroke-width="1.1" stroke-linecap="round"/>
+                <line x1="16" y1="31" x2="16" y2="37" stroke="url(#al-gold)" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M25 28 Q29 25 28 19 Q27 22.5 24 26 Z" fill="url(#al-eco)" opacity="0.55"/>
+              </g>
+              <text x="40" y="30" font-family="'Cinzel Decorative', serif" font-size="20" font-weight="900" fill="url(#al-fire)" letter-spacing="1.5">CON</text>
+              <text x="100" y="30" font-family="'Cinzel Decorative', serif" font-size="20" font-weight="900" fill="url(#al-eco)" letter-spacing="1.5">FEST</text>
+            </svg>
+          </a>
+        </div>
+        <div class="auth-card-title">Create your account</div>
+        <div class="auth-card-sub">Free forever — start exploring Pampanga today</div>
+        <div style="margin-bottom:1.4rem">
+          <label class="form-label">Account Type</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem">
+            <div id="t-user"      onclick="selType('user')"      style="padding:0.875rem;border:1.5px solid var(--crimson);border-radius:8px;cursor:pointer;text-align:center;background:rgba(196,30,58,0.04);transition:all 0.2s"><div style="font-size:1.3rem">👤</div><div style="font-size:0.7rem;font-weight:700;color:var(--crimson);margin-top:0.2rem">Tourist</div></div>
+            <div id="t-organizer" onclick="selType('organizer')" style="padding:0.875rem;border:1.5px solid rgba(212,146,10,0.2);border-radius:8px;cursor:pointer;text-align:center;transition:all 0.2s"><div style="font-size:1.3rem">🎪</div><div style="font-size:0.7rem;font-weight:700;color:var(--sage);margin-top:0.2rem">Organizer</div></div>
+            <div id="t-business"  onclick="selType('business')"  style="padding:0.875rem;border:1.5px solid rgba(212,146,10,0.2);border-radius:8px;cursor:pointer;text-align:center;transition:all 0.2s"><div style="font-size:1.3rem">🏪</div><div style="font-size:0.7rem;font-weight:700;color:var(--sage);margin-top:0.2rem">Business</div></div>
+          </div>
+        </div>
+        <form onsubmit="handleReg(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+            <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" id="rFN" placeholder="Juan" required></div>
+            <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" id="rLN" placeholder="dela Cruz" required></div>
+          </div>
+          <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="rEmail" placeholder="your@email.com" required></div>
+          <div class="form-group"><label class="form-label">Mobile</label><input type="tel" class="form-input" placeholder="09XX-XXX-XXXX"></div>
+          <div id="bizF" style="display:none">
+            <div class="form-group"><label class="form-label">Business Name</label><input type="text" class="form-input" placeholder="e.g. Kapampangan Sweets Co."></div>
+            <div class="form-group"><label class="form-label">Business Type</label><select class="form-select"><option>Food & Beverage</option><option>Arts & Crafts</option><option>Event Organizer</option><option>Tourism Services</option></select></div>
+          </div>
+          <div class="form-group"><label class="form-label">Password</label>
+            <div style="position:relative"><input type="password" class="form-input" id="rPwd" placeholder="Min. 8 characters" required minlength="8" style="padding-right:3rem">
+            <button type="button" onclick="togglePwd('rPwd')" style="position:absolute;right:0.875rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--sage)">👁️</button></div>
+          </div>
+          <div class="form-group"><label class="form-label">Confirm Password</label><input type="password" class="form-input" id="rCon" placeholder="Repeat password" required></div>
+          <div style="margin-bottom:1.1rem"><label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.78rem;cursor:pointer;line-height:1.5;color:var(--charcoal)"><input type="checkbox" required style="accent-color:var(--crimson);margin-top:0.2rem;flex-shrink:0"> I agree to the <a href="#" style="color:var(--crimson);text-decoration:none;font-weight:600">Terms of Service</a> and support sustainable Kapampangan tourism 🌿</label></div>
+          <button type="submit" class="btn-fire" style="width:100%;justify-content:center;font-size:0.88rem;padding:0.875rem">Create Account →</button>
+        </form>
+        <p style="text-align:center;margin-top:1.25rem;font-size:0.78rem;color:var(--sage)">Already registered? <a href="login.html" style="color:var(--crimson);font-weight:700;text-decoration:none">Sign In</a></p>
+      </div>
+    </div><!-- /.auth-right -->
+
+  </div><!-- /.auth-split -->
+</div><!-- /.auth-page -->
+<script>// ===== PAMPANGA PLATFORM - CORE APP =====
+
+// ===== DATA STORE =====
+const PampangaDB = {
+  events: [
+    {
+      id: 1, name: "Ligligan Parul Sampernandu", category: "Festival",
+      date: "2025-12-17", time: "6:00 PM", location: "Bacolor, Pampanga",
+      price: 150, image: "🏮", organizer: "Pampanga Tourism Office",
+      description: "The Giant Lantern Festival is one of the most spectacular events in the Philippines. Eleven barangays of San Fernando compete with their magnificent giant lanterns known as 'parols'.",
+      ticketsSold: 1240, capacity: 5000, eco: true, local: true,
+      vendors: ["Kapampangan Sweets", "Aling Clara's Kitchen", "Pampanga Crafts"],
+      schedule: [
+        { time: "6:00 PM", event: "Opening Ceremony" },
+        { time: "7:00 PM", event: "Lantern Parade" },
+        { time: "8:00 PM", event: "Lantern Competition Judging" },
+        { time: "9:00 PM", event: "Grand Fireworks Display" }
+      ]
+    },
+    {
+      id: 2, name: "Sisig Food Festival", category: "Food",
+      date: "2025-10-20", time: "9:00 AM", location: "Pampanga Capitol Grounds",
+      price: 100, image: "🍽️", organizer: "Kulinarya Pampanga",
+      description: "Celebrate Pampanga's famous culinary heritage with the Sisig Food Festival. Sample different variations of sisig from the best restaurants and street food vendors in the province.",
+      ticketsSold: 890, capacity: 3000, eco: false, local: true,
+      vendors: ["Aling Lucing's", "Sisig Central", "Modern Kapampangan Kitchen"],
+      schedule: [
+        { time: "9:00 AM", event: "Festival Opening" },
+        { time: "10:00 AM", event: "Sisig Cook-Off Competition" },
+        { time: "12:00 PM", event: "Food Tasting Open to Public" },
+        { time: "3:00 PM", event: "Best Sisig Award Ceremony" }
+      ]
+    },
+    {
+      id: 3, name: "Apung Iru Fluvial Parade", category: "Cultural",
+      date: "2025-06-23", time: "5:00 AM", location: "Candaba River, Pampanga",
+      price: 0, image: "⛵", organizer: "Diocese of San Fernando",
+      description: "The Fluvial Parade of Apung Iru (St. Peter the Apostle) is a centuries-old religious tradition in Apalit. Devotees on boats participate in the river procession.",
+      ticketsSold: 0, capacity: 10000, eco: true, local: true,
+      vendors: ["Local Trinket Shops", "Traditional Food Stalls"],
+      schedule: [
+        { time: "5:00 AM", event: "Early Morning Mass" },
+        { time: "6:00 AM", event: "Fluvial Procession Begins" },
+        { time: "9:00 AM", event: "Return to Land Procession" },
+        { time: "10:00 AM", event: "Closing Mass" }
+      ]
+    },
+    {
+      id: 4, name: "Pampanga Summer Concert Series", category: "Concert",
+      date: "2025-04-15", time: "7:00 PM", location: "SM City Pampanga Open Grounds",
+      price: 500, image: "🎵", organizer: "PH Events Unlimited",
+      description: "The biggest summer concert series in Central Luzon featuring top OPM artists and local Pampanga bands. Three nights of music, food, and fun under the stars.",
+      ticketsSold: 2100, capacity: 8000, eco: false, local: false,
+      vendors: ["Festival Merch Booth", "Food Village"],
+      schedule: [
+        { time: "7:00 PM", event: "Doors Open" },
+        { time: "8:00 PM", event: "Opening Act: Kapampangan Voices" },
+        { time: "9:00 PM", event: "Main Performance" },
+        { time: "11:00 PM", event: "Grand Finale" }
+      ]
+    },
+    {
+      id: 5, name: "Kulinarya Pampanga Festival", category: "Food",
+      date: "2025-08-10", time: "8:00 AM", location: "Angeles City Convention Center",
+      price: 120, image: "👨‍🍳", organizer: "Kulinarya Pampanga",
+      description: "A grand celebration of Kapampangan cuisine featuring cooking demos, food competitions, and the largest gathering of Pampanga's finest chefs and food entrepreneurs.",
+      ticketsSold: 560, capacity: 2000, eco: true, local: true,
+      vendors: ["Kapampangan Chefs Association", "Local Food Producers"],
+      schedule: [
+        { time: "8:00 AM", event: "Opening Ceremony" },
+        { time: "9:00 AM", event: "Celebrity Chef Cooking Demo" },
+        { time: "11:00 AM", event: "Food Fair Open to Public" },
+        { time: "4:00 PM", event: "Culinary Awards" }
+      ]
+    },
+    {
+      id: 6, name: "Sinukwan Folk Arts Festival", category: "Cultural",
+      date: "2025-09-05", time: "2:00 PM", location: "San Fernando Heritage Park",
+      price: 75, image: "🎭", organizer: "Pampanga Arts Council",
+      description: "Sinukwan celebrates the rich indigenous cultural heritage of Pampanga through traditional dances, music, crafts, and visual arts exhibitions.",
+      ticketsSold: 310, capacity: 1500, eco: true, local: true,
+      vendors: ["Kapampangan Artisans Guild", "Heritage Crafts"],
+      schedule: [
+        { time: "2:00 PM", event: "Opening Ritual Dance" },
+        { time: "3:00 PM", event: "Traditional Games" },
+        { time: "4:00 PM", event: "Cultural Performances" },
+        { time: "6:00 PM", event: "Closing Ceremony" }
+      ]
+    }
+  ],
+
+  products: [
+    { id: 1, name: "Tibok-Tibok", seller: "Kapampangan Sweets Co.", price: 180, image: "🍮", category: "Kakanin", description: "Traditional carabao milk pudding, a sweet delicacy of Pampanga." },
+    { id: 2, name: "Tocino Pampangueño", seller: "Aling Clara's Kitchen", price: 350, image: "🥩", category: "Meat Products", description: "Sweet marinated pork, the pride of Pampanga's culinary tradition." },
+    { id: 3, name: "Turrones de Casuy", seller: "Pampanga Sweets", price: 220, image: "🍬", category: "Sweets", description: "Cashew nougat wrapped in edible rice paper. A classic Pampanga pasalubong." },
+    { id: 4, name: "Parol (Giant Lantern)", seller: "San Fernando Crafts", price: 1500, image: "🏮", category: "Crafts", description: "Handcrafted Christmas lantern inspired by the Giant Lantern Festival." },
+    { id: 5, name: "Uraro Cookies", seller: "Heritage Bakers PH", price: 160, image: "🍪", category: "Baked Goods", description: "Delicate arrowroot cookies, a beloved Kapampangan treat since colonial times." },
+    { id: 6, name: "Ensaymada Especial", seller: "Aling Clara's Kitchen", price: 280, image: "🥐", category: "Baked Goods", description: "Rich, buttery ensaymada topped with cheese and sugar. Pampanga's finest." },
+    { id: 7, name: "Chicharon Bulaklak", seller: "Kapampangan Sweets Co.", price: 200, image: "🐷", category: "Snacks", description: "Crispy pork mesentery, a popular street food and pulutan from Pampanga." },
+    { id: 8, name: "Woven Banig (Mat)", seller: "San Fernando Crafts", price: 750, image: "🛏️", category: "Crafts", description: "Intricately woven traditional mat, a heritage craft of Pampanga artisans." }
+  ],
+
+  businesses: [
+    { id: 1, name: "Kapampangan Sweets Co.", type: "Food Producer", location: "San Fernando", contact: "0917-123-4567", verified: true, products: [1, 3, 7] },
+    { id: 2, name: "Aling Clara's Kitchen", type: "Restaurant & Catering", location: "Angeles City", contact: "0918-234-5678", verified: true, products: [2, 6] },
+    { id: 3, name: "San Fernando Crafts", type: "Arts & Crafts", location: "San Fernando", contact: "0919-345-6789", verified: true, products: [4, 8] },
+    { id: 4, name: "Heritage Bakers PH", type: "Bakery", location: "Mabalacat", contact: "0920-456-7890", verified: false, products: [5] }
+  ],
+
+  users: [
+    { id: 1, name: "Juan dela Cruz", email: "juan@email.com", role: "user", tickets: [1, 3] },
+    { id: 2, name: "Maria Santos", email: "maria@email.com", role: "business", business: 1 },
+    { id: 3, name: "Admin User", email: "admin@pampanga.gov", role: "admin" }
+  ]
+};
+
+// ===== LOCAL STORAGE =====
+const Storage = {
+  get: (key) => { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } },
+  set: (key, val) => localStorage.setItem(key, JSON.stringify(val)),
+  remove: (key) => localStorage.removeItem(key)
+};
+
+// Initialize storage
+if (!Storage.get('pampanga_tickets')) Storage.set('pampanga_tickets', []);
+if (!Storage.get('pampanga_saved')) Storage.set('pampanga_saved', []);
+if (!Storage.get('pampanga_user')) Storage.set('pampanga_user', { name: 'Juan dela Cruz', email: 'juan@email.com', role: 'user' });
+
+// ===== TOAST NOTIFICATIONS =====
+function showToast(message, type = 'info') {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span>${icons[type] || icons.info}</span><span>${message}</span>`;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add('show'), 10);
+  setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3500);
+}
+
+// ===== MODAL SYSTEM =====
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ===== QR CODE GENERATOR =====
+function generateQRCode(text, size = 200) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  // Stylized QR placeholder (real QR via qrcodejs)
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#1A0A0A';
+  const moduleSize = size / 25;
+  // Generate a deterministic pattern from text
+  const seed = text.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+  const rand = (n) => { let x = Math.sin(seed + n) * 10000; return x - Math.floor(x); };
+  // Corner markers
+  [[0,0],[18,0],[0,18]].forEach(([cx,cy]) => {
+    ctx.fillStyle = '#1A0A0A';
+    ctx.fillRect(cx*moduleSize, cy*moduleSize, 7*moduleSize, 7*moduleSize);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect((cx+1)*moduleSize, (cy+1)*moduleSize, 5*moduleSize, 5*moduleSize);
+    ctx.fillStyle = '#1A0A0A';
+    ctx.fillRect((cx+2)*moduleSize, (cy+2)*moduleSize, 3*moduleSize, 3*moduleSize);
+  });
+  // Data modules
+  for (let r = 0; r < 25; r++) {
+    for (let c = 0; c < 25; c++) {
+      const isCorner = (r<8&&c<8)||(r<8&&c>16)||(r>16&&c<8);
+      if (!isCorner && rand(r*25+c) > 0.5) {
+        ctx.fillStyle = '#1A0A0A';
+        ctx.fillRect(c*moduleSize, r*moduleSize, moduleSize-1, moduleSize-1);
+      }
+    }
+  }
+  return canvas.toDataURL();
+}
+
+// ===== TICKET GENERATOR =====
+function createTicket(event, userName, ticketId) {
+  const qr = generateQRCode(`PAMPANGA-${ticketId}-${event.id}`);
+  return {
+    id: ticketId,
+    eventId: event.id,
+    eventName: event.name,
+    userName,
+    date: event.date,
+    time: event.time,
+    location: event.location,
+    price: event.price,
+    qr,
+    purchasedAt: new Date().toISOString()
+  };
+}
+
+function renderTicketHTML(ticket) {
+  const formatDate = (d) => new Date(d).toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
+  return `
+    <div class="ticket">
+      <div class="ticket-header">
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.8;margin-bottom:0.3rem">🏮 Pampanga Events</div>
+        <h3>${ticket.eventName}</h3>
+        <div style="font-size:0.8rem;opacity:0.8;margin-top:0.25rem">${ticket.location}</div>
+      </div>
+      <div class="ticket-divider">
+        <div class="ticket-circle"></div><div class="ticket-circle"></div>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-row">
+          <div><div class="ticket-label">Attendee</div><div class="ticket-value">${ticket.userName}</div></div>
+          <div><div class="ticket-label">Ticket ID</div><div class="ticket-value">#${ticket.id}</div></div>
+        </div>
+        <div class="ticket-row">
+          <div><div class="ticket-label">Date</div><div class="ticket-value">${formatDate(ticket.date)}</div></div>
+          <div><div class="ticket-label">Time</div><div class="ticket-value">${ticket.time}</div></div>
+        </div>
+        <div class="ticket-row">
+          <div><div class="ticket-label">Price</div><div class="ticket-value card-price">${ticket.price === 0 ? 'FREE' : '₱' + ticket.price}</div></div>
+          <div><div class="ticket-label">Status</div><div class="ticket-value" style="color:#16a34a">✓ Confirmed</div></div>
+        </div>
+        <div class="ticket-qr">
+          <img src="${ticket.qr}" alt="QR Code" style="width:140px;height:140px;border-radius:10px;border:2px solid rgba(212,160,23,0.2)"/>
+        </div>
+        <div style="text-align:center;margin-top:0.5rem">
+          <div style="font-size:0.72rem;color:#9ca3af;letter-spacing:0.05em">SCAN QR CODE AT ENTRANCE • PAPERLESS TICKET</div>
+          <span class="badge badge-paper" style="margin-top:0.5rem">📱 Paperless Ticketing</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ===== NAVBAR =====
+function initNavbar() {
+  const toggle = document.querySelector('.nav-mobile-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+}
+
+// ===== CALENDAR =====
+function initCalendar(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  let currentDate = new Date();
+  const eventDates = PampangaDB.events.map(e => e.date);
+  
+  function render() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    
+    let days = '';
+    for (let i = 0; i < firstDay; i++) {
+      days += `<div class="cal-day other-month"></div>`;
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const isToday = today.getDate() === d && today.getMonth() === month && today.getFullYear() === year;
+      const hasEvent = eventDates.includes(dateStr);
+      days += `<div class="cal-day ${isToday?'today':''} ${hasEvent?'has-event':''}" 
+        onclick="showEventsOnDate('${dateStr}')" title="${hasEvent?'Events on this day':''}">${d}</div>`;
+    }
+    container.innerHTML = `
+      <div class="calendar">
+        <div class="calendar-header">
+          <button class="cal-nav" onclick="changeMonth(-1)">◀</button>
+          <h3>${monthNames[month]} ${year}</h3>
+          <button class="cal-nav" onclick="changeMonth(1)">▶</button>
+        </div>
+        <div class="calendar-grid-days">
+          ${dayNames.map(d=>`<span>${d}</span>`).join('')}
+        </div>
+        <div class="calendar-dates">${days}</div>
+      </div>
+    `;
+  }
+  
+  window.changeMonth = (dir) => { currentDate.setMonth(currentDate.getMonth() + dir); render(); };
+  window.showEventsOnDate = (date) => {
+    const events = PampangaDB.events.filter(e => e.date === date);
+    if (events.length > 0) {
+      showToast(`📅 ${events.length} event(s) on this date: ${events.map(e=>e.name).join(', ')}`, 'info');
+    }
+  };
+  render();
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+});
+
+// ===== EVENTS PAGE =====
+function renderEventCards(events, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  if (events.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:4rem;color:var(--sage);grid-column:1/-1">
+        <div style="font-size:3rem;margin-bottom:1rem">🔍</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--dark);margin-bottom:0.5rem">No Events Found</h3>
+        <p>Try adjusting your search or filter criteria.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = events.map(event => {
+    const formatDate = new Date(event.date).toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
+    const badges = [
+      event.eco ? `<span class="badge badge-eco">🌿 Eco Friendly</span>` : '',
+      event.local ? `<span class="badge badge-local">🏪 Local Business</span>` : '',
+      `<span class="badge badge-paper">📱 Paperless</span>`
+    ].filter(Boolean).slice(0, 2).join('');
+    const catColors = { Festival: 'badge-festival', Food: 'badge-food', Concert: 'badge-concert', Cultural: 'badge-cultural' };
+    const progress = Math.round((event.ticketsSold / event.capacity) * 100);
+
+    return `
+      <div class="card animate-in" style="opacity:0">
+        <div class="card-img" style="background:linear-gradient(135deg,${getCategoryGradient(event.category)})">
+          <span style="font-size:3.5rem">${event.image}</span>
+          <span class="badge ${catColors[event.category]||'badge-festival'}" 
+            style="position:absolute;top:1rem;right:1rem">${event.category}</span>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem">${badges}</div>
+          <h3 class="card-title">${event.name}</h3>
+          <div class="card-meta">📅 ${formatDate} • ${event.time}</div>
+          <div class="card-meta">📍 ${event.location}</div>
+          <div style="margin:0.75rem 0">
+            <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--sage);margin-bottom:0.3rem">
+              <span>${event.ticketsSold.toLocaleString()} tickets sold</span>
+              <span>${progress}% full</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+            <span class="card-price">${event.price === 0 ? '🎟️ FREE' : '₱' + event.price}</span>
+            <a href="event-details.html?id=${event.id}" class="btn-gold btn-sm">View Details →</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Stagger animations
+  container.querySelectorAll('.card').forEach((card, i) => {
+    setTimeout(() => card.style.animation = `fadeInUp 0.5s ease forwards`, i * 80);
+  });
+}
+
+function getCategoryGradient(cat) {
+  const g = {
+    Festival: '#8B0000 0%, #C41E3A 100%',
+    Food: '#7C3A1E 0%, #D4691E 100%',
+    Concert: '#1A0050 0%, #5B21B6 100%',
+    Cultural: '#2D4A1E 0%, #4A7A2A 100%'
+  };
+  return g[cat] || g.Festival;
+}
+
+function initEventsPage() {
+  let filtered = [...PampangaDB.events];
+  let activeCategory = 'All';
+  let searchTerm = '';
+
+  const grid = document.getElementById('eventsGrid');
+  const searchInput = document.getElementById('eventSearch');
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const countEl = document.getElementById('eventCount');
+
+  function applyFilters() {
+    filtered = PampangaDB.events.filter(e => {
+      const matchCat = activeCategory === 'All' || e.category === activeCategory;
+      const matchSearch = e.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        e.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        e.organizer.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchCat && matchSearch;
+    });
+    if (countEl) countEl.textContent = `${filtered.length} event${filtered.length !== 1 ? 's' : ''} found`;
+    renderEventCards(filtered, 'eventsGrid');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => { searchTerm = e.target.value; applyFilters(); });
+  }
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeCategory = tab.dataset.category;
+      applyFilters();
+    });
+  });
+
+  applyFilters();
+}
+
+// ===== EVENT DETAILS =====
+function initEventDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id')) || 1;
+  const event = PampangaDB.events.find(e => e.id === id) || PampangaDB.events[0];
+
+  const formatDate = new Date(event.date).toLocaleDateString('en-PH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Fill in details
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const field = el.dataset.field;
+    if (field === 'image') el.textContent = event.image;
+    else if (field === 'name') el.textContent = event.name;
+    else if (field === 'category') el.textContent = event.category;
+    else if (field === 'organizer') el.textContent = event.organizer;
+    else if (field === 'location') el.textContent = event.location;
+    else if (field === 'date') el.textContent = formatDate;
+    else if (field === 'time') el.textContent = event.time;
+    else if (field === 'description') el.textContent = event.description;
+    else if (field === 'price') el.textContent = event.price === 0 ? 'FREE' : '₱' + event.price;
+    else if (field === 'ticketsSold') el.textContent = event.ticketsSold.toLocaleString();
+    else if (field === 'capacity') el.textContent = event.capacity.toLocaleString();
+  });
+
+  // Schedule
+  const scheduleEl = document.getElementById('schedule');
+  if (scheduleEl && event.schedule) {
+    scheduleEl.innerHTML = event.schedule.map((item, i) => `
+      <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:${i%2===0?'rgba(212,160,23,0.04)':'white'};border-radius:12px;border:1px solid rgba(212,160,23,0.1)">
+        <div style="background:var(--gradient-festival);color:white;padding:0.3rem 0.75rem;border-radius:50px;font-size:0.78rem;font-weight:700;white-space:nowrap;flex-shrink:0">${item.time}</div>
+        <div style="font-weight:500;color:var(--dark)">${item.event}</div>
+      </div>
+    `).join('');
+  }
+
+  // Vendors
+  const vendorsEl = document.getElementById('vendors');
+  if (vendorsEl && event.vendors) {
+    vendorsEl.innerHTML = event.vendors.map(v => `
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.875rem;background:white;border-radius:12px;border:1px solid rgba(212,160,23,0.1)">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--gradient-festival);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:white;flex-shrink:0">🏪</div>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem">${v}</div>
+          <div style="font-size:0.78rem;color:var(--sage)">Event Vendor</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Buy ticket button
+  const buyBtn = document.getElementById('buyTicketBtn');
+  if (buyBtn) {
+    buyBtn.addEventListener('click', () => {
+      if (event.price === 0) {
+        purchaseTicket(event);
+      } else {
+        openModal('buyModal');
+      }
+    });
+  }
+
+  // Confirm purchase
+  const confirmBtn = document.getElementById('confirmPurchase');
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      closeModal('buyModal');
+      purchaseTicket(event);
+    });
+  }
+
+  // Save event
+  const saveBtn = document.getElementById('saveEventBtn');
+  if (saveBtn) {
+    const saved = Storage.get('pampanga_saved') || [];
+    if (saved.includes(event.id)) saveBtn.textContent = '❤️ Saved';
+    saveBtn.addEventListener('click', () => {
+      const savedList = Storage.get('pampanga_saved') || [];
+      if (savedList.includes(event.id)) {
+        Storage.set('pampanga_saved', savedList.filter(id => id !== event.id));
+        saveBtn.textContent = '🤍 Save Event';
+        showToast('Event removed from saved list', 'info');
+      } else {
+        savedList.push(event.id);
+        Storage.set('pampanga_saved', savedList);
+        saveBtn.textContent = '❤️ Saved';
+        showToast('Event saved! Check your dashboard.', 'success');
+      }
+    });
+  }
+
+  // Eco badges
+  const ecoContainer = document.getElementById('ecoBadges');
+  if (ecoContainer) {
+    ecoContainer.innerHTML = [
+      event.eco ? `<span class="badge badge-eco">🌿 Eco Friendly Event</span>` : '',
+      event.local ? `<span class="badge badge-local">🏪 Local Business Supported</span>` : '',
+      `<span class="badge badge-paper">📱 Paperless Ticketing</span>`
+    ].filter(Boolean).join('');
+  }
+}
+
+function purchaseTicket(event) {
+  const user = Storage.get('pampanga_user') || { name: 'Guest User' };
+  const tickets = Storage.get('pampanga_tickets') || [];
+  const ticketId = 'TKT-' + Date.now().toString(36).toUpperCase();
+  const ticket = createTicket(event, user.name, ticketId);
+  tickets.push(ticket);
+  Storage.set('pampanga_tickets', tickets);
+
+  const ticketDisplay = document.getElementById('ticketDisplay');
+  if (ticketDisplay) {
+    ticketDisplay.innerHTML = renderTicketHTML(ticket);
+    document.getElementById('downloadTicketBtn').onclick = () => downloadTicket(ticket);
+  }
+  openModal('ticketModal');
+  showToast('🎟️ Ticket purchased successfully!', 'success');
+}
+
+function downloadTicket(ticket) {
+  const content = `PAMPANGA EVENTS - E-TICKET\n${'='.repeat(40)}\nTicket ID: #${ticket.id}\nEvent: ${ticket.eventName}\nAttendee: ${ticket.userName}\nDate: ${ticket.date}\nTime: ${ticket.time}\nLocation: ${ticket.location}\nPrice: ${ticket.price === 0 ? 'FREE' : '₱' + ticket.price}\nStatus: CONFIRMED\n${'='.repeat(40)}\nThis is your official e-ticket.\nPresent at entrance for scanning.`;
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `ticket-${ticket.id}.txt`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Ticket downloaded!', 'success');
+}
+
+// Init based on page
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('eventsGrid')) initEventsPage();
+  if (document.getElementById('eventDetailPage')) initEventDetails();
+});
+
+// ===== TICKETS MODULE =====
+function renderUserTickets(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const tickets = Storage.get('pampanga_tickets') || [];
+  
+  if (tickets.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:3rem;background:white;border-radius:20px;border:2px dashed rgba(212,160,23,0.25)">
+        <div style="font-size:3rem;margin-bottom:1rem">🎟️</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem;color:var(--dark)">No Tickets Yet</h3>
+        <p style="color:var(--sage);margin-bottom:1.5rem">Browse events and purchase your first ticket!</p>
+        <a href="../events.html" class="btn-primary">Browse Events</a>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = tickets.map(ticket => `
+    <div style="background:white;border-radius:16px;border:1px solid rgba(212,160,23,0.15);overflow:hidden;display:flex;gap:0;transition:all 0.3s" 
+      onmouseover="this.style.boxShadow='0 10px 30px rgba(196,30,58,0.1)'" 
+      onmouseout="this.style.boxShadow='none'">
+      <div style="background:var(--gradient-festival);width:8px;flex-shrink:0"></div>
+      <div style="padding:1.25rem;flex:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:0.25rem">${ticket.eventName}</div>
+          <div style="font-size:0.8rem;color:var(--sage)">📅 ${new Date(ticket.date).toLocaleDateString('en-PH', {month:'long',day:'numeric',year:'numeric'})} • ${ticket.time}</div>
+          <div style="font-size:0.8rem;color:var(--sage)">📍 ${ticket.location}</div>
+          <div style="margin-top:0.5rem">
+            <span style="background:rgba(22,163,74,0.1);color:#16a34a;padding:0.2rem 0.7rem;border-radius:50px;font-size:0.72rem;font-weight:700">✓ Confirmed</span>
+            <span style="background:rgba(37,99,235,0.1);color:#2563eb;padding:0.2rem 0.7rem;border-radius:50px;font-size:0.72rem;font-weight:700;margin-left:0.3rem">📱 Paperless</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <button class="btn-gold btn-sm" onclick='viewTicketModal(${JSON.stringify(ticket).replace(/'/g,"&#39;")})'>View QR</button>
+          <button class="btn-outline btn-sm" onclick="downloadTicket(${JSON.stringify(ticket).replace(/'/g,"&#39;")})">Download</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function viewTicketModal(ticket) {
+  const display = document.getElementById('viewTicketDisplay');
+  if (display) {
+    display.innerHTML = renderTicketHTML(ticket);
+    openModal('viewTicketModal');
+  }
+}
+
+function renderSavedEvents(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const saved = Storage.get('pampanga_saved') || [];
+  const events = PampangaDB.events.filter(e => saved.includes(e.id));
+
+  if (events.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:3rem;background:white;border-radius:20px;border:2px dashed rgba(212,160,23,0.25)">
+        <div style="font-size:3rem;margin-bottom:1rem">🤍</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem">No Saved Events</h3>
+        <p style="color:var(--sage);margin-bottom:1.5rem">Browse events and save the ones you're interested in!</p>
+        <a href="../events.html" class="btn-primary">Browse Events</a>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = events.map(event => `
+    <div style="background:white;border-radius:16px;border:1px solid rgba(212,160,23,0.15);overflow:hidden;display:flex;gap:0;transition:all 0.3s"
+      onmouseover="this.style.boxShadow='0 10px 30px rgba(196,30,58,0.1)'"
+      onmouseout="this.style.boxShadow='none'">
+      <div style="background:var(--gradient-festival);width:8px;flex-shrink:0"></div>
+      <div style="padding:1.25rem;flex:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-size:0.75rem;color:var(--crimson);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem">${event.category}</div>
+          <div style="font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:0.25rem">${event.name}</div>
+          <div style="font-size:0.8rem;color:var(--sage)">📅 ${new Date(event.date).toLocaleDateString('en-PH',{month:'long',day:'numeric',year:'numeric'})} • 📍 ${event.location}</div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <a href="../event-details.html?id=${event.id}" class="btn-gold btn-sm">View →</a>
+          <button class="btn-outline btn-sm" onclick="unsaveEvent(${event.id})">Remove</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function unsaveEvent(id) {
+  const saved = (Storage.get('pampanga_saved') || []).filter(s => s !== id);
+  Storage.set('pampanga_saved', saved);
+  renderSavedEvents('savedEvents');
+  showToast('Event removed from saved list', 'info');
+}
+
+window.viewTicketModal = viewTicketModal;
+window.downloadTicket = downloadTicket;
+window.unsaveEvent = unsaveEvent;
+
+// ===== DASHBOARD NAVIGATION =====
+function initDashboard() {
+  const links = document.querySelectorAll('.sidebar-link[data-page]');
+  const pages = document.querySelectorAll('.dashboard-page');
+  const pageTitle = document.getElementById('pageTitle');
+  const mobileToggle = document.getElementById('sidebarToggle');
+  const sidebar = document.querySelector('.sidebar');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.remove('active'));
+    links.forEach(l => l.classList.remove('active'));
+    const target = document.getElementById(pageId);
+    if (target) target.classList.add('active');
+    const link = document.querySelector(`[data-page="${pageId}"]`);
+    if (link) {
+      link.classList.add('active');
+      if (pageTitle) pageTitle.textContent = link.querySelector('span:last-child')?.textContent || pageId;
+    }
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPage(link.dataset.page);
+      if (window.innerWidth < 768 && sidebar) sidebar.classList.remove('open');
+    });
+  });
+
+  if (mobileToggle && sidebar) {
+    mobileToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  }
+
+  // Show first page by default
+  const firstLink = links[0];
+  if (firstLink) showPage(firstLink.dataset.page);
+}
+
+// ===== USER DASHBOARD =====
+function initUserDashboard() {
+  initDashboard();
+  const user = Storage.get('pampanga_user') || { name: 'Juan dela Cruz', email: 'juan@email.com' };
+  
+  // Fill user info
+  document.querySelectorAll('[data-user]').forEach(el => {
+    if (el.dataset.user === 'name') el.textContent = user.name;
+    if (el.dataset.user === 'email') el.textContent = user.email;
+    if (el.dataset.user === 'initials') el.textContent = user.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  });
+
+  // Ticket count
+  const tickets = Storage.get('pampanga_tickets') || [];
+  const saved = Storage.get('pampanga_saved') || [];
+  const ticketCountEl = document.getElementById('userTicketCount');
+  const savedCountEl = document.getElementById('userSavedCount');
+  if (ticketCountEl) ticketCountEl.textContent = tickets.length;
+  if (savedCountEl) savedCountEl.textContent = saved.length;
+
+  // Render tickets and saved
+  renderUserTickets('myTickets');
+  renderSavedEvents('savedEvents');
+
+  // Profile form
+  const profileForm = document.getElementById('profileForm');
+  if (profileForm) {
+    document.getElementById('profileName').value = user.name;
+    document.getElementById('profileEmail').value = user.email;
+    profileForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      user.name = document.getElementById('profileName').value;
+      user.email = document.getElementById('profileEmail').value;
+      Storage.set('pampanga_user', user);
+      showToast('Profile updated successfully!', 'success');
+    });
+  }
+}
+
+// ===== BUSINESS DASHBOARD =====
+let bizEvents = JSON.parse(JSON.stringify(PampangaDB.events.slice(0, 3)));
+let bizProducts = JSON.parse(JSON.stringify(PampangaDB.products.slice(0, 4)));
+
+function initBusinessDashboard() {
+  initDashboard();
+
+  renderBizEvents();
+  renderBizProducts();
+
+  // Analytics
+  const totalTickets = bizEvents.reduce((a, e) => a + e.ticketsSold, 0);
+  const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setEl('bizTotalTickets', totalTickets.toLocaleString());
+  setEl('bizTotalEvents', bizEvents.length);
+  setEl('bizTotalProducts', bizProducts.length);
+  setEl('bizRevenue', '₱' + (totalTickets * 150).toLocaleString());
+
+  // Event form
+  const eventForm = document.getElementById('addEventForm');
+  if (eventForm) {
+    eventForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newEvent = {
+        id: Date.now(),
+        name: document.getElementById('evtName').value,
+        category: document.getElementById('evtCategory').value,
+        date: document.getElementById('evtDate').value,
+        time: document.getElementById('evtTime').value,
+        location: document.getElementById('evtLocation').value,
+        price: parseInt(document.getElementById('evtPrice').value) || 0,
+        image: '🎪', organizer: 'My Business', description: document.getElementById('evtDesc').value,
+        ticketsSold: 0, capacity: 1000, eco: false, local: true, vendors: [], schedule: []
+      };
+      bizEvents.push(newEvent);
+      renderBizEvents();
+      closeModal('addEventModal');
+      eventForm.reset();
+      showToast('Event created successfully!', 'success');
+    });
+  }
+
+  // Product form
+  const productForm = document.getElementById('addProductForm');
+  if (productForm) {
+    productForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newProduct = {
+        id: Date.now(),
+        name: document.getElementById('prodName').value,
+        seller: 'My Business',
+        price: parseInt(document.getElementById('prodPrice').value) || 0,
+        image: document.getElementById('prodEmoji').value || '🛍️',
+        category: document.getElementById('prodCategory').value,
+        description: document.getElementById('prodDesc').value
+      };
+      bizProducts.push(newProduct);
+      renderBizProducts();
+      closeModal('addProductModal');
+      productForm.reset();
+      showToast('Product added successfully!', 'success');
+    });
+  }
+}
+
+function renderBizEvents() {
+  const container = document.getElementById('bizEventsList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Event</th><th>Date</th><th>Tickets Sold</th><th>Revenue</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${bizEvents.map(e => `
+          <tr>
+            <td><strong>${e.name}</strong><br><span style="font-size:0.75rem;color:var(--sage)">${e.category}</span></td>
+            <td>${new Date(e.date).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'})}</td>
+            <td>${e.ticketsSold.toLocaleString()} / ${e.capacity.toLocaleString()}</td>
+            <td style="color:var(--success);font-weight:600">₱${(e.ticketsSold * e.price).toLocaleString()}</td>
+            <td><button class="btn-outline btn-sm" onclick="editBizEvent(${e.id})">Edit</button> 
+                <button class="btn-danger btn-sm" onclick="deleteBizEvent(${e.id})" style="margin-left:0.3rem">Delete</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderBizProducts() {
+  const container = document.getElementById('bizProductsList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Product</th><th>Category</th><th>Price</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${bizProducts.map(p => `
+          <tr>
+            <td><span style="font-size:1.3rem;margin-right:0.5rem">${p.image}</span><strong>${p.name}</strong></td>
+            <td>${p.category}</td>
+            <td style="font-weight:600;color:var(--crimson)">₱${p.price}</td>
+            <td><button class="btn-outline btn-sm" onclick="editBizProduct(${p.id})">Edit</button>
+                <button class="btn-danger btn-sm" onclick="deleteBizProduct(${p.id})" style="margin-left:0.3rem">Delete</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function deleteBizEvent(id) {
+  bizEvents = bizEvents.filter(e => e.id !== id);
+  renderBizEvents();
+  showToast('Event deleted.', 'info');
+}
+function deleteBizProduct(id) {
+  bizProducts = bizProducts.filter(p => p.id !== id);
+  renderBizProducts();
+  showToast('Product deleted.', 'info');
+}
+function editBizEvent(id) { showToast('Edit mode coming soon!', 'info'); }
+function editBizProduct(id) { showToast('Edit mode coming soon!', 'info'); }
+
+window.deleteBizEvent = deleteBizEvent;
+window.deleteBizProduct = deleteBizProduct;
+window.editBizEvent = editBizEvent;
+window.editBizProduct = editBizProduct;
+
+// ===== ADMIN DASHBOARD =====
+let adminUsers = JSON.parse(JSON.stringify(PampangaDB.users));
+let adminEvents = JSON.parse(JSON.stringify(PampangaDB.events));
+let adminBusinesses = JSON.parse(JSON.stringify(PampangaDB.businesses));
+let suspended = [];
+
+function initAdminDashboard() {
+  initDashboard();
+
+  // Stats
+  const totalTickets = adminEvents.reduce((a, e) => a + e.ticketsSold, 0);
+  const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setEl('adminUsers', adminUsers.length.toLocaleString());
+  setEl('adminEvents', adminEvents.length.toLocaleString());
+  setEl('adminTickets', totalTickets.toLocaleString());
+  setEl('adminBusinesses', adminBusinesses.length.toLocaleString());
+
+  renderAdminEvents();
+  renderAdminUsers();
+  renderAdminBusinesses();
+}
+
+function renderAdminEvents() {
+  const container = document.getElementById('adminEventsList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Event</th><th>Category</th><th>Date</th><th>Organizer</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${adminEvents.map(e => `
+          <tr>
+            <td><strong>${e.name}</strong></td>
+            <td><span class="badge badge-${e.category.toLowerCase()}">${e.category}</span></td>
+            <td>${new Date(e.date).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'})}</td>
+            <td>${e.organizer}</td>
+            <td><span style="color:#16a34a;font-weight:600;font-size:0.8rem">✓ Approved</span></td>
+            <td>
+              <button class="btn-danger btn-sm" onclick="adminDeleteEvent(${e.id})">Delete</button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderAdminUsers() {
+  const container = document.getElementById('adminUsersList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${adminUsers.map(u => `
+          <tr>
+            <td><strong>${u.name}</strong></td>
+            <td>${u.email}</td>
+            <td><span class="badge badge-${u.role==='admin'?'festival':u.role==='business'?'food':'paper'}" style="text-transform:capitalize">${u.role}</span></td>
+            <td>${suspended.includes(u.id)?'<span style="color:#dc2626;font-weight:600;font-size:0.8rem">⚠ Suspended</span>':'<span style="color:#16a34a;font-weight:600;font-size:0.8rem">✓ Active</span>'}</td>
+            <td>
+              <button class="${suspended.includes(u.id)?'btn-gold':'btn-danger'} btn-sm" 
+                onclick="toggleSuspend(${u.id})">${suspended.includes(u.id)?'Restore':'Suspend'}</button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderAdminBusinesses() {
+  const container = document.getElementById('adminBusinessesList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Business</th><th>Type</th><th>Location</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${adminBusinesses.map(b => `
+          <tr>
+            <td><strong>${b.name}</strong></td>
+            <td>${b.type}</td>
+            <td>${b.location}</td>
+            <td>${b.verified
+              ? '<span style="color:#16a34a;font-weight:600;font-size:0.8rem">✓ Verified</span>'
+              : '<span style="color:#d97706;font-weight:600;font-size:0.8rem">⏳ Pending</span>'}</td>
+            <td>
+              ${!b.verified ? `<button class="btn-gold btn-sm" onclick="approveBiz(${b.id})">Approve</button>` : ''}
+              <button class="btn-danger btn-sm" onclick="rejectBiz(${b.id})" style="margin-left:0.3rem">Reject</button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function adminDeleteEvent(id) {
+  adminEvents = adminEvents.filter(e => e.id !== id);
+  renderAdminEvents();
+  const countEl = document.getElementById('adminEvents');
+  if (countEl) countEl.textContent = adminEvents.length;
+  showToast('Event deleted from platform.', 'success');
+}
+
+function toggleSuspend(id) {
+  if (suspended.includes(id)) {
+    suspended = suspended.filter(s => s !== id);
+    showToast('User restored successfully.', 'success');
+  } else {
+    suspended.push(id);
+    showToast('User suspended.', 'warning');
+  }
+  renderAdminUsers();
+}
+
+function approveBiz(id) {
+  const biz = adminBusinesses.find(b => b.id === id);
+  if (biz) { biz.verified = true; renderAdminBusinesses(); showToast(`${biz.name} approved!`, 'success'); }
+}
+
+function rejectBiz(id) {
+  adminBusinesses = adminBusinesses.filter(b => b.id !== id);
+  renderAdminBusinesses();
+  showToast('Business removed from platform.', 'info');
+}
+
+window.adminDeleteEvent = adminDeleteEvent;
+window.toggleSuspend = toggleSuspend;
+window.approveBiz = approveBiz;
+window.rejectBiz = rejectBiz;
+
+// AUTO-INIT
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('userDashboard')) initUserDashboard();
+  if (document.getElementById('businessDashboard')) initBusinessDashboard();
+  if (document.getElementById('adminDashboard')) initAdminDashboard();
+});
+</script>
+<script>
+let _stype='user';
+function selType(t){
+  _stype=t;
+  ['user','organizer','business'].forEach(x=>{
+    const el=document.getElementById('t-'+x);
+    if(x===t){el.style.border='1.5px solid var(--crimson)';el.style.background='rgba(196,30,58,0.04)';el.querySelector('div:last-child').style.color='var(--crimson)';}
+    else{el.style.border='1.5px solid rgba(212,146,10,0.2)';el.style.background='white';el.querySelector('div:last-child').style.color='var(--sage)';}
+  });
+  document.getElementById('bizF').style.display=t!=='user'?'block':'none';
+}
+function togglePwd(id){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';}
+function handleReg(e){
+  e.preventDefault();
+  const p=document.getElementById('rPwd').value,c=document.getElementById('rCon').value;
+  if(p!==c){showToast('Passwords do not match!','error');return;}
+  const fn=document.getElementById('rFN').value,ln=document.getElementById('rLN').value,em=document.getElementById('rEmail').value;
+  const role=_stype==='user'?'user':'business';
+  Storage.set('pampanga_user',{name:fn+' '+ln,email:em,role});
+  showToast('Account created! Welcome to Pampanga Platform 🏮','success');
+  setTimeout(()=>{window.location.href=role==='business'?'dashboard/business-dashboard.html':'dashboard/user-dashboard.html';},1100);
+}
+</script>
+</body>
+</html>

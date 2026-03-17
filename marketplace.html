@@ -1,0 +1,2743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasalubong Marketplace | Pampanga Events</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏮</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,700&family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  /* Festival fire palette */
+  --crimson:    #C41E3A;
+  --ember:      #D4460A;
+  --gold:       #D4920A;
+  --amber:      #F0B429;
+  --lantern-glow: #FF6B1A;
+
+  /* Eco earth palette */
+  --forest:     #1B3A2D;
+  --moss:       #2D5A3D;
+  --sage:       #4A7C5F;
+  --fern:       #6B9E7A;
+  --mist:       #C8DDD0;
+
+  /* Neutral */
+  --ink:        #120808;
+  --charcoal:   #2A1515;
+  --parchment:  #FBF4E8;
+  --cream:      #FFF8EF;
+  --bone:       #F5EDD8;
+
+  /* Gradients */
+  --g-fire:   linear-gradient(135deg, #8B0000 0%, #C41E3A 40%, #D4920A 100%);
+  --g-ember:  linear-gradient(160deg, #5C0010 0%, #C41E3A 50%, #D4920A 100%);
+  --g-eco:    linear-gradient(135deg, #1B3A2D 0%, #2D5A3D 60%, #4A7C5F 100%);
+  --g-dusk:   linear-gradient(180deg, #120808 0%, #2A1515 50%, #1B3A2D 100%);
+  --g-split:  linear-gradient(160deg, #1B0A08 0%, #3A1010 35%, #1B3A2D 70%, #0D2018 100%);
+
+  /* Shadows & glows */
+  --glow-fire:  0 0 40px rgba(196,30,58,0.4), 0 8px 32px rgba(196,30,58,0.2);
+  --glow-gold:  0 0 30px rgba(212,146,10,0.45), 0 4px 20px rgba(212,146,10,0.25);
+  --glow-eco:   0 0 30px rgba(27,58,45,0.5), 0 4px 20px rgba(75,124,95,0.25);
+  --shadow-card: 0 2px 16px rgba(18,8,8,0.1), 0 1px 4px rgba(18,8,8,0.06);
+  --shadow-lift: 0 20px 60px rgba(18,8,8,0.2), 0 4px 16px rgba(18,8,8,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--parchment);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+
+/* ─── LANTERN PATTERN ─── */
+.lantern-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='80' viewBox='0 0 60 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='30' cy='42' rx='16' ry='22' fill='none' stroke='rgba(212,146,10,0.08)' stroke-width='1'/%3E%3Crect x='27' y='12' width='6' height='12' rx='2' fill='rgba(212,146,10,0.06)'/%3E%3Cline x1='30' y1='64' x2='30' y2='72' stroke='rgba(212,146,10,0.06)' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size: 60px 80px;
+}
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 Q60 20 55 40 Q50 60 30 65 Q10 70 15 50 Q20 30 40 10 Z' fill='rgba(75,124,95,0.07)' /%3E%3Cpath d='M40 10 L40 65' stroke='rgba(75,124,95,0.05)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* ─── NAVBAR ─── */
+.navbar {
+  background: rgba(18, 8, 8, 0.96);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(212,146,10,0.18);
+  position: sticky; top: 0; z-index: 1000;
+  height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 0.6rem;
+  text-decoration: none;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.1rem; font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-lantern {
+  width: 30px; height: 38px;
+  position: relative; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-lantern .body {
+  width: 20px; height: 26px;
+  background: var(--g-fire);
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  animation: lantern-sway 4s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(212,146,10,0.6), 0 0 30px rgba(196,30,58,0.3);
+}
+.logo-lantern .top  { width: 10px; height: 6px; background: var(--gold); border-radius: 2px 2px 0 0; position: absolute; top: 0; }
+.logo-lantern .tail { width: 2px; height: 6px; background: var(--gold); position: absolute; bottom: 0; }
+@keyframes lantern-sway {
+  0%,100% { transform: rotate(-4deg); box-shadow: 0 0 12px rgba(212,146,10,0.6), 0 0 30px rgba(196,30,58,0.3); }
+  50%      { transform: rotate(4deg);  box-shadow: 0 0 20px rgba(212,146,10,0.9), 0 0 50px rgba(196,30,58,0.5); }
+}
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a {
+  color: rgba(251,244,232,0.65); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--amber); }
+.nav-links a:hover::after, .nav-links a.nav-active::after { width: 100%; }
+.nav-links a.nav-active { color: var(--amber); }
+.btn-nav-outline {
+  color: rgba(251,244,232,0.75); background: transparent;
+  border: 1px solid rgba(212,146,10,0.4);
+  padding: 0.45rem 1.2rem; border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s; text-decoration: none;
+  display: inline-flex; align-items: center;
+}
+.btn-nav-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-nav-primary {
+  background: var(--g-fire); color: white; border: none;
+  padding: 0.5rem 1.3rem; border-radius: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  box-shadow: 0 4px 16px rgba(196,30,58,0.35);
+}
+.btn-nav-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,30,58,0.5); }
+.nav-mobile-toggle {
+  display: none; background: none; border: none;
+  color: var(--bone); cursor: pointer; font-size: 1.35rem; padding: 4px;
+}
+.mobile-menu {
+  display: none; position: fixed;
+  top: 66px; left: 0; right: 0;
+  background: rgba(18,8,8,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212,146,10,0.15);
+  padding: 1.5rem 2rem; z-index: 999;
+  flex-direction: column; gap: 0.875rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: rgba(251,244,232,0.75); text-decoration: none;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em;
+  padding: 0.5rem 0; border-bottom: 1px solid rgba(212,146,10,0.1);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 92vh;
+  background: var(--g-split);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+}
+/* Diagonal divider */
+.hero::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 100px;
+  background: var(--parchment);
+  clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+}
+/* Radial glows */
+.hero-glow-fire {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(196,30,58,0.18) 0%, transparent 70%);
+  top: -100px; right: -100px; pointer-events: none;
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+.hero-glow-eco {
+  position: absolute; width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(27,58,45,0.3) 0%, transparent 70%);
+  bottom: 0; left: -100px; pointer-events: none;
+}
+@keyframes glow-pulse {
+  0%,100% { transform: scale(1); opacity: 0.8; }
+  50%      { transform: scale(1.1); opacity: 1; }
+}
+/* Decorative lantern circles */
+.hero-lantern-deco {
+  position: absolute; right: 8%; top: 15%;
+  width: 220px; height: 280px; pointer-events: none; opacity: 0.12;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 4rem 2rem 7rem;
+  display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center;
+}
+/* .hero-left {} */
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.65rem;
+  background: rgba(212,146,10,0.12);
+  border: 1px solid rgba(212,146,10,0.3);
+  padding: 0.4rem 1rem; border-radius: 4px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 1.5rem;
+}
+.hero-eyebrow .pulse {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(240,180,41,0.6); }
+  50%      { transform: scale(1.3); opacity: 0.8; box-shadow: 0 0 0 4px rgba(240,180,41,0); }
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  font-weight: 900; line-height: 1.0; letter-spacing: -0.02em;
+  margin-bottom: 1.5rem; color: white;
+}
+.hero h1 .fire-text {
+  display: block;
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .eco-text {
+  display: block; font-style: italic; color: var(--mist);
+  font-size: 0.8em; letter-spacing: 0em;
+}
+.hero-desc {
+  color: rgba(200,221,208,0.75); font-size: 1rem; line-height: 1.75;
+  max-width: 500px; margin-bottom: 2rem; font-weight: 400;
+}
+.hero-desc strong { color: var(--amber); font-weight: 600; }
+.hero-ctas { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats {
+  display: flex; gap: 0;
+  border: 1px solid rgba(212,146,10,0.15);
+  border-radius: 10px; overflow: hidden;
+}
+.hero-stat {
+  flex: 1; padding: 0.875rem 1rem;
+  border-right: 1px solid rgba(212,146,10,0.15);
+  background: rgba(255,255,255,0.03);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; line-height: 1;
+}
+.hero-stat-l {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(200,221,208,0.45); margin-top: 0.2rem;
+}
+/* Hero right panel */
+.hero-right {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,146,10,0.2);
+  border-radius: 16px; padding: 1.75rem;
+  backdrop-filter: blur(12px);
+}
+.hero-right-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 1.1rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.eco-ticker {
+  background: rgba(27,58,45,0.5);
+  border: 1px solid rgba(75,124,95,0.25);
+  border-radius: 8px; padding: 0.75rem 1rem;
+  margin-bottom: 1rem; overflow: hidden;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.eco-ticker-label {
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fern);
+  white-space: nowrap; flex-shrink: 0;
+}
+.eco-ticker-scroll {
+  display: flex; gap: 2rem; animation: scroll-ticker 20s linear infinite;
+  white-space: nowrap;
+}
+@keyframes scroll-ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.eco-ticker-item {
+  font-size: 0.75rem; font-weight: 600; color: rgba(200,221,208,0.7);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+/* Floating lantern particles */
+.particle {
+  position: absolute; border-radius: 50% 50% 40% 40%;
+  animation: float-up linear infinite; opacity: 0; pointer-events: none;
+}
+@keyframes float-up {
+  0%   { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-20vh) rotate(20deg) scale(1); opacity: 0; }
+}
+
+/* ─── SECTION ANATOMY ─── */
+.section { padding: 5rem 0; }
+.section-warm { background: var(--cream); }
+.section-eco  { background: var(--forest); position: relative; overflow: hidden; }
+.section-bone { background: var(--bone); }
+.section-dark { background: var(--ink); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; margin-bottom: 0.875rem;
+  color: var(--crimson);
+}
+.section-label.eco { color: var(--fern); }
+.section-label::before {
+  content: ''; display: inline-block;
+  width: 20px; height: 1.5px;
+  background: currentColor; border-radius: 2px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.1; color: var(--ink);
+}
+.section-title .italic { font-style: italic; }
+.section-title .fire {
+  background: var(--g-fire);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-title.light { color: white; }
+.section-title.light .fire {
+  background: linear-gradient(135deg, #FFD080, #FF8040);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub { font-size: 0.9rem; color: var(--sage); margin-top: 0.6rem; max-width: 460px; line-height: 1.7; }
+.section-sub.light { color: rgba(200,221,208,0.65); }
+
+/* ─── EVENT CARDS ─── */
+.event-card {
+  background: white; border-radius: 14px; overflow: hidden;
+  border: 1px solid rgba(212,146,10,0.12);
+  box-shadow: var(--shadow-card);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative; cursor: pointer;
+}
+.event-card::before {
+  content: '';
+  position: absolute; inset: 0; border-radius: 14px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(196,30,58,0.08) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s;
+  pointer-events: none; z-index: 1;
+}
+.event-card:hover { transform: translateY(-10px) rotate(0.4deg); box-shadow: var(--shadow-lift); border-color: rgba(212,146,10,0.3); }
+.event-card:hover::before { opacity: 1; }
+.card-banner {
+  height: 195px; display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; position: relative; overflow: hidden;
+}
+.card-banner-shimmer {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 70%);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+.event-card:hover .card-banner-shimmer { transform: translateX(100%); }
+.card-ribbon {
+  position: absolute; top: 12px; left: 0;
+  background: var(--g-fire); color: white;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.28rem 0.875rem 0.28rem 1rem;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+.card-eco-flag {
+  position: absolute; top: 12px; right: 0;
+  background: var(--g-eco); color: white;
+  font-size: 0.58rem; font-weight: 800; letter-spacing: 0.1em;
+  padding: 0.28rem 1rem 0.28rem 0.75rem;
+  clip-path: polygon(6px 0, 100% 0, 100% 100%, 0 100%);
+}
+.card-body { padding: 1.3rem; position: relative; z-index: 2; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700; color: var(--ink);
+  margin-bottom: 0.5rem; line-height: 1.25;
+}
+.card-meta {
+  display: flex; align-items: center; gap: 0.35rem;
+  font-size: 0.75rem; color: var(--sage); margin-bottom: 0.3rem; font-weight: 500;
+}
+.card-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.7rem; margin-top: 0.5rem; }
+.tag {
+  display: inline-flex; align-items: center; gap: 0.2rem;
+  padding: 0.18rem 0.55rem; border-radius: 4px;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.tag-eco   { background: rgba(27,58,45,0.1);  color: var(--moss);   border: 1px solid rgba(45,90,61,0.2); }
+.tag-local { background: rgba(139,69,19,0.09); color: #8B4513; border: 1px solid rgba(139,69,19,0.2); }
+.tag-free  { background: rgba(27,58,45,0.12); color: var(--forest); border: 1px solid rgba(75,124,95,0.25); }
+.tag-fest  { background: rgba(196,30,58,0.08); color: var(--crimson); border: 1px solid rgba(196,30,58,0.18); }
+.tag-food  { background: rgba(212,146,10,0.1); color: #92521A; border: 1px solid rgba(212,146,10,0.2); }
+.tag-cult  { background: rgba(107,158,122,0.12); color: var(--sage); border: 1px solid rgba(107,158,122,0.2); }
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1rem; padding-top: 0.875rem;
+  border-top: 1px solid rgba(212,146,10,0.1);
+}
+.card-price {
+  font-family: 'Playfair Display', serif; font-size: 1.25rem;
+  font-weight: 700; color: var(--ember);
+}
+.card-price.free { color: var(--moss); font-size: 1rem; font-family: 'Instrument Sans', sans-serif; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.capacity-bar { margin: 0.5rem 0 0.25rem; height: 3px; background: rgba(27,58,45,0.12); border-radius: 4px; overflow: hidden; }
+.capacity-fill { height: 100%; background: var(--g-eco); border-radius: 4px; transition: width 0.8s; }
+
+/* ─── PRODUCT CARDS ─── */
+.product-card {
+  background: white; border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(163,142,90,0.15);
+  box-shadow: var(--shadow-card); transition: all 0.3s;
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.product-img {
+  height: 170px; display: flex; align-items: center; justify-content: center;
+  font-size: 3.2rem; position: relative;
+  background: linear-gradient(135deg, rgba(196,30,58,0.05) 0%, rgba(212,146,10,0.07) 50%, rgba(27,58,45,0.05) 100%);
+}
+.product-img .origin-badge {
+  position: absolute; bottom: 8px; left: 8px;
+  background: var(--g-eco); color: white;
+  font-size: 0.55rem; font-weight: 800; letter-spacing: 0.1em;
+  padding: 0.2rem 0.55rem; border-radius: 4px;
+}
+.product-body { padding: 1rem; }
+.product-cat {
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fern); margin-bottom: 0.25rem;
+}
+.product-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem;
+}
+.product-seller { font-size: 0.72rem; color: var(--sage); margin-bottom: 0.6rem; font-style: italic; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; }
+.product-price { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ember); }
+
+/* ─── BUTTONS ─── */
+.btn-fire {
+  background: var(--g-fire); color: white; border: none;
+  padding: 0.75rem 1.75rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem;
+  box-shadow: 0 4px 16px rgba(196,30,58,0.35);
+  position: relative; overflow: hidden;
+}
+.btn-fire::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.12) 50%, transparent 70%);
+  transform: translateX(-100%); transition: transform 0.5s;
+}
+.btn-fire:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(196,30,58,0.5); }
+.btn-fire:hover::after { transform: translateX(100%); }
+.btn-eco {
+  background: var(--g-eco); color: white; border: none;
+  padding: 0.75rem 1.75rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem;
+  box-shadow: 0 4px 16px rgba(27,58,45,0.3);
+}
+.btn-eco:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,58,45,0.45); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: var(--ink); border: none;
+  padding: 0.65rem 1.5rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.3s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+  box-shadow: 0 4px 14px rgba(212,146,10,0.35);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,146,10,0.5); }
+.btn-outline {
+  background: transparent; color: var(--crimson);
+  border: 1.5px solid var(--crimson);
+  padding: 0.65rem 1.5rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-outline:hover { background: var(--crimson); color: white; }
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid rgba(18,8,8,0.18);
+  padding: 0.6rem 1.4rem; border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.73rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.btn-ghost:hover { border-color: var(--ember); color: var(--ember); }
+.btn-sm { padding: 0.45rem 1rem; font-size: 0.68rem; }
+.btn-danger { background: #b91c1c; color: white; border: none; padding: 0.4rem 0.875rem; border-radius: 6px; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: 'Instrument Sans', sans-serif; }
+.btn-primary  { background: var(--g-fire); color: white; border: none; padding: 0.7rem 1.6rem; border-radius: 8px; font-family: 'Instrument Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 16px rgba(196,30,58,0.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,30,58,0.45); }
+.btn-secondary { background: transparent; color: var(--ember); border: 1.5px solid var(--ember); padding: 0.68rem 1.5rem; border-radius: 8px; font-family: 'Instrument Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; }
+.btn-secondary:hover { background: var(--ember); color: white; }
+
+/* ─── FORMS ─── */
+.form-group { margin-bottom: 1.1rem; }
+.form-label { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.4rem; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 0.7rem 0.95rem;
+  border: 1.5px solid rgba(212,146,10,0.2); border-radius: 8px;
+  font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem;
+  color: var(--ink); background: white; transition: all 0.2s; outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,146,10,0.1); }
+.form-textarea { resize: vertical; min-height: 88px; }
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(18,8,8,0.78);
+  backdrop-filter: blur(12px); z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; opacity: 0; visibility: hidden; transition: all 0.3s;
+}
+.modal-overlay.open { opacity: 1; visibility: visible; }
+.modal {
+  background: var(--cream); border-radius: 20px;
+  width: 100%; max-width: 520px; max-height: 90vh;
+  overflow-y: auto; padding: 2.25rem;
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 40px 80px rgba(18,8,8,0.35);
+  border: 1px solid rgba(212,146,10,0.18);
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1.5px solid rgba(212,146,10,0.12);
+}
+.modal-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; }
+.modal-close {
+  width: 32px; height: 32px; border-radius: 50%; border: none;
+  background: rgba(18,8,8,0.07); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; color: var(--ink); transition: all 0.2s;
+}
+.modal-close:hover { background: rgba(196,30,58,0.1); color: var(--crimson); }
+
+/* ─── TICKET ─── */
+.ticket {
+  background: white; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(18,8,8,0.2);
+  max-width: 370px; margin: 0 auto;
+  border: 1px solid rgba(212,146,10,0.18);
+}
+.ticket-header {
+  background: var(--g-fire); padding: 1.35rem 1.5rem;
+  color: white; text-align: center; position: relative; overflow: hidden;
+}
+.ticket-header::before { content: '🏮'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; opacity: 0.12; }
+.ticket-header h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; }
+.ticket-sep { display: flex; align-items: center; background: var(--cream); }
+.ticket-notch { width: 22px; height: 22px; border-radius: 50%; background: var(--cream); border: 1px solid rgba(212,146,10,0.12); flex-shrink: 0; }
+.ticket-dashes { flex: 1; height: 1.5px; background: repeating-linear-gradient(90deg, rgba(212,146,10,0.25) 0, rgba(212,146,10,0.25) 5px, transparent 5px, transparent 10px); }
+.ticket-body { padding: 1.35rem 1.5rem; }
+.ticket-row { display: flex; justify-content: space-between; margin-bottom: 0.65rem; }
+.ticket-label { font-size: 0.6rem; color: var(--sage); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }
+.ticket-value { font-weight: 700; font-size: 0.82rem; color: var(--ink); }
+.ticket-qr { display: flex; justify-content: center; padding: 0.75rem; }
+
+/* ─── DASHBOARD ─── */
+.dashboard-layout { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 252px; background: var(--g-dusk);
+  position: fixed; top: 0; left: 0; height: 100vh;
+  overflow-y: auto; z-index: 100;
+  border-right: 1px solid rgba(212,146,10,0.1);
+  display: flex; flex-direction: column;
+}
+.sidebar-logo { padding: 1.3rem 1.4rem; border-bottom: 1px solid rgba(212,146,10,0.1); }
+.sidebar-role { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(200,221,208,0.3); margin-top: 0.2rem; font-weight: 700; }
+.sidebar-user {
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid rgba(212,146,10,0.08);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.sidebar-avatar {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--g-fire);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 700; color: white;
+  box-shadow: 0 4px 12px rgba(196,30,58,0.3); flex-shrink: 0;
+}
+.sidebar-name { font-size: 0.8rem; font-weight: 700; color: var(--bone); }
+.sidebar-email { font-size: 0.65rem; color: rgba(200,221,208,0.3); }
+.sidebar-nav { padding: 0.75rem 0; flex: 1; }
+.sidebar-section { font-size: 0.57rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(200,221,208,0.22); font-weight: 700; padding: 0.75rem 1.4rem 0.35rem; }
+.sidebar-link {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.65rem 1.4rem;
+  color: rgba(200,221,208,0.5); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; transition: all 0.2s;
+  cursor: pointer; border: none; background: none;
+  width: 100%; text-align: left;
+  border-left: 2.5px solid transparent;
+}
+.sidebar-link:hover { background: rgba(212,146,10,0.07); color: var(--amber); border-left-color: rgba(212,146,10,0.3); }
+.sidebar-link.active { background: rgba(196,30,58,0.14); color: #FFC9A0; border-left-color: var(--lantern-glow); }
+.sidebar-link .icon { font-size: 0.95rem; width: 20px; text-align: center; }
+.sidebar-eco {
+  margin: auto 1.2rem 1.2rem;
+  background: rgba(27,58,45,0.3);
+  border: 1px solid rgba(75,124,95,0.2);
+  border-radius: 10px; padding: 0.875rem;
+}
+.sidebar-eco p { font-size: 0.68rem; color: rgba(200,221,208,0.6); line-height: 1.55; }
+.dashboard-main { margin-left: 252px; flex: 1; background: var(--bone); min-height: 100vh; }
+.dashboard-topbar {
+  background: var(--cream); padding: 0.875rem 2rem;
+  border-bottom: 1px solid rgba(212,146,10,0.1);
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 50;
+  box-shadow: 0 2px 10px rgba(18,8,8,0.05);
+}
+.topbar-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+.dashboard-content { padding: 1.75rem; }
+.dashboard-page { display: none; }
+.dashboard-page.active { display: block; }
+
+/* STAT CARDS */
+.stat-card { background: white; border-radius: 12px; padding: 1.3rem; border: 1px solid rgba(212,146,10,0.1); display: flex; align-items: center; gap: 0.875rem; box-shadow: var(--shadow-card); }
+.stat-icon { width: 46px; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+.stat-icon.fire { background: rgba(196,30,58,0.1); }
+.stat-icon.gold { background: rgba(212,146,10,0.1); }
+.stat-icon.eco  { background: rgba(27,58,45,0.1); }
+.stat-icon.blue { background: rgba(37,99,235,0.08); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--ink); line-height: 1; }
+.stat-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); margin-top: 0.15rem; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { padding: 0.65rem 0.875rem; text-align: left; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 800; color: var(--sage); background: rgba(212,146,10,0.04); border-bottom: 1.5px solid rgba(212,146,10,0.1); }
+.data-table td { padding: 0.75rem 0.875rem; border-bottom: 1px solid rgba(212,146,10,0.07); font-size: 0.8rem; }
+.data-table tr:hover td { background: rgba(212,146,10,0.02); }
+
+/* CALENDAR */
+.calendar { background: white; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-card); border: 1px solid rgba(212,146,10,0.12); }
+.calendar-header { background: var(--g-fire); color: white; padding: 1rem 1.3rem; display: flex; align-items: center; justify-content: space-between; }
+.calendar-header h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+.cal-nav { background: rgba(255,255,255,0.15); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 0.85rem; transition: background 0.2s; }
+.cal-nav:hover { background: rgba(255,255,255,0.28); }
+.calendar-grid-days { display: grid; grid-template-columns: repeat(7,1fr); background: rgba(212,146,10,0.05); }
+.calendar-grid-days span { text-align: center; padding: 0.5rem; font-size: 0.6rem; font-weight: 800; color: var(--sage); text-transform: uppercase; letter-spacing: 0.07em; }
+.calendar-dates { display: grid; grid-template-columns: repeat(7,1fr); padding: 0.35rem; gap: 1px; }
+.cal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; position: relative; }
+.cal-day:hover { background: rgba(196,30,58,0.1); color: var(--crimson); }
+.cal-day.today { background: var(--crimson); color: white; font-weight: 700; }
+.cal-day.has-event::after { content: ''; position: absolute; bottom: 2px; width: 4px; height: 4px; border-radius: 50%; background: var(--moss); }
+.cal-day.other-month { color: rgba(18,8,8,0.2); }
+
+/* FEATURE CARDS */
+.feature-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(212,146,10,0.12); border-radius: 18px; padding: 2.1rem 1.75rem; text-align: center; transition: all 0.3s; position: relative; overflow: hidden; }
+.feature-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--g-fire); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+.feature-icon { width: 60px; height: 60px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.3rem; font-size: 1.7rem; }
+.fi-fire { background: rgba(196,30,58,0.15); border: 1px solid rgba(196,30,58,0.2); }
+.fi-eco  { background: rgba(27,58,45,0.25); border: 1px solid rgba(75,124,95,0.3); }
+.fi-gold { background: rgba(212,146,10,0.12); border: 1px solid rgba(212,146,10,0.2); }
+
+/* ALERT */
+.alert { padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.875rem; font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+.alert-info    { background: rgba(37,99,235,0.07);   color: #1d4ed8; border: 1px solid rgba(37,99,235,0.18); }
+.alert-success { background: rgba(27,58,45,0.1);     color: var(--moss); border: 1px solid rgba(27,58,45,0.2); }
+.alert-warning { background: rgba(212,146,10,0.1);   color: var(--gold); border: 1px solid rgba(212,146,10,0.22); }
+
+/* PROGRESS */
+.progress-bar { height: 5px; background: rgba(212,146,10,0.1); border-radius: 50px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--g-fire); border-radius: 50px; transition: width 0.6s; }
+
+/* SEARCH / FILTER */
+.search-bar { display: flex; align-items: center; background: white; border: 1.5px solid rgba(212,146,10,0.18); border-radius: 8px; padding: 0.5rem 0.5rem 0.5rem 1.1rem; gap: 0.5rem; transition: all 0.2s; box-shadow: 0 2px 10px rgba(18,8,8,0.05); }
+.search-bar:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,146,10,0.1); }
+.search-bar input { flex: 1; border: none; outline: none; font-family: 'Instrument Sans', sans-serif; font-size: 0.88rem; background: transparent; color: var(--ink); }
+.search-bar input::placeholder { color: var(--sage); }
+.filter-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.filter-tab { padding: 0.45rem 1.1rem; border: 1.5px solid rgba(212,146,10,0.18); border-radius: 6px; background: white; color: var(--sage); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; cursor: pointer; transition: all 0.2s; font-family: 'Instrument Sans', sans-serif; text-transform: uppercase; }
+.filter-tab:hover, .filter-tab.active { border-color: var(--crimson); background: var(--crimson); color: white; }
+
+/* AUTH */
+.auth-page { min-height: 100vh; background: var(--g-split); display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; position: relative; overflow: hidden; }
+.auth-page::before { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg width='60' height='80' viewBox='0 0 60 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='30' cy='42' rx='14' ry='20' fill='none' stroke='rgba(212,146,10,0.07)' stroke-width='1'/%3E%3Cline x1='30' y1='12' x2='30' y2='22' stroke='rgba(212,146,10,0.07)' stroke-width='1'/%3E%3C/svg%3E") repeat; background-size: 60px 80px; }
+.auth-card { background: var(--cream); border-radius: 20px; padding: 2.25rem; width: 100%; max-width: 440px; box-shadow: 0 40px 80px rgba(18,8,8,0.4); position: relative; z-index: 2; border: 1px solid rgba(212,146,10,0.15); }
+.auth-logo { text-align: center; margin-bottom: 1.75rem; }
+.divider { display: flex; align-items: center; gap: 0.875rem; margin: 1.1rem 0; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: rgba(212,146,10,0.15); }
+.divider span { font-size: 0.68rem; color: var(--sage); font-weight: 700; letter-spacing: 0.08em; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 1.75rem; right: 1.75rem; background: var(--ink); color: var(--bone); padding: 0.875rem 1.3rem; border-radius: 10px; box-shadow: 0 10px 40px rgba(18,8,8,0.35); z-index: 9999; display: flex; align-items: center; gap: 0.65rem; transform: translateY(80px); opacity: 0; transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1); border-left: 3px solid var(--gold); max-width: 330px; font-size: 0.82rem; font-weight: 600; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.success { border-left-color: var(--moss); }
+.toast.error   { border-left-color: var(--crimson); }
+
+/* PAGE HEADER */
+.page-header { background: var(--g-split); padding: 4.5rem 0 5rem; position: relative; overflow: hidden; }
+.page-header::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 80px; background: var(--parchment); clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%); z-index: 0; }
+.page-header .container { position: relative; z-index: 1; }
+.page-header.bone::after { background: var(--bone); }
+.page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: white; line-height: 1.1; position: relative; }
+.page-header h1 em { font-style: italic; background: linear-gradient(135deg,#FFD080,#FF8040); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.page-header p { color: rgba(200,221,208,0.85); margin-top: 0.7rem; position: relative; font-size: 0.92rem; }
+.phdr-tag { display: inline-flex; align-items: center; gap: 0.45rem; background: rgba(27,58,45,0.4); border: 1px solid rgba(75,124,95,0.3); color: var(--fern); padding: 0.3rem 0.85rem; border-radius: 4px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.875rem; }
+
+/* FOOTER */
+.footer { background: var(--ink); color: rgba(200,221,208,0.6); padding: 4rem 0 2rem; border-top: 1px solid rgba(212,146,10,0.1); position: relative; overflow: hidden; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--g-fire); }
+.footer-logo { font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; font-weight: 900; background: var(--g-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.4rem; }
+.footer-links a { color: rgba(200,221,208,0.45); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--amber); }
+.footer-head { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--lantern-glow); font-weight: 800; margin-bottom: 1rem; }
+.social-btn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(212,146,10,0.12); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(200,221,208,0.45); font-size: 0.9rem; transition: all 0.2s; }
+.social-btn:hover { background: rgba(212,146,10,0.12); color: var(--amber); border-color: rgba(212,146,10,0.3); }
+.footer-bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.72rem; color: rgba(200,221,208,0.28); }
+.eco-note { display: flex; align-items: center; gap: 0.4rem; background: rgba(27,58,45,0.2); border: 1px solid rgba(75,124,95,0.15); border-radius: 4px; padding: 0.28rem 0.75rem; font-size: 0.65rem; font-weight: 700; color: rgba(107,158,122,0.7); letter-spacing: 0.05em; }
+
+/* GRIDS */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.1rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.4rem; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: rgba(212,146,10,0.2); border-radius: 50px; }
+
+/* ANIMATIONS */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+.anim { animation: fadeInUp 0.55s ease forwards; opacity: 0; }
+.d1{animation-delay:0.05s}.d2{animation-delay:0.12s}.d3{animation-delay:0.19s}
+.d4{animation-delay:0.26s}.d5{animation-delay:0.33s}
+
+/* RESPONSIVE */
+@media(max-width:1024px) { .grid-4{grid-template-columns:repeat(2,1fr)} .grid-3{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:768px) {
+  .nav-links{display:none} .nav-mobile-toggle{display:block}
+  .grid-3,.grid-2{grid-template-columns:1fr} .grid-4{grid-template-columns:repeat(2,1fr)}
+  .hero h1{font-size:2.5rem} .hero-content{grid-template-columns:1fr!important}
+  .hero-right{display:none}
+  .sidebar{transform:translateX(-100%);transition:transform 0.3s} .sidebar.open{transform:translateX(0)}
+  .dashboard-main{margin-left:0} .section{padding:3rem 0}
+  .page-header::after{display:none}
+}
+@media(max-width:480px) { .grid-4{grid-template-columns:1fr} .hero-ctas{flex-direction:column} }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="index.html" class="nav-logo" style="text-decoration:none">
+    <svg width="148" height="32" viewBox="0 0 148 32" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="nl-fire" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#E8453A"/><stop offset="100%" style="stop-color:#F0B429"/></linearGradient>
+        <linearGradient id="nl-eco" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6B9E7A"/><stop offset="100%" style="stop-color:#A8D5B8"/></linearGradient>
+        <linearGradient id="nl-gold" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F0B429"/><stop offset="100%" style="stop-color:#FFD080"/></linearGradient>
+      </defs>
+      <g transform="translate(2,1)">
+        <ellipse cx="13" cy="15" rx="7" ry="9.5" fill="url(#nl-fire)" opacity="0.1"/>
+        <ellipse cx="13" cy="15" rx="6.5" ry="9" fill="none" stroke="url(#nl-fire)" stroke-width="1.4"/>
+        <rect x="10" y="5" width="7" height="3" rx="1.2" fill="url(#nl-gold)"/>
+        <path d="M13 5 L13 2 Q13 0.5 15.5 0.5" fill="none" stroke="url(#nl-gold)" stroke-width="0.9" stroke-linecap="round"/>
+        <line x1="13" y1="24" x2="13" y2="29" stroke="url(#nl-gold)" stroke-width="1" stroke-linecap="round"/>
+        <path d="M20 21 Q24 18 23 13 Q22 16 19 19 Z" fill="url(#nl-eco)" opacity="0.5"/>
+      </g>
+      <text x="30" y="21" font-family="'Cinzel Decorative', serif" font-size="15" font-weight="900" fill="url(#nl-fire)" letter-spacing="1">CON</text>
+      <text x="76" y="21" font-family="'Cinzel Decorative', serif" font-size="15" font-weight="900" fill="url(#nl-eco)" letter-spacing="1">FEST</text>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="events.html">Events</a>
+    <a href="marketplace.html" class="nav-active">Marketplace</a>
+    <button onclick="openModal('cartModal')" style="position:relative;background:rgba(212,146,10,0.1);border:1px solid rgba(212,146,10,0.25);border-radius:8px;width:38px;height:38px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all 0.2s" onmouseover="this.style.background='rgba(212,146,10,0.2)'" onmouseout="this.style.background='rgba(212,146,10,0.1)'">🛒<span id="cartBadge" style="display:none;position:absolute;top:-6px;right:-6px;background:var(--crimson);color:white;font-size:0.55rem;font-weight:800;min-width:16px;height:16px;border-radius:50%;align-items:center;justify-content:center;font-family:'Instrument Sans',sans-serif">0</span></button>
+    <a href="login.html" class="btn-nav-outline">Log In</a>
+    <a href="register.html" class="btn-nav-primary">🏮 Sign Up</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">☰</button>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="marketplace.html">Marketplace</a>
+  <a href="login.html">Log In</a>
+  <a href="register.html">Sign Up</a>
+</div>
+<div class="page-header bone">
+  <div class="container" style="position:relative">
+    <div class="phdr-tag">🛍️ Authentic Kapampangan Products</div>
+    <h1>Pampanga <em>Marketplace</em></h1>
+    <p>Every peso spent supports local farmers, artisans, and climate-resilient businesses.</p>
+  </div>
+</div>
+<section class="section" style="background:var(--bone);padding-top:2.5rem">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem">
+      <div>
+        <div class="section-label eco">🍮 Pasalubong Corner</div>
+        <h2 class="section-title">Featured <span class="fire italic">Local Products</span></h2>
+      </div>
+      <div class="search-bar" style="max-width:270px"><span style="color:var(--sage)">🔍</span><input type="text" id="productSearch" placeholder="Search products..." autocomplete="off"></div>
+    </div>
+    <div class="filter-tabs" style="margin-bottom:1.75rem">
+      <button class="filter-tab active" data-cat="All">All Products</button>
+      <button class="filter-tab" data-cat="Kakanin">🍮 Kakanin</button>
+      <button class="filter-tab" data-cat="Meat Products">🥩 Meat</button>
+      <button class="filter-tab" data-cat="Baked Goods">🥐 Baked</button>
+      <button class="filter-tab" data-cat="Sweets">🍬 Sweets</button>
+      <button class="filter-tab" data-cat="Crafts">🏮 Crafts</button>
+    </div>
+    <div class="grid-4" id="productsGrid"></div>
+  </div>
+</section>
+<section class="section section-eco leaf-pattern" id="businesses" style="padding:3.5rem 0">
+  <div class="container" style="position:relative;z-index:1">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <div class="section-label eco" style="justify-content:center;display:flex">🏪 Local Businesses</div>
+      <h2 class="section-title light" style="text-align:center">Kapampangan <span class="fire italic">Business Listings</span></h2>
+      <p class="section-sub light" style="text-align:center;margin-left:auto;margin-right:auto">Verified local entrepreneurs — verified for quality, ethics, and sustainability.</p>
+    </div>
+    <div class="grid-2" id="businessesGrid"></div>
+  </div>
+</section>
+<div class="modal-overlay" id="sellerModal">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-header"><h2 class="modal-title" id="sellerModalTitle">Business Profile</h2><button class="modal-close" onclick="closeModal('sellerModal')">✕</button></div>
+    <div id="sellerModalContent"></div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="grid-4">
+      <div>
+        <div class="footer-logo">
+  <svg width="120" height="26" viewBox="0 0 120 26" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fl-fire" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#E8453A"/><stop offset="100%" style="stop-color:#F0B429"/></linearGradient>
+      <linearGradient id="fl-eco" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6B9E7A"/><stop offset="100%" style="stop-color:#A8D5B8"/></linearGradient>
+      <linearGradient id="fl-gold2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#F0B429"/><stop offset="100%" style="stop-color:#FFD080"/></linearGradient>
+    </defs>
+    <g transform="translate(1,1) scale(0.76)">
+      <ellipse cx="13" cy="15" rx="7" ry="9.5" fill="url(#fl-fire)" opacity="0.1"/>
+      <ellipse cx="13" cy="15" rx="6.5" ry="9" fill="none" stroke="url(#fl-fire)" stroke-width="1.4"/>
+      <rect x="10" y="5" width="7" height="3" rx="1.2" fill="url(#fl-gold2)"/>
+      <line x1="13" y1="24" x2="13" y2="29" stroke="url(#fl-gold2)" stroke-width="1" stroke-linecap="round"/>
+    </g>
+    <text x="24" y="18" font-family="'Cinzel Decorative', serif" font-size="12" font-weight="900" fill="url(#fl-fire)" letter-spacing="1">CON</text>
+    <text x="63" y="18" font-family="'Cinzel Decorative', serif" font-size="12" font-weight="900" fill="url(#fl-eco)" letter-spacing="1">FEST</text>
+  </svg>
+</div>
+        <p style="font-size:0.8rem;color:rgba(200,221,208,0.4);line-height:1.7;max-width:200px;margin-bottom:1.1rem">Your gateway to Kapampangan culture, festivals, and sustainable local businesses.</p>
+        <div style="display:flex;gap:0.4rem">
+          <a href="#" class="social-btn">f</a><a href="#" class="social-btn">✦</a>
+          <a href="#" class="social-btn">𝕏</a><a href="#" class="social-btn">▶</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-head">Explore</div>
+        <ul class="footer-links">
+          <li><a href="events.html">All Events</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="marketplace.html#businesses">Local Businesses</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-head">Dashboards</div>
+        <ul class="footer-links">
+          <li><a href="dashboard/user-dashboard.html">Tourist Dashboard</a></li>
+          <li><a href="dashboard/business-dashboard.html">Business Dashboard</a></li>
+          <li><a href="dashboard/admin-dashboard.html">Admin Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-head">Contact</div>
+        <ul class="footer-links">
+          <li><a href="#">📍 San Fernando, Pampanga</a></li>
+          <li><a href="#">📞 (045) 123-4567</a></li>
+          <li><a href="#">✉️ <span class="__cf_email__" data-cfemail="79111c151516390918140918171e18571c0f1c170d0a">[email&#160;protected]</span></a></li>
+        </ul>
+        <div style="margin-top:1rem;background:rgba(27,58,45,0.2);border:1px solid rgba(75,124,95,0.15);border-radius:8px;padding:0.75rem">
+          <div style="font-size:0.6rem;color:var(--fern);font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem">🌿 Climate Pledge</div>
+          <div style="font-size:0.72rem;color:rgba(107,158,122,0.65);line-height:1.5">100% carbon-neutral platform. Every ticket plants a tree in Central Luzon.</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Confest — Pampanga Events & Marketplace</span>
+      <div class="eco-note">🌱 Paperless · Carbon-neutral · Supporting Local Since 2025</div>
+    </div>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>// ===== PAMPANGA PLATFORM - CORE APP =====
+
+// ===== DATA STORE =====
+const PampangaDB = {
+  events: [
+    {
+      id: 1, name: "Ligligan Parul Sampernandu", category: "Festival",
+      date: "2025-12-17", time: "6:00 PM", location: "Bacolor, Pampanga",
+      price: 150, image: "🏮", organizer: "Pampanga Tourism Office",
+      description: "The Giant Lantern Festival is one of the most spectacular events in the Philippines. Eleven barangays of San Fernando compete with their magnificent giant lanterns known as 'parols'.",
+      ticketsSold: 1240, capacity: 5000, eco: true, local: true,
+      vendors: ["Kapampangan Sweets", "Aling Clara's Kitchen", "Pampanga Crafts"],
+      schedule: [
+        { time: "6:00 PM", event: "Opening Ceremony" },
+        { time: "7:00 PM", event: "Lantern Parade" },
+        { time: "8:00 PM", event: "Lantern Competition Judging" },
+        { time: "9:00 PM", event: "Grand Fireworks Display" }
+      ]
+    },
+    {
+      id: 2, name: "Sisig Food Festival", category: "Food",
+      date: "2025-10-20", time: "9:00 AM", location: "Pampanga Capitol Grounds",
+      price: 100, image: "🍽️", organizer: "Kulinarya Pampanga",
+      description: "Celebrate Pampanga's famous culinary heritage with the Sisig Food Festival. Sample different variations of sisig from the best restaurants and street food vendors in the province.",
+      ticketsSold: 890, capacity: 3000, eco: false, local: true,
+      vendors: ["Aling Lucing's", "Sisig Central", "Modern Kapampangan Kitchen"],
+      schedule: [
+        { time: "9:00 AM", event: "Festival Opening" },
+        { time: "10:00 AM", event: "Sisig Cook-Off Competition" },
+        { time: "12:00 PM", event: "Food Tasting Open to Public" },
+        { time: "3:00 PM", event: "Best Sisig Award Ceremony" }
+      ]
+    },
+    {
+      id: 3, name: "Apung Iru Fluvial Parade", category: "Cultural",
+      date: "2025-06-23", time: "5:00 AM", location: "Candaba River, Pampanga",
+      price: 0, image: "⛵", organizer: "Diocese of San Fernando",
+      description: "The Fluvial Parade of Apung Iru (St. Peter the Apostle) is a centuries-old religious tradition in Apalit. Devotees on boats participate in the river procession.",
+      ticketsSold: 0, capacity: 10000, eco: true, local: true,
+      vendors: ["Local Trinket Shops", "Traditional Food Stalls"],
+      schedule: [
+        { time: "5:00 AM", event: "Early Morning Mass" },
+        { time: "6:00 AM", event: "Fluvial Procession Begins" },
+        { time: "9:00 AM", event: "Return to Land Procession" },
+        { time: "10:00 AM", event: "Closing Mass" }
+      ]
+    },
+    {
+      id: 4, name: "Pampanga Summer Concert Series", category: "Concert",
+      date: "2025-04-15", time: "7:00 PM", location: "SM City Pampanga Open Grounds",
+      price: 500, image: "🎵", organizer: "PH Events Unlimited",
+      description: "The biggest summer concert series in Central Luzon featuring top OPM artists and local Pampanga bands. Three nights of music, food, and fun under the stars.",
+      ticketsSold: 2100, capacity: 8000, eco: false, local: false,
+      vendors: ["Festival Merch Booth", "Food Village"],
+      schedule: [
+        { time: "7:00 PM", event: "Doors Open" },
+        { time: "8:00 PM", event: "Opening Act: Kapampangan Voices" },
+        { time: "9:00 PM", event: "Main Performance" },
+        { time: "11:00 PM", event: "Grand Finale" }
+      ]
+    },
+    {
+      id: 5, name: "Kulinarya Pampanga Festival", category: "Food",
+      date: "2025-08-10", time: "8:00 AM", location: "Angeles City Convention Center",
+      price: 120, image: "👨‍🍳", organizer: "Kulinarya Pampanga",
+      description: "A grand celebration of Kapampangan cuisine featuring cooking demos, food competitions, and the largest gathering of Pampanga's finest chefs and food entrepreneurs.",
+      ticketsSold: 560, capacity: 2000, eco: true, local: true,
+      vendors: ["Kapampangan Chefs Association", "Local Food Producers"],
+      schedule: [
+        { time: "8:00 AM", event: "Opening Ceremony" },
+        { time: "9:00 AM", event: "Celebrity Chef Cooking Demo" },
+        { time: "11:00 AM", event: "Food Fair Open to Public" },
+        { time: "4:00 PM", event: "Culinary Awards" }
+      ]
+    },
+    {
+      id: 6, name: "Sinukwan Folk Arts Festival", category: "Cultural",
+      date: "2025-09-05", time: "2:00 PM", location: "San Fernando Heritage Park",
+      price: 75, image: "🎭", organizer: "Pampanga Arts Council",
+      description: "Sinukwan celebrates the rich indigenous cultural heritage of Pampanga through traditional dances, music, crafts, and visual arts exhibitions.",
+      ticketsSold: 310, capacity: 1500, eco: true, local: true,
+      vendors: ["Kapampangan Artisans Guild", "Heritage Crafts"],
+      schedule: [
+        { time: "2:00 PM", event: "Opening Ritual Dance" },
+        { time: "3:00 PM", event: "Traditional Games" },
+        { time: "4:00 PM", event: "Cultural Performances" },
+        { time: "6:00 PM", event: "Closing Ceremony" }
+      ]
+    }
+  ],
+
+  products: [
+    { id: 1, name: "Tibok-Tibok", seller: "Kapampangan Sweets Co.", price: 180, image: "🍮", category: "Kakanin", preferred: true, description: "Traditional carabao milk pudding, a sweet delicacy of Pampanga." },
+    { id: 2, name: "Tocino Pampangueño", seller: "Aling Clara's Kitchen", price: 350, image: "🥩", category: "Meat Products", description: "Sweet marinated pork, the pride of Pampanga's culinary tradition." },
+    { id: 3, name: "Turrones de Casuy", seller: "Pampanga Sweets", price: 220, image: "🍬", category: "Sweets", description: "Cashew nougat wrapped in edible rice paper. A classic Pampanga pasalubong." },
+    { id: 4, name: "Parol (Giant Lantern)", seller: "San Fernando Crafts", price: 1500, image: "🏮", category: "Crafts", preferred: true, description: "Handcrafted Christmas lantern inspired by the Giant Lantern Festival." },
+    { id: 5, name: "Uraro Cookies", seller: "Heritage Bakers PH", price: 160, image: "🍪", category: "Baked Goods", description: "Delicate arrowroot cookies, a beloved Kapampangan treat since colonial times." },
+    { id: 6, name: "Ensaymada Especial", seller: "Aling Clara's Kitchen", price: 280, image: "🥐", category: "Baked Goods", description: "Rich, buttery ensaymada topped with cheese and sugar. Pampanga's finest." },
+    { id: 7, name: "Chicharon Bulaklak", seller: "Kapampangan Sweets Co.", price: 200, image: "🐷", category: "Snacks", description: "Crispy pork mesentery, a popular street food and pulutan from Pampanga." },
+    { id: 8, name: "Woven Banig (Mat)", seller: "San Fernando Crafts", price: 750, image: "🛏️", category: "Crafts", description: "Intricately woven traditional mat, a heritage craft of Pampanga artisans." }
+  ],
+
+  businesses: [
+    { id: 1, name: "Kapampangan Sweets Co.", type: "Food Producer", location: "San Fernando", contact: "0917-123-4567", verified: true, products: [1, 3, 7] },
+    { id: 2, name: "Aling Clara's Kitchen", type: "Restaurant & Catering", location: "Angeles City", contact: "0918-234-5678", verified: true, products: [2, 6] },
+    { id: 3, name: "San Fernando Crafts", type: "Arts & Crafts", location: "San Fernando", contact: "0919-345-6789", verified: true, products: [4, 8] },
+    { id: 4, name: "Heritage Bakers PH", type: "Bakery", location: "Mabalacat", contact: "0920-456-7890", verified: false, products: [5] }
+  ],
+
+  users: [
+    { id: 1, name: "Juan dela Cruz", email: "juan@email.com", role: "user", tickets: [1, 3] },
+    { id: 2, name: "Maria Santos", email: "maria@email.com", role: "business", business: 1 },
+    { id: 3, name: "Admin User", email: "admin@pampanga.gov", role: "admin" }
+  ]
+};
+
+// ===== LOCAL STORAGE =====
+const Storage = {
+  get: (key) => { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } },
+  set: (key, val) => localStorage.setItem(key, JSON.stringify(val)),
+  remove: (key) => localStorage.removeItem(key)
+};
+
+// Initialize storage
+if (!Storage.get('pampanga_tickets')) Storage.set('pampanga_tickets', []);
+if (!Storage.get('pampanga_saved')) Storage.set('pampanga_saved', []);
+if (!Storage.get('pampanga_user')) Storage.set('pampanga_user', { name: 'Juan dela Cruz', email: 'juan@email.com', role: 'user' });
+
+// ===== TOAST NOTIFICATIONS =====
+function showToast(message, type = 'info') {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span>${icons[type] || icons.info}</span><span>${message}</span>`;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add('show'), 10);
+  setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3500);
+}
+
+// ===== MODAL SYSTEM =====
+function openModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) { modal.classList.remove('open'); document.body.style.overflow = ''; }
+}
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// ===== QR CODE GENERATOR =====
+function generateQRCode(text, size = 200) {
+  const canvas = document.createElement('canvas');
+  canvas.width = size; canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  // Stylized QR placeholder (real QR via qrcodejs)
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = '#1A0A0A';
+  const moduleSize = size / 25;
+  // Generate a deterministic pattern from text
+  const seed = text.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+  const rand = (n) => { let x = Math.sin(seed + n) * 10000; return x - Math.floor(x); };
+  // Corner markers
+  [[0,0],[18,0],[0,18]].forEach(([cx,cy]) => {
+    ctx.fillStyle = '#1A0A0A';
+    ctx.fillRect(cx*moduleSize, cy*moduleSize, 7*moduleSize, 7*moduleSize);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect((cx+1)*moduleSize, (cy+1)*moduleSize, 5*moduleSize, 5*moduleSize);
+    ctx.fillStyle = '#1A0A0A';
+    ctx.fillRect((cx+2)*moduleSize, (cy+2)*moduleSize, 3*moduleSize, 3*moduleSize);
+  });
+  // Data modules
+  for (let r = 0; r < 25; r++) {
+    for (let c = 0; c < 25; c++) {
+      const isCorner = (r<8&&c<8)||(r<8&&c>16)||(r>16&&c<8);
+      if (!isCorner && rand(r*25+c) > 0.5) {
+        ctx.fillStyle = '#1A0A0A';
+        ctx.fillRect(c*moduleSize, r*moduleSize, moduleSize-1, moduleSize-1);
+      }
+    }
+  }
+  return canvas.toDataURL();
+}
+
+// ===== TICKET GENERATOR =====
+function createTicket(event, userName, ticketId) {
+  const qr = generateQRCode(`PAMPANGA-${ticketId}-${event.id}`);
+  return {
+    id: ticketId,
+    eventId: event.id,
+    eventName: event.name,
+    userName,
+    date: event.date,
+    time: event.time,
+    location: event.location,
+    price: event.price,
+    qr,
+    purchasedAt: new Date().toISOString()
+  };
+}
+
+function renderTicketHTML(ticket) {
+  const formatDate = (d) => new Date(d).toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
+  return `
+    <div class="ticket">
+      <div class="ticket-header">
+        <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.8;margin-bottom:0.3rem">🏮 Pampanga Events</div>
+        <h3>${ticket.eventName}</h3>
+        <div style="font-size:0.8rem;opacity:0.8;margin-top:0.25rem">${ticket.location}</div>
+      </div>
+      <div class="ticket-divider">
+        <div class="ticket-circle"></div><div class="ticket-circle"></div>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-row">
+          <div><div class="ticket-label">Attendee</div><div class="ticket-value">${ticket.userName}</div></div>
+          <div><div class="ticket-label">Ticket ID</div><div class="ticket-value">#${ticket.id}</div></div>
+        </div>
+        <div class="ticket-row">
+          <div><div class="ticket-label">Date</div><div class="ticket-value">${formatDate(ticket.date)}</div></div>
+          <div><div class="ticket-label">Time</div><div class="ticket-value">${ticket.time}</div></div>
+        </div>
+        <div class="ticket-row">
+          <div><div class="ticket-label">Price</div><div class="ticket-value card-price">${ticket.price === 0 ? 'FREE' : '₱' + ticket.price}</div></div>
+          <div><div class="ticket-label">Status</div><div class="ticket-value" style="color:#16a34a">✓ Confirmed</div></div>
+        </div>
+        <div class="ticket-qr">
+          <img src="${ticket.qr}" alt="QR Code" style="width:140px;height:140px;border-radius:10px;border:2px solid rgba(212,160,23,0.2)"/>
+        </div>
+        <div style="text-align:center;margin-top:0.5rem">
+          <div style="font-size:0.72rem;color:#9ca3af;letter-spacing:0.05em">SCAN QR CODE AT ENTRANCE • PAPERLESS TICKET</div>
+          <span class="badge badge-paper" style="margin-top:0.5rem">📱 Paperless Ticketing</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ===== NAVBAR =====
+function initNavbar() {
+  const toggle = document.querySelector('.nav-mobile-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  }
+}
+
+// ===== CALENDAR =====
+function initCalendar(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  let currentDate = new Date();
+  const eventDates = PampangaDB.events.map(e => e.date);
+  
+  function render() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    
+    let days = '';
+    for (let i = 0; i < firstDay; i++) {
+      days += `<div class="cal-day other-month"></div>`;
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const isToday = today.getDate() === d && today.getMonth() === month && today.getFullYear() === year;
+      const hasEvent = eventDates.includes(dateStr);
+      days += `<div class="cal-day ${isToday?'today':''} ${hasEvent?'has-event':''}" 
+        onclick="showEventsOnDate('${dateStr}')" title="${hasEvent?'Events on this day':''}">${d}</div>`;
+    }
+    container.innerHTML = `
+      <div class="calendar">
+        <div class="calendar-header">
+          <button class="cal-nav" onclick="changeMonth(-1)">◀</button>
+          <h3>${monthNames[month]} ${year}</h3>
+          <button class="cal-nav" onclick="changeMonth(1)">▶</button>
+        </div>
+        <div class="calendar-grid-days">
+          ${dayNames.map(d=>`<span>${d}</span>`).join('')}
+        </div>
+        <div class="calendar-dates">${days}</div>
+      </div>
+    `;
+  }
+  
+  window.changeMonth = (dir) => { currentDate.setMonth(currentDate.getMonth() + dir); render(); };
+  window.showEventsOnDate = (date) => {
+    const events = PampangaDB.events.filter(e => e.date === date);
+    if (events.length > 0) {
+      showToast(`📅 ${events.length} event(s) on this date: ${events.map(e=>e.name).join(', ')}`, 'info');
+    }
+  };
+  render();
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+});
+
+// ===== EVENTS PAGE =====
+function renderEventCards(events, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  if (events.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:4rem;color:var(--sage);grid-column:1/-1">
+        <div style="font-size:3rem;margin-bottom:1rem">🔍</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--dark);margin-bottom:0.5rem">No Events Found</h3>
+        <p>Try adjusting your search or filter criteria.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = events.map(event => {
+    const formatDate = new Date(event.date).toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
+    const badges = [
+      event.eco ? `<span class="badge badge-eco">🌿 Eco Friendly</span>` : '',
+      event.local ? `<span class="badge badge-local">🏪 Local Business</span>` : '',
+      `<span class="badge badge-paper">📱 Paperless</span>`
+    ].filter(Boolean).slice(0, 2).join('');
+    const catColors = { Festival: 'badge-festival', Food: 'badge-food', Concert: 'badge-concert', Cultural: 'badge-cultural' };
+    const progress = Math.round((event.ticketsSold / event.capacity) * 100);
+
+    return `
+      <div class="card animate-in" style="opacity:0">
+        <div class="card-img" style="background:linear-gradient(135deg,${getCategoryGradient(event.category)})">
+          <span style="font-size:3.5rem">${event.image}</span>
+          <span class="badge ${catColors[event.category]||'badge-festival'}" 
+            style="position:absolute;top:1rem;right:1rem">${event.category}</span>
+        </div>
+        <div class="card-body">
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem">${badges}</div>
+          <h3 class="card-title">${event.name}</h3>
+          <div class="card-meta">📅 ${formatDate} • ${event.time}</div>
+          <div class="card-meta">📍 ${event.location}</div>
+          <div style="margin:0.75rem 0">
+            <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--sage);margin-bottom:0.3rem">
+              <span>${event.ticketsSold.toLocaleString()} tickets sold</span>
+              <span>${progress}% full</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1rem">
+            <span class="card-price">${event.price === 0 ? '🎟️ FREE' : '₱' + event.price}</span>
+            <a href="event-details.html?id=${event.id}" class="btn-gold btn-sm">View Details →</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Stagger animations
+  container.querySelectorAll('.card').forEach((card, i) => {
+    setTimeout(() => card.style.animation = `fadeInUp 0.5s ease forwards`, i * 80);
+  });
+}
+
+function getCategoryGradient(cat) {
+  const g = {
+    Festival: '#8B0000 0%, #C41E3A 100%',
+    Food: '#7C3A1E 0%, #D4691E 100%',
+    Concert: '#1A0050 0%, #5B21B6 100%',
+    Cultural: '#2D4A1E 0%, #4A7A2A 100%'
+  };
+  return g[cat] || g.Festival;
+}
+
+function initEventsPage() {
+  let filtered = [...PampangaDB.events];
+  let activeCategory = 'All';
+  let searchTerm = '';
+
+  const grid = document.getElementById('eventsGrid');
+  const searchInput = document.getElementById('eventSearch');
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const countEl = document.getElementById('eventCount');
+
+  function applyFilters() {
+    filtered = PampangaDB.events.filter(e => {
+      const matchCat = activeCategory === 'All' || e.category === activeCategory;
+      const matchSearch = e.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        e.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        e.organizer.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchCat && matchSearch;
+    });
+    if (countEl) countEl.textContent = `${filtered.length} event${filtered.length !== 1 ? 's' : ''} found`;
+    renderEventCards(filtered, 'eventsGrid');
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => { searchTerm = e.target.value; applyFilters(); });
+  }
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeCategory = tab.dataset.category;
+      applyFilters();
+    });
+  });
+
+  applyFilters();
+}
+
+// ===== EVENT DETAILS =====
+function initEventDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id')) || 1;
+  const event = PampangaDB.events.find(e => e.id === id) || PampangaDB.events[0];
+
+  const formatDate = new Date(event.date).toLocaleDateString('en-PH', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Fill in details
+  document.querySelectorAll('[data-field]').forEach(el => {
+    const field = el.dataset.field;
+    if (field === 'image') el.textContent = event.image;
+    else if (field === 'name') el.textContent = event.name;
+    else if (field === 'category') el.textContent = event.category;
+    else if (field === 'organizer') el.textContent = event.organizer;
+    else if (field === 'location') el.textContent = event.location;
+    else if (field === 'date') el.textContent = formatDate;
+    else if (field === 'time') el.textContent = event.time;
+    else if (field === 'description') el.textContent = event.description;
+    else if (field === 'price') el.textContent = event.price === 0 ? 'FREE' : '₱' + event.price;
+    else if (field === 'ticketsSold') el.textContent = event.ticketsSold.toLocaleString();
+    else if (field === 'capacity') el.textContent = event.capacity.toLocaleString();
+  });
+
+  // Schedule
+  const scheduleEl = document.getElementById('schedule');
+  if (scheduleEl && event.schedule) {
+    scheduleEl.innerHTML = event.schedule.map((item, i) => `
+      <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:${i%2===0?'rgba(212,160,23,0.04)':'white'};border-radius:12px;border:1px solid rgba(212,160,23,0.1)">
+        <div style="background:var(--gradient-festival);color:white;padding:0.3rem 0.75rem;border-radius:50px;font-size:0.78rem;font-weight:700;white-space:nowrap;flex-shrink:0">${item.time}</div>
+        <div style="font-weight:500;color:var(--dark)">${item.event}</div>
+      </div>
+    `).join('');
+  }
+
+  // Vendors
+  const vendorsEl = document.getElementById('vendors');
+  if (vendorsEl && event.vendors) {
+    vendorsEl.innerHTML = event.vendors.map(v => `
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.875rem;background:white;border-radius:12px;border:1px solid rgba(212,160,23,0.1)">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--gradient-festival);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:white;flex-shrink:0">🏪</div>
+        <div>
+          <div style="font-weight:600;font-size:0.9rem">${v}</div>
+          <div style="font-size:0.78rem;color:var(--sage)">Event Vendor</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Buy ticket button
+  const buyBtn = document.getElementById('buyTicketBtn');
+  if (buyBtn) {
+    buyBtn.addEventListener('click', () => {
+      if (event.price === 0) {
+        purchaseTicket(event);
+      } else {
+        openModal('buyModal');
+      }
+    });
+  }
+
+  // Confirm purchase
+  const confirmBtn = document.getElementById('confirmPurchase');
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      closeModal('buyModal');
+      purchaseTicket(event);
+    });
+  }
+
+  // Save event
+  const saveBtn = document.getElementById('saveEventBtn');
+  if (saveBtn) {
+    const saved = Storage.get('pampanga_saved') || [];
+    if (saved.includes(event.id)) saveBtn.textContent = '❤️ Saved';
+    saveBtn.addEventListener('click', () => {
+      const savedList = Storage.get('pampanga_saved') || [];
+      if (savedList.includes(event.id)) {
+        Storage.set('pampanga_saved', savedList.filter(id => id !== event.id));
+        saveBtn.textContent = '🤍 Save Event';
+        showToast('Event removed from saved list', 'info');
+      } else {
+        savedList.push(event.id);
+        Storage.set('pampanga_saved', savedList);
+        saveBtn.textContent = '❤️ Saved';
+        showToast('Event saved! Check your dashboard.', 'success');
+      }
+    });
+  }
+
+  // Eco badges
+  const ecoContainer = document.getElementById('ecoBadges');
+  if (ecoContainer) {
+    ecoContainer.innerHTML = [
+      event.eco ? `<span class="badge badge-eco">🌿 Eco Friendly Event</span>` : '',
+      event.local ? `<span class="badge badge-local">🏪 Local Business Supported</span>` : '',
+      `<span class="badge badge-paper">📱 Paperless Ticketing</span>`
+    ].filter(Boolean).join('');
+  }
+}
+
+function purchaseTicket(event) {
+  const user = Storage.get('pampanga_user') || { name: 'Guest User' };
+  const tickets = Storage.get('pampanga_tickets') || [];
+  const ticketId = 'TKT-' + Date.now().toString(36).toUpperCase();
+  const ticket = createTicket(event, user.name, ticketId);
+  tickets.push(ticket);
+  Storage.set('pampanga_tickets', tickets);
+
+  const ticketDisplay = document.getElementById('ticketDisplay');
+  if (ticketDisplay) {
+    ticketDisplay.innerHTML = renderTicketHTML(ticket);
+    document.getElementById('downloadTicketBtn').onclick = () => downloadTicket(ticket);
+  }
+  openModal('ticketModal');
+  showToast('🎟️ Ticket purchased successfully!', 'success');
+}
+
+function downloadTicket(ticket) {
+  const content = `PAMPANGA EVENTS - E-TICKET\n${'='.repeat(40)}\nTicket ID: #${ticket.id}\nEvent: ${ticket.eventName}\nAttendee: ${ticket.userName}\nDate: ${ticket.date}\nTime: ${ticket.time}\nLocation: ${ticket.location}\nPrice: ${ticket.price === 0 ? 'FREE' : '₱' + ticket.price}\nStatus: CONFIRMED\n${'='.repeat(40)}\nThis is your official e-ticket.\nPresent at entrance for scanning.`;
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `ticket-${ticket.id}.txt`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast('Ticket downloaded!', 'success');
+}
+
+// Init based on page
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('eventsGrid')) initEventsPage();
+  if (document.getElementById('eventDetailPage')) initEventDetails();
+});
+
+// ===== TICKETS MODULE =====
+function renderUserTickets(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const tickets = Storage.get('pampanga_tickets') || [];
+  
+  if (tickets.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:3rem;background:white;border-radius:20px;border:2px dashed rgba(212,160,23,0.25)">
+        <div style="font-size:3rem;margin-bottom:1rem">🎟️</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem;color:var(--dark)">No Tickets Yet</h3>
+        <p style="color:var(--sage);margin-bottom:1.5rem">Browse events and purchase your first ticket!</p>
+        <a href="../events.html" class="btn-primary">Browse Events</a>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = tickets.map(ticket => `
+    <div style="background:white;border-radius:16px;border:1px solid rgba(212,160,23,0.15);overflow:hidden;display:flex;gap:0;transition:all 0.3s" 
+      onmouseover="this.style.boxShadow='0 10px 30px rgba(196,30,58,0.1)'" 
+      onmouseout="this.style.boxShadow='none'">
+      <div style="background:var(--gradient-festival);width:8px;flex-shrink:0"></div>
+      <div style="padding:1.25rem;flex:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:0.25rem">${ticket.eventName}</div>
+          <div style="font-size:0.8rem;color:var(--sage)">📅 ${new Date(ticket.date).toLocaleDateString('en-PH', {month:'long',day:'numeric',year:'numeric'})} • ${ticket.time}</div>
+          <div style="font-size:0.8rem;color:var(--sage)">📍 ${ticket.location}</div>
+          <div style="margin-top:0.5rem">
+            <span style="background:rgba(22,163,74,0.1);color:#16a34a;padding:0.2rem 0.7rem;border-radius:50px;font-size:0.72rem;font-weight:700">✓ Confirmed</span>
+            <span style="background:rgba(37,99,235,0.1);color:#2563eb;padding:0.2rem 0.7rem;border-radius:50px;font-size:0.72rem;font-weight:700;margin-left:0.3rem">📱 Paperless</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <button class="btn-gold btn-sm" onclick='viewTicketModal(${JSON.stringify(ticket).replace(/'/g,"&#39;")})'>View QR</button>
+          <button class="btn-outline btn-sm" onclick="downloadTicket(${JSON.stringify(ticket).replace(/'/g,"&#39;")})">Download</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function viewTicketModal(ticket) {
+  const display = document.getElementById('viewTicketDisplay');
+  if (display) {
+    display.innerHTML = renderTicketHTML(ticket);
+    openModal('viewTicketModal');
+  }
+}
+
+function renderSavedEvents(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const saved = Storage.get('pampanga_saved') || [];
+  const events = PampangaDB.events.filter(e => saved.includes(e.id));
+
+  if (events.length === 0) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:3rem;background:white;border-radius:20px;border:2px dashed rgba(212,160,23,0.25)">
+        <div style="font-size:3rem;margin-bottom:1rem">🤍</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem">No Saved Events</h3>
+        <p style="color:var(--sage);margin-bottom:1.5rem">Browse events and save the ones you're interested in!</p>
+        <a href="../events.html" class="btn-primary">Browse Events</a>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = events.map(event => `
+    <div style="background:white;border-radius:16px;border:1px solid rgba(212,160,23,0.15);overflow:hidden;display:flex;gap:0;transition:all 0.3s"
+      onmouseover="this.style.boxShadow='0 10px 30px rgba(196,30,58,0.1)'"
+      onmouseout="this.style.boxShadow='none'">
+      <div style="background:var(--gradient-festival);width:8px;flex-shrink:0"></div>
+      <div style="padding:1.25rem;flex:1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-size:0.75rem;color:var(--crimson);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem">${event.category}</div>
+          <div style="font-weight:700;font-size:1rem;color:var(--dark);margin-bottom:0.25rem">${event.name}</div>
+          <div style="font-size:0.8rem;color:var(--sage)">📅 ${new Date(event.date).toLocaleDateString('en-PH',{month:'long',day:'numeric',year:'numeric'})} • 📍 ${event.location}</div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+          <a href="../event-details.html?id=${event.id}" class="btn-gold btn-sm">View →</a>
+          <button class="btn-outline btn-sm" onclick="unsaveEvent(${event.id})">Remove</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function unsaveEvent(id) {
+  const saved = (Storage.get('pampanga_saved') || []).filter(s => s !== id);
+  Storage.set('pampanga_saved', saved);
+  renderSavedEvents('savedEvents');
+  showToast('Event removed from saved list', 'info');
+}
+
+window.viewTicketModal = viewTicketModal;
+window.downloadTicket = downloadTicket;
+window.unsaveEvent = unsaveEvent;
+
+// ===== DASHBOARD NAVIGATION =====
+function initDashboard() {
+  const links = document.querySelectorAll('.sidebar-link[data-page]');
+  const pages = document.querySelectorAll('.dashboard-page');
+  const pageTitle = document.getElementById('pageTitle');
+  const mobileToggle = document.getElementById('sidebarToggle');
+  const sidebar = document.querySelector('.sidebar');
+
+  function showPage(pageId) {
+    pages.forEach(p => p.classList.remove('active'));
+    links.forEach(l => l.classList.remove('active'));
+    const target = document.getElementById(pageId);
+    if (target) target.classList.add('active');
+    const link = document.querySelector(`[data-page="${pageId}"]`);
+    if (link) {
+      link.classList.add('active');
+      if (pageTitle) pageTitle.textContent = link.querySelector('span:last-child')?.textContent || pageId;
+    }
+  }
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showPage(link.dataset.page);
+      if (window.innerWidth < 768 && sidebar) sidebar.classList.remove('open');
+    });
+  });
+
+  if (mobileToggle && sidebar) {
+    mobileToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  }
+
+  // Show first page by default
+  const firstLink = links[0];
+  if (firstLink) showPage(firstLink.dataset.page);
+}
+
+// ===== USER DASHBOARD =====
+function initUserDashboard() {
+  initDashboard();
+  const user = Storage.get('pampanga_user') || { name: 'Juan dela Cruz', email: 'juan@email.com' };
+  
+  // Fill user info
+  document.querySelectorAll('[data-user]').forEach(el => {
+    if (el.dataset.user === 'name') el.textContent = user.name;
+    if (el.dataset.user === 'email') el.textContent = user.email;
+    if (el.dataset.user === 'initials') el.textContent = user.name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+  });
+
+  // Ticket count
+  const tickets = Storage.get('pampanga_tickets') || [];
+  const saved = Storage.get('pampanga_saved') || [];
+  const ticketCountEl = document.getElementById('userTicketCount');
+  const savedCountEl = document.getElementById('userSavedCount');
+  if (ticketCountEl) ticketCountEl.textContent = tickets.length;
+  if (savedCountEl) savedCountEl.textContent = saved.length;
+
+  // Render tickets and saved
+  renderUserTickets('myTickets');
+  renderSavedEvents('savedEvents');
+
+  // Profile form
+  const profileForm = document.getElementById('profileForm');
+  if (profileForm) {
+    document.getElementById('profileName').value = user.name;
+    document.getElementById('profileEmail').value = user.email;
+    profileForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      user.name = document.getElementById('profileName').value;
+      user.email = document.getElementById('profileEmail').value;
+      Storage.set('pampanga_user', user);
+      showToast('Profile updated successfully!', 'success');
+    });
+  }
+}
+
+// ===== BUSINESS DASHBOARD =====
+let bizEvents = JSON.parse(JSON.stringify(PampangaDB.events.slice(0, 3)));
+let bizProducts = JSON.parse(JSON.stringify(PampangaDB.products.slice(0, 4)));
+
+function initBusinessDashboard() {
+  initDashboard();
+
+  renderBizEvents();
+  renderBizProducts();
+
+  // Analytics
+  const totalTickets = bizEvents.reduce((a, e) => a + e.ticketsSold, 0);
+  const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setEl('bizTotalTickets', totalTickets.toLocaleString());
+  setEl('bizTotalEvents', bizEvents.length);
+  setEl('bizTotalProducts', bizProducts.length);
+  setEl('bizRevenue', '₱' + (totalTickets * 150).toLocaleString());
+
+  // Event form
+  const eventForm = document.getElementById('addEventForm');
+  if (eventForm) {
+    eventForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newEvent = {
+        id: Date.now(),
+        name: document.getElementById('evtName').value,
+        category: document.getElementById('evtCategory').value,
+        date: document.getElementById('evtDate').value,
+        time: document.getElementById('evtTime').value,
+        location: document.getElementById('evtLocation').value,
+        price: parseInt(document.getElementById('evtPrice').value) || 0,
+        image: '🎪', organizer: 'My Business', description: document.getElementById('evtDesc').value,
+        ticketsSold: 0, capacity: 1000, eco: false, local: true, vendors: [], schedule: []
+      };
+      bizEvents.push(newEvent);
+      renderBizEvents();
+      closeModal('addEventModal');
+      eventForm.reset();
+      showToast('Event created successfully!', 'success');
+    });
+  }
+
+  // Product form
+  const productForm = document.getElementById('addProductForm');
+  if (productForm) {
+    productForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newProduct = {
+        id: Date.now(),
+        name: document.getElementById('prodName').value,
+        seller: 'My Business',
+        price: parseInt(document.getElementById('prodPrice').value) || 0,
+        image: document.getElementById('prodEmoji').value || '🛍️',
+        category: document.getElementById('prodCategory').value,
+        description: document.getElementById('prodDesc').value
+      };
+      bizProducts.push(newProduct);
+      renderBizProducts();
+      closeModal('addProductModal');
+      productForm.reset();
+      showToast('Product added successfully!', 'success');
+    });
+  }
+}
+
+function renderBizEvents() {
+  const container = document.getElementById('bizEventsList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Event</th><th>Date</th><th>Tickets Sold</th><th>Revenue</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${bizEvents.map(e => `
+          <tr>
+            <td><strong>${e.name}</strong><br><span style="font-size:0.75rem;color:var(--sage)">${e.category}</span></td>
+            <td>${new Date(e.date).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'})}</td>
+            <td>${e.ticketsSold.toLocaleString()} / ${e.capacity.toLocaleString()}</td>
+            <td style="color:var(--success);font-weight:600">₱${(e.ticketsSold * e.price).toLocaleString()}</td>
+            <td><button class="btn-outline btn-sm" onclick="editBizEvent(${e.id})">Edit</button> 
+                <button class="btn-danger btn-sm" onclick="deleteBizEvent(${e.id})" style="margin-left:0.3rem">Delete</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderBizProducts() {
+  const container = document.getElementById('bizProductsList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Product</th><th>Category</th><th>Price</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${bizProducts.map(p => `
+          <tr>
+            <td><span style="font-size:1.3rem;margin-right:0.5rem">${p.image}</span><strong>${p.name}</strong></td>
+            <td>${p.category}</td>
+            <td style="font-weight:600;color:var(--crimson)">₱${p.price}</td>
+            <td><button class="btn-outline btn-sm" onclick="editBizProduct(${p.id})">Edit</button>
+                <button class="btn-danger btn-sm" onclick="deleteBizProduct(${p.id})" style="margin-left:0.3rem">Delete</button></td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function deleteBizEvent(id) {
+  bizEvents = bizEvents.filter(e => e.id !== id);
+  renderBizEvents();
+  showToast('Event deleted.', 'info');
+}
+function deleteBizProduct(id) {
+  bizProducts = bizProducts.filter(p => p.id !== id);
+  renderBizProducts();
+  showToast('Product deleted.', 'info');
+}
+function editBizEvent(id) { showToast('Edit mode coming soon!', 'info'); }
+function editBizProduct(id) { showToast('Edit mode coming soon!', 'info'); }
+
+window.deleteBizEvent = deleteBizEvent;
+window.deleteBizProduct = deleteBizProduct;
+window.editBizEvent = editBizEvent;
+window.editBizProduct = editBizProduct;
+
+// ===== ADMIN DASHBOARD =====
+let adminUsers = JSON.parse(JSON.stringify(PampangaDB.users));
+let adminEvents = JSON.parse(JSON.stringify(PampangaDB.events));
+let adminBusinesses = JSON.parse(JSON.stringify(PampangaDB.businesses));
+let suspended = [];
+
+function initAdminDashboard() {
+  initDashboard();
+
+  // Stats
+  const totalTickets = adminEvents.reduce((a, e) => a + e.ticketsSold, 0);
+  const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setEl('adminUsers', adminUsers.length.toLocaleString());
+  setEl('adminEvents', adminEvents.length.toLocaleString());
+  setEl('adminTickets', totalTickets.toLocaleString());
+  setEl('adminBusinesses', adminBusinesses.length.toLocaleString());
+
+  renderAdminEvents();
+  renderAdminUsers();
+  renderAdminBusinesses();
+}
+
+function renderAdminEvents() {
+  const container = document.getElementById('adminEventsList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Event</th><th>Category</th><th>Date</th><th>Organizer</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${adminEvents.map(e => `
+          <tr>
+            <td><strong>${e.name}</strong></td>
+            <td><span class="badge badge-${e.category.toLowerCase()}">${e.category}</span></td>
+            <td>${new Date(e.date).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'})}</td>
+            <td>${e.organizer}</td>
+            <td><span style="color:#16a34a;font-weight:600;font-size:0.8rem">✓ Approved</span></td>
+            <td>
+              <button class="btn-danger btn-sm" onclick="adminDeleteEvent(${e.id})">Delete</button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderAdminUsers() {
+  const container = document.getElementById('adminUsersList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${adminUsers.map(u => `
+          <tr>
+            <td><strong>${u.name}</strong></td>
+            <td>${u.email}</td>
+            <td><span class="badge badge-${u.role==='admin'?'festival':u.role==='business'?'food':'paper'}" style="text-transform:capitalize">${u.role}</span></td>
+            <td>${suspended.includes(u.id)?'<span style="color:#dc2626;font-weight:600;font-size:0.8rem">⚠ Suspended</span>':'<span style="color:#16a34a;font-weight:600;font-size:0.8rem">✓ Active</span>'}</td>
+            <td>
+              <button class="${suspended.includes(u.id)?'btn-gold':'btn-danger'} btn-sm" 
+                onclick="toggleSuspend(${u.id})">${suspended.includes(u.id)?'Restore':'Suspend'}</button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderAdminBusinesses() {
+  const container = document.getElementById('adminBusinessesList');
+  if (!container) return;
+  container.innerHTML = `
+    <table class="data-table">
+      <thead><tr>
+        <th>Business</th><th>Type</th><th>Location</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        ${adminBusinesses.map(b => `
+          <tr>
+            <td><strong>${b.name}</strong></td>
+            <td>${b.type}</td>
+            <td>${b.location}</td>
+            <td>${b.verified
+              ? '<span style="color:#16a34a;font-weight:600;font-size:0.8rem">✓ Verified</span>'
+              : '<span style="color:#d97706;font-weight:600;font-size:0.8rem">⏳ Pending</span>'}</td>
+            <td>
+              ${!b.verified ? `<button class="btn-gold btn-sm" onclick="approveBiz(${b.id})">Approve</button>` : ''}
+              <button class="btn-danger btn-sm" onclick="rejectBiz(${b.id})" style="margin-left:0.3rem">Reject</button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function adminDeleteEvent(id) {
+  adminEvents = adminEvents.filter(e => e.id !== id);
+  renderAdminEvents();
+  const countEl = document.getElementById('adminEvents');
+  if (countEl) countEl.textContent = adminEvents.length;
+  showToast('Event deleted from platform.', 'success');
+}
+
+function toggleSuspend(id) {
+  if (suspended.includes(id)) {
+    suspended = suspended.filter(s => s !== id);
+    showToast('User restored successfully.', 'success');
+  } else {
+    suspended.push(id);
+    showToast('User suspended.', 'warning');
+  }
+  renderAdminUsers();
+}
+
+function approveBiz(id) {
+  const biz = adminBusinesses.find(b => b.id === id);
+  if (biz) { biz.verified = true; renderAdminBusinesses(); showToast(`${biz.name} approved!`, 'success'); }
+}
+
+function rejectBiz(id) {
+  adminBusinesses = adminBusinesses.filter(b => b.id !== id);
+  renderAdminBusinesses();
+  showToast('Business removed from platform.', 'info');
+}
+
+window.adminDeleteEvent = adminDeleteEvent;
+window.toggleSuspend = toggleSuspend;
+window.approveBiz = approveBiz;
+window.rejectBiz = rejectBiz;
+
+// AUTO-INIT
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('userDashboard')) initUserDashboard();
+  if (document.getElementById('businessDashboard')) initBusinessDashboard();
+  if (document.getElementById('adminDashboard')) initAdminDashboard();
+});
+</script>
+<!-- CART MODAL -->
+<div id="cartModal" class="modal-overlay" style="z-index:9000">
+  <div class="modal" style="max-width:460px;padding:0;overflow:hidden">
+    <div style="background:var(--g-split);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:white">🛒 Your Cart</div>
+      <button onclick="closeModal('cartModal')" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:8px;width:32px;height:32px;cursor:pointer;color:rgba(200,221,208,0.7);font-size:0.9rem">✕</button>
+    </div>
+    <div style="padding:1.25rem 1.5rem;max-height:280px;overflow-y:auto" id="cartItems">
+      <div style="text-align:center;padding:2rem;color:var(--sage);font-size:0.82rem">Your cart is empty</div>
+    </div>
+    <div style="padding:1rem 1.5rem;border-top:1px solid rgba(212,146,10,0.1);background:rgba(212,146,10,0.02)">
+      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--sage);margin-bottom:0.4rem"><span>Subtotal</span><span id="cartTotal">₱0</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--crimson);margin-bottom:0.4rem"><span>Platform Commission (deducted from seller)</span><span id="cartCommission">₱0 (10% B2C)</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--sage);margin-bottom:0.75rem"><span>🌿 Eco/Admin Fee</span><span id="cartEcoFee">₱0</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.9rem;font-weight:800;color:var(--ink);padding-top:0.65rem;border-top:1px solid rgba(212,146,10,0.12);margin-bottom:0.875rem"><span>Total You Pay</span><span id="cartGrand">₱0</span></div>
+      <div style="font-size:0.65rem;color:var(--sage);margin-bottom:0.875rem;display:flex;align-items:flex-start;gap:0.4rem"><span>ℹ️</span><span>10% commission is deducted from seller payout. ₱10 eco fee per item funds local waste management projects.</span></div>
+      <button onclick="openCheckout()" class="btn-fire" style="width:100%;justify-content:center;padding:0.8rem;font-size:0.88rem">🛒 Proceed to Checkout →</button>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let activeCat='All', searchTerm='';
+  function renderProducts() {
+    const g=document.getElementById('productsGrid');
+    const data=PampangaDB.products.filter(p=>{
+      const mc=activeCat==='All'||p.category===activeCat;
+      const ms=p.name.toLowerCase().includes(searchTerm.toLowerCase())||p.seller.toLowerCase().includes(searchTerm.toLowerCase());
+      return mc&&ms;
+    });
+    if(!data.length){g.innerHTML=`<div style="text-align:center;padding:4rem;color:var(--sage);grid-column:1/-1"><div style="font-size:3rem;margin-bottom:1rem">🛍️</div><p style="font-size:0.9rem">No products found.</p></div>`;return;}
+    g.innerHTML=data.map(p=>`
+      <div class="product-card">
+        <div class="product-img">${p.image}
+          <div class="origin-badge">🇵🇭 Pampanga</div>
+          ${p.preferred ? '<div style="position:absolute;top:10px;left:10px;background:linear-gradient(135deg,#D4920A,#F0B429);color:white;font-size:0.55rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:4px;box-shadow:0 2px 8px rgba(212,146,10,0.4)">⭐ Preferred Seller</div>' : ''}
+        </div>
+        <div class="product-body">
+          <div class="product-cat">${p.category}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-seller">by ${p.seller}</div>
+          <p style="font-size:0.75rem;color:var(--sage);line-height:1.5;margin-bottom:0.75rem">${p.description}</p>
+          <div class="product-footer">
+            <div>
+              <span class="product-price">₱${p.price}</span>
+              <div style="font-size:0.6rem;color:var(--sage);margin-top:0.1rem">+₱10 eco fee at checkout</div>
+            </div>
+            <div style="display:flex;gap:0.4rem">
+              <button class="btn-ghost btn-sm" onclick="addToCart(${p.id})">🛒 Add</button>
+              <button class="btn-ghost btn-sm" onclick="viewSeller(${p.id})">View →</button>
+            </div>
+          </div>
+        </div>
+      </div>`).join('');
+  }
+  document.getElementById('productSearch').addEventListener('input',e=>{searchTerm=e.target.value;renderProducts();});
+  document.querySelectorAll('.filter-tab[data-cat]').forEach(t=>{
+    t.addEventListener('click',()=>{document.querySelectorAll('.filter-tab[data-cat]').forEach(x=>x.classList.remove('active'));t.classList.add('active');activeCat=t.dataset.cat;renderProducts();});
+  });
+  renderProducts();
+  document.getElementById('businessesGrid').innerHTML=PampangaDB.businesses.map(b=>`
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(75,124,95,0.2);border-radius:14px;padding:1.75rem;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+      <div style="display:flex;gap:0.875rem;align-items:flex-start;margin-bottom:1.1rem">
+        <div style="width:52px;height:52px;border-radius:12px;background:var(--g-fire);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏪</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
+            <h3 style="font-weight:700;font-size:0.95rem;color:white">${b.name}</h3>
+            ${b.verified?'<span style="background:rgba(27,58,45,0.5);color:#7EC8A0;padding:0.15rem 0.5rem;border-radius:4px;font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">✓ Verified</span>':'<span style="background:rgba(212,146,10,0.2);color:var(--amber);padding:0.15rem 0.5rem;border-radius:4px;font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">⏳ Pending</span>'}
+          </div>
+          <div style="font-size:0.75rem;color:rgba(200,221,208,0.5);margin-top:0.15rem">${b.type} · ${b.location}</div>
+        </div>
+      </div>
+      <div style="padding-top:0.875rem;border-top:1px solid rgba(75,124,95,0.15)">
+        <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(107,158,122,0.6);font-weight:800;margin-bottom:0.5rem">Products</div>
+        <div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.875rem">
+          ${b.products.map(pid=>{const p=PampangaDB.products.find(x=>x.id===pid);return p?`<span style="background:rgba(27,58,45,0.4);border:1px solid rgba(75,124,95,0.2);padding:0.2rem 0.55rem;border-radius:4px;font-size:0.7rem;color:rgba(200,221,208,0.7)">${p.image} ${p.name}</span>`:''}).join('')}
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+          <div style="font-size:0.72rem;color:rgba(200,221,208,0.4)">📞 ${b.contact}</div>
+          <button class="btn-eco" style="font-size:0.7rem;padding:0.4rem 0.875rem" onclick="viewBusiness(${b.id})">View Profile →</button>
+        </div>
+      </div>
+    </div>`).join('');
+});
+function viewSeller(pid) {
+  const biz=PampangaDB.businesses.find(b=>b.products.includes(pid));
+  if(!biz){showToast('Business not found','info');return;}
+  showBizModal(biz);
+}
+function viewBusiness(id) {
+  const biz=PampangaDB.businesses.find(b=>b.id===id);
+  if(biz) showBizModal(biz);
+}
+function showBizModal(biz) {
+  document.getElementById('sellerModalTitle').textContent=biz.name;
+  const prods=biz.products.map(id=>PampangaDB.products.find(p=>p.id===id)).filter(Boolean);
+  document.getElementById('sellerModalContent').innerHTML=`
+    <div style="display:flex;gap:0.875rem;align-items:center;padding:1.1rem;background:rgba(212,146,10,0.05);border-radius:10px;margin-bottom:1.25rem;border:1px solid rgba(212,146,10,0.1)">
+      <div style="width:48px;height:48px;background:var(--g-fire);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">🏪</div>
+      <div><div style="font-weight:700">${biz.name} ${biz.verified?'<span style="background:rgba(27,58,45,0.12);color:var(--moss);padding:0.1rem 0.4rem;border-radius:4px;font-size:0.62rem;font-weight:800">✓</span>':''}</div><div style="font-size:0.78rem;color:var(--sage)">${biz.type} · ${biz.location}</div><div style="font-size:0.75rem;color:var(--sage)">📞 ${biz.contact}</div></div>
+    </div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:0.875rem">Products (${prods.length})</h3>
+    <div style="display:flex;flex-direction:column;gap:0.6rem">
+      ${prods.map(p=>`<div style="display:flex;gap:0.75rem;align-items:center;padding:0.8rem;background:var(--bone);border-radius:10px;border:1px solid rgba(212,146,10,0.1)">
+        <span style="font-size:1.4rem">${p.image}</span>
+        <div style="flex:1"><div style="font-weight:700;font-size:0.85rem">${p.name}</div><div style="font-size:0.72rem;color:var(--sage);font-style:italic">${p.description.substring(0,55)}...</div></div>
+        <span style="font-weight:700;color:var(--ember);font-family:'Playfair Display',serif">₱${p.price}</span>
+      </div>`).join('')}
+    </div>`;
+  openModal('sellerModal');
+}
+
+// ===== CART & CHECKOUT =====
+let cart = [];
+
+function addToCart(pid) {
+  const p = PampangaDB.products.find(x => x.id === pid);
+  if (!p) return;
+  const existing = cart.find(x => x.id === pid);
+  if (existing) { existing.qty++; } else { cart.push({...p, qty: 1}); }
+  renderCart();
+  showToast(`🛒 ${p.name} added to cart`, 'success');
+}
+
+function removeFromCart(pid) {
+  cart = cart.filter(x => x.id !== pid);
+  renderCart();
+}
+
+function renderCart() {
+  const badge = document.getElementById('cartBadge');
+  const list  = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cartTotal');
+  const commissionEl = document.getElementById('cartCommission');
+  const ecoEl = document.getElementById('cartEcoFee');
+  const grandEl = document.getElementById('cartGrand');
+
+  const totalQty  = cart.reduce((a, x) => a + x.qty, 0);
+  const subtotal  = cart.reduce((a, x) => a + x.price * x.qty, 0);
+  const commission = Math.round(subtotal * 0.10);
+  const ecoFee    = cart.length > 0 ? cart.length * 10 : 0;
+  const grand     = subtotal + ecoFee;
+
+  if (badge) badge.textContent = totalQty > 0 ? totalQty : '';
+  if (badge) badge.style.display = totalQty > 0 ? 'flex' : 'none';
+
+  if (list) {
+    list.innerHTML = cart.length === 0
+      ? '<div style="text-align:center;padding:2rem;color:var(--sage);font-size:0.82rem">Your cart is empty</div>'
+      : cart.map(x => `
+        <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 0;border-bottom:1px solid rgba(212,146,10,0.08)">
+          <div style="font-size:1.5rem;width:40px;height:40px;background:rgba(212,146,10,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center">${x.image}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:0.8rem;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${x.name}</div>
+            <div style="font-size:0.7rem;color:var(--sage)">₱${x.price} × ${x.qty}</div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:700;color:var(--ink)">₱${x.price * x.qty}</div>
+          <button onclick="removeFromCart(${x.id})" style="background:none;border:none;cursor:pointer;color:var(--sage);font-size:0.9rem;padding:0 0.25rem">✕</button>
+        </div>`).join('');
+  }
+  if (totalEl)      totalEl.textContent      = '₱' + subtotal.toLocaleString();
+  if (commissionEl) commissionEl.textContent = '₱' + commission.toLocaleString() + ' (10% B2C)';
+  if (ecoEl)        ecoEl.textContent        = '₱' + ecoFee.toLocaleString() + ' (₱10 × ' + (cart.length || 0) + ' items)';
+  if (grandEl)      grandEl.textContent      = '₱' + grand.toLocaleString();
+}
+
+function checkout() {
+  openCheckout();
+}
+
+let currentPayMethod = 'gcash';
+
+function openCheckout() {
+  if (cart.length === 0) { showToast('Your cart is empty!', 'warning'); return; }
+  closeModal('cartModal');
+  populateCheckout();
+  goToStep(1);
+  openModal('checkoutModal');
+}
+
+function populateCheckout() {
+  const subtotal = cart.reduce((a, x) => a + x.price * x.qty, 0);
+  const ecoFee   = cart.length * 10;
+  const grand    = subtotal + ecoFee;
+  // Summary
+  const summaryEl = document.getElementById('checkoutSummary');
+  if (summaryEl) {
+    summaryEl.innerHTML = cart.map(x => `
+      <div style="display:flex;align-items:center;gap:0.65rem;padding:0.55rem 0.65rem;background:rgba(212,146,10,0.04);border-radius:8px;border:1px solid rgba(212,146,10,0.08)">
+        <span style="font-size:1.3rem;width:36px;height:36px;background:rgba(212,146,10,0.07);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0">${x.image}</span>
+        <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:0.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.name}</div><div style="font-size:0.68rem;color:var(--sage)">Qty: ${x.qty} × ₱${x.price.toLocaleString()}</div></div>
+        <span style="font-weight:700;font-size:0.82rem;color:var(--ember);flex-shrink:0">₱${(x.price * x.qty).toLocaleString()}</span>
+      </div>`).join('');
+  }
+  ['co-subtotal','co-total'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = id === 'co-subtotal' ? '₱' + subtotal.toLocaleString() : '₱' + grand.toLocaleString(); });
+  const ecoEl = document.getElementById('co-ecofee'); if(ecoEl) ecoEl.textContent = '₱' + ecoFee.toLocaleString() + ' (₱10 × ' + cart.length + ')';
+  const total2 = document.getElementById('co-total2'); if(total2) total2.textContent = '₱' + grand.toLocaleString();
+  const codAmt = document.getElementById('cod-amount'); if(codAmt) codAmt.textContent = '₱' + grand.toLocaleString();
+  const itemCount = document.getElementById('co-itemcount'); if(itemCount) itemCount.textContent = cart.reduce((a,x)=>a+x.qty,0) + ' item(s)';
+}
+
+function goToStep(n) {
+  document.getElementById('checkoutStep').textContent = n;
+  document.getElementById('checkoutPage1').style.display = n === 1 ? 'block' : 'none';
+  document.getElementById('checkoutPage2').style.display = n === 2 ? 'block' : 'none';
+  document.getElementById('stepTab1').style.color = n === 1 ? 'var(--amber)' : 'rgba(200,221,208,0.3)';
+  document.getElementById('stepTab1').style.borderBottomColor = n === 1 ? 'var(--amber)' : 'transparent';
+  document.getElementById('stepTab2').style.color = n === 2 ? 'var(--amber)' : 'rgba(200,221,208,0.3)';
+  document.getElementById('stepTab2').style.borderBottomColor = n === 2 ? 'var(--amber)' : 'transparent';
+}
+
+function goToPayment() {
+  const fname = document.getElementById('co-fname').value.trim();
+  const address = document.getElementById('co-address').value.trim();
+  const phone = document.getElementById('co-phone').value.trim();
+  if (!fname || !address || !phone) { showToast('Please fill in all delivery details!', 'warning'); return; }
+  goToStep(2);
+}
+
+function backToDetails() { goToStep(1); }
+
+function selectPayMethod(btn) {
+  document.querySelectorAll('#payMethodGroup .filter-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentPayMethod = btn.dataset.method;
+  ['gcash','maya','card','cod'].forEach(m => {
+    const el = document.getElementById('pay-' + m);
+    if (el) el.style.display = m === currentPayMethod ? 'block' : 'none';
+  });
+}
+
+function formatCardNum(input) {
+  let v = input.value.replace(/\D/g,'').substring(0,16);
+  input.value = v.replace(/(\d{4})(?=\d)/g,'$1 ');
+}
+
+function formatExpiry(input) {
+  let v = input.value.replace(/\D/g,'').substring(0,4);
+  if (v.length >= 2) v = v.substring(0,2) + ' / ' + v.substring(2);
+  input.value = v;
+}
+
+function confirmOrder() {
+  // Validate payment method fields
+  if (currentPayMethod === 'gcash') {
+    const ref = document.getElementById('pay-gcash-ref').value.trim();
+    if (!ref) { showToast('Please enter your GCash reference number!', 'warning'); return; }
+  } else if (currentPayMethod === 'maya') {
+    const ref = document.getElementById('pay-maya-ref').value.trim();
+    if (!ref) { showToast('Please enter your Maya reference number!', 'warning'); return; }
+  } else if (currentPayMethod === 'card') {
+    const num = document.getElementById('pay-card-num').value.replace(/\s/g,'');
+    const exp = document.getElementById('pay-card-exp').value;
+    const cvv = document.getElementById('pay-card-cvv').value;
+    if (num.length < 16 || !exp.includes('/') || cvv.length < 3) { showToast('Please enter valid card details!', 'warning'); return; }
+  }
+  const subtotal = cart.reduce((a, x) => a + x.price * x.qty, 0);
+  const ecoFee   = cart.length * 10;
+  const grand    = subtotal + ecoFee;
+  const orderId  = 'ORD-' + Date.now().toString(36).toUpperCase();
+  const fname    = document.getElementById('co-fname').value.trim();
+  const methods  = { gcash: '📱 GCash', maya: '💜 Maya', card: '💳 Card', cod: '💵 COD' };
+  // Show confirmed modal
+  const details = document.getElementById('orderConfirmDetails');
+  if (details) {
+    details.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:0.5rem">
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem"><span style="color:var(--sage)">Order ID</span><span style="font-weight:700">${orderId}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem"><span style="color:var(--sage)">Customer</span><span style="font-weight:700">${fname || 'Guest'}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem"><span style="color:var(--sage)">Items</span><span style="font-weight:700">${cart.reduce((a,x)=>a+x.qty,0)} item(s)</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem"><span style="color:var(--sage)">Payment</span><span style="font-weight:700">${methods[currentPayMethod]}</span></div>
+        <div style="border-top:1px solid rgba(212,146,10,0.12);padding-top:0.5rem;display:flex;justify-content:space-between;font-size:0.88rem"><span style="font-weight:700">Total Paid</span><span style="font-weight:900;color:var(--ember);font-family:'Playfair Display',serif">₱${grand.toLocaleString()}</span></div>
+      </div>`;
+  }
+  closeModal('checkoutModal');
+  openModal('orderConfirmedModal');
+  cart = [];
+  renderCart();
+}
+
+window.openCheckout = openCheckout;
+window.goToPayment = goToPayment;
+window.backToDetails = backToDetails;
+window.selectPayMethod = selectPayMethod;
+window.confirmOrder = confirmOrder;
+window.formatCardNum = formatCardNum;
+window.formatExpiry = formatExpiry;
+
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.checkout = checkout;
+
+window.viewSeller=viewSeller; window.viewBusiness=viewBusiness;
+
+
+// ═══════════════════════════════════════════════════════
+// ECO FEATURES PATCH — Carbon, Weather, Badges, Gamification
+// ═══════════════════════════════════════════════════════
+
+// 1. Extend events with carbonSaved, locationType, weatherRisk
+const ecoEventMeta = {
+  1: { carbonSaved: 4.2,  locationType: 'Outdoor', weatherRisk: 'Low',    wasteGoal: 500, wasteCollected: 310 },
+  2: { carbonSaved: 1.8,  locationType: 'Outdoor', weatherRisk: 'Medium', wasteGoal: 300, wasteCollected: 190 },
+  3: { carbonSaved: 0.5,  locationType: 'Outdoor', weatherRisk: 'High',   wasteGoal: 200, wasteCollected: 88  },
+  4: { carbonSaved: 0.2,  locationType: 'Outdoor', weatherRisk: 'Low',    wasteGoal: 800, wasteCollected: 420 },
+  5: { carbonSaved: 2.9,  locationType: 'Indoor',  weatherRisk: 'None',   wasteGoal: 250, wasteCollected: 215 },
+  6: { carbonSaved: 3.5,  locationType: 'Outdoor', weatherRisk: 'Medium', wasteGoal: 150, wasteCollected: 140 },
+};
+PampangaDB.events.forEach(e => {
+  const m = ecoEventMeta[e.id];
+  if (m) Object.assign(e, m);
+});
+
+// 2. Extend businesses with isEcoFriendly, platformFee
+const ecoBizMeta = {
+  1: { isEcoFriendly: true,  platformFee: 5,  ecoReason: 'Zero plastic packaging, compostable containers' },
+  2: { isEcoFriendly: true,  platformFee: 5,  ecoReason: 'Biodegradable takeaway boxes, no single-use plastics' },
+  3: { isEcoFriendly: true,  platformFee: 5,  ecoReason: 'Uses natural dyes, recycled materials in all crafts' },
+  4: { isEcoFriendly: false, platformFee: 10, ecoReason: null },
+};
+PampangaDB.businesses.forEach(b => {
+  const m = ecoBizMeta[b.id];
+  if (m) Object.assign(b, m);
+});
+
+// ─── MOCK WEATHER API ───────────────────────────────────
+const MockWeather = {
+  current: {
+    city: 'San Fernando, Pampanga',
+    status: 'Rainy',       // 'Sunny' | 'Cloudy' | 'Rainy' | 'Stormy'
+    tempC: 27,
+    humidity: 88,
+    warning: 'Moderate rainfall expected this afternoon. Stay dry!',
+    icon: '🌧️'
+  },
+  getFilteredEvents(status) {
+    if (status === 'Rainy' || status === 'Stormy') {
+      return PampangaDB.events.filter(e => e.locationType === 'Indoor');
+    }
+    return PampangaDB.events;
+  }
+};
+
+// ─── CARBON FOOTPRINT CALCULATOR ────────────────────────
+const CarbonCalc = {
+  // kg CO₂ per km by transport mode
+  factors: { jeepney: 0.08, tricycle: 0.06, car: 0.18, walking: 0, bicycle: 0 },
+  // Avg kg CO₂ of a physical ticket lifecycle (printing, transport, disposal)
+  paperTicketCO2: 0.05,
+
+  calculate(distanceKm, transport, event) {
+    const travelCO2 = distanceKm * (this.factors[transport] || 0.12);
+    const savedFromPaperless = this.paperTicketCO2;
+    const eventEcoBonus = event?.carbonSaved || 0;
+    const totalSaved = savedFromPaperless + eventEcoBonus;
+    const netFootprint = Math.max(0, travelCO2 - totalSaved).toFixed(2);
+    const greenScore = Math.min(100, Math.round((totalSaved / (travelCO2 + 0.01)) * 100));
+    return { travelCO2: travelCO2.toFixed(2), totalSaved: totalSaved.toFixed(2), netFootprint, greenScore };
+  },
+
+  userTotalSaved() {
+    const tickets = Storage.get('pampanga_tickets') || [];
+    return tickets.reduce((sum, t) => {
+      const ev = PampangaDB.events.find(e => e.id === t.eventId);
+      return sum + (ev?.carbonSaved || 0) + CarbonCalc.paperTicketCO2;
+    }, 0).toFixed(2);
+  }
+};
+
+// ─── POINTS / GAMIFICATION SYSTEM ───────────────────────
+const PointsSystem = {
+  get() { return Storage.get('pampanga_points') || { total: 0, history: [] }; },
+  add(amount, reason) {
+    const p = this.get();
+    p.total += amount;
+    p.history.unshift({ amount, reason, date: new Date().toLocaleDateString() });
+    if (p.history.length > 20) p.history = p.history.slice(0, 20);
+    Storage.set('pampanga_points', p);
+    showToast(`+${amount} Green Points earned! ${reason}`, 'success');
+    return p.total;
+  },
+  spend(amount) {
+    const p = this.get();
+    if (p.total < amount) { showToast('Not enough Green Points!', 'error'); return false; }
+    p.total -= amount;
+    Storage.set('pampanga_points', p);
+    return true;
+  },
+  getLevel(total) {
+    if (total >= 500) return { name: 'Eco Hero 🌟',    color: '#D4920A', min: 500 };
+    if (total >= 200) return { name: 'Green Guard 🌿',  color: '#3A5A3C', min: 200 };
+    if (total >= 50)  return { name: 'Eco Starter 🌱', color: '#6B9E7A', min: 50 };
+    return            { name: 'New Leaf 🍃',            color: '#A3C4A0', min: 0 };
+  }
+};
+
+// Award points on ticket purchase (hook into existing flow)
+const _origCreateTicket = typeof createTicket === 'function' ? createTicket : null;
+
+// ─── WEATHER BANNER ─────────────────────────────────────
+function renderWeatherBanner(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const w = MockWeather.current;
+  const isAlert = w.status === 'Rainy' || w.status === 'Stormy';
+  if (!isAlert) { el.innerHTML = ''; return; }
+  const indoorEvents = MockWeather.getFilteredEvents(w.status);
+  el.innerHTML = `
+    <div style="background:linear-gradient(135deg,rgba(27,58,45,0.95),rgba(45,90,61,0.9));border-bottom:2px solid rgba(75,124,95,0.4);padding:0.875rem 0;position:relative;overflow:hidden;z-index:200">
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:0.75rem">
+          <span style="font-size:1.5rem">${w.icon}</span>
+          <div>
+            <div style="font-weight:800;font-size:0.82rem;color:white;letter-spacing:0.03em">${w.city} — ${w.status} ${w.tempC}°C · ${w.humidity}% Humidity</div>
+            <div style="font-size:0.72rem;color:rgba(200,221,208,0.75);margin-top:0.1rem">${w.warning}</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap">
+          <span style="font-size:0.72rem;color:rgba(200,221,208,0.7)">🏠 ${indoorEvents.length} indoor ${indoorEvents.length===1?'event':'events'} available today:</span>
+          <div style="display:flex;gap:0.35rem;flex-wrap:wrap">
+            ${indoorEvents.slice(0,3).map(e=>`<a href="event-details.html?id=${e.id}" style="background:rgba(255,255,255,0.1);border:1px solid rgba(75,124,95,0.35);color:rgba(200,221,208,0.9);padding:0.2rem 0.65rem;border-radius:4px;font-size:0.68rem;font-weight:700;text-decoration:none;transition:all 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">${e.image} ${e.name.split(' ').slice(0,3).join(' ')}</a>`).join('')}
+          </div>
+          <button onclick="this.closest('[style]').parentElement.parentElement.remove()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(200,221,208,0.6);width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:0.75rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">✕</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ─── WASTE GOAL BAR ──────────────────────────────────────
+function renderWasteGoalBar(containerId, eventId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const ev = PampangaDB.events.find(e => e.id === eventId);
+  if (!ev || !ev.wasteGoal) return;
+  const pct = Math.min(100, Math.round((ev.wasteCollected / ev.wasteGoal) * 100));
+  const col = pct >= 80 ? '#3A5A3C' : pct >= 50 ? '#D4920A' : '#C41E3A';
+  el.innerHTML = `
+    <div style="background:white;border-radius:14px;padding:1.5rem;border:1px solid rgba(75,124,95,0.2);box-shadow:0 2px 12px rgba(18,8,8,0.06)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink)">♻️ Waste Management Goal</div>
+          <div style="font-size:0.75rem;color:var(--sage);margin-top:0.15rem">Community waste collection target for this event</div>
+        </div>
+        <span style="background:rgba(75,124,95,0.1);color:${col};padding:0.25rem 0.75rem;border-radius:4px;font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">${pct >= 100 ? '🏆 Goal Met!' : pct >= 80 ? '🔥 Almost There!' : pct >= 50 ? '💪 Halfway' : '🌱 Just Started'}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--sage);margin-bottom:0.4rem;font-weight:600">
+        <span>${ev.wasteCollected} kg collected</span><span>Goal: ${ev.wasteGoal} kg</span>
+      </div>
+      <div style="height:10px;background:rgba(75,124,95,0.1);border-radius:50px;overflow:hidden;margin-bottom:0.875rem">
+        <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,${col},${col}aa);border-radius:50px;transition:width 1s ease;position:relative">
+          <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:14px;height:14px;background:white;border:2px solid ${col};border-radius:50%;box-shadow:0 0 6px ${col}66"></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem">
+        <div style="background:rgba(75,124,95,0.07);border-radius:10px;padding:0.875rem;text-align:center;border:1px solid rgba(75,124,95,0.12)">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:${col}">${ev.wasteCollected}</div>
+          <div style="font-size:0.62rem;color:var(--sage);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.15rem">kg Collected</div>
+        </div>
+        <div style="background:rgba(75,124,95,0.07);border-radius:10px;padding:0.875rem;text-align:center;border:1px solid rgba(75,124,95,0.12)">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold)">${ev.wasteGoal - ev.wasteCollected > 0 ? ev.wasteGoal - ev.wasteCollected : 0}</div>
+          <div style="font-size:0.62rem;color:var(--sage);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.15rem">kg Remaining</div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(27,58,45,0.08),rgba(75,124,95,0.06));border:1px dashed rgba(75,124,95,0.3);border-radius:10px;padding:1rem;display:flex;align-items:center;gap:0.875rem">
+        <div style="width:44px;height:44px;background:var(--g-eco);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">📱</div>
+        <div>
+          <div style="font-weight:700;font-size:0.82rem;color:var(--ink);margin-bottom:0.15rem">Scan Waste QR to Earn Points</div>
+          <div style="font-size:0.72rem;color:var(--sage);line-height:1.5">Find the ♻️ disposal bins at the event, scan the QR code with your phone, and earn <strong style="color:var(--moss)">+25 Green Points</strong> per bin visited!</div>
+          <button onclick="simulateWasteScan()" class="btn-eco" style="margin-top:0.6rem;font-size:0.68rem;padding:0.35rem 0.875rem">📷 Simulate Bin Scan (+25 pts)</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function simulateWasteScan() {
+  PointsSystem.add(25, '♻️ Waste bin QR scanned at event');
+  // update waste collected
+  const eventId = parseInt(new URLSearchParams(window.location.search).get('id')) || 1;
+  const ev = PampangaDB.events.find(e => e.id === eventId);
+  if (ev) {
+    ev.wasteCollected = Math.min(ev.wasteGoal, ev.wasteCollected + 5);
+    renderWasteGoalBar('wasteGoalContainer', eventId);
+  }
+}
+window.simulateWasteScan = simulateWasteScan;
+
+// ─── GREEN IMPACT CARD (for user dashboard) ─────────────
+function renderGreenImpactCard(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const totalSaved = parseFloat(CarbonCalc.userTotalSaved());
+  const pts = PointsSystem.get();
+  const level = PointsSystem.getLevel(pts.total);
+  const tickets = Storage.get('pampanga_tickets') || [];
+  const nextLevel = pts.total < 50 ? {name:'Eco Starter 🌱',min:50} : pts.total < 200 ? {name:'Green Guard 🌿',min:200} : pts.total < 500 ? {name:'Eco Hero 🌟',min:500} : null;
+  const levelPct = nextLevel ? Math.min(100, Math.round((pts.total / nextLevel.min) * 100)) : 100;
+
+  el.innerHTML = `
+    <div style="background:linear-gradient(135deg,rgba(27,58,45,0.08),rgba(75,124,95,0.05));border:1px solid rgba(75,124,95,0.2);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(75,124,95,0.15),transparent);border-radius:50%"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.5rem">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ink)">🌿 Your Green Impact</div>
+          <div style="font-size:0.68rem;color:var(--sage);margin-top:0.1rem">Every eco-ticket you buy plants trees & saves carbon</div>
+        </div>
+        <span style="background:${level.color}22;border:1px solid ${level.color}55;color:${level.color};padding:0.25rem 0.75rem;border-radius:4px;font-size:0.68rem;font-weight:800">${level.name}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1.25rem">
+        <div style="background:white;border-radius:10px;padding:0.875rem;text-align:center;border:1px solid rgba(75,124,95,0.12)">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--moss)">${totalSaved}</div>
+          <div style="font-size:0.58rem;color:var(--sage);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-top:0.15rem">kg CO₂ Saved</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:0.875rem;text-align:center;border:1px solid rgba(75,124,95,0.12)">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold)">${pts.total}</div>
+          <div style="font-size:0.58rem;color:var(--sage);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-top:0.15rem">Green Points</div>
+        </div>
+        <div style="background:white;border-radius:10px;padding:0.875rem;text-align:center;border:1px solid rgba(75,124,95,0.12)">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--ember)">${tickets.length}</div>
+          <div style="font-size:0.58rem;color:var(--sage);font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-top:0.15rem">Eco Tickets</div>
+        </div>
+      </div>
+      ${nextLevel ? `
+      <div style="margin-bottom:0.875rem">
+        <div style="display:flex;justify-content:space-between;font-size:0.68rem;font-weight:700;color:var(--sage);margin-bottom:0.3rem">
+          <span>Progress to ${nextLevel.name}</span><span>${pts.total} / ${nextLevel.min} pts</span>
+        </div>
+        <div style="height:7px;background:rgba(75,124,95,0.1);border-radius:50px;overflow:hidden">
+          <div style="height:100%;width:${levelPct}%;background:var(--g-eco);border-radius:50px;transition:width 0.8s ease"></div>
+        </div>
+      </div>` : '<div style="font-size:0.75rem;color:var(--moss);font-weight:700;text-align:center;padding:0.5rem">🏆 Maximum Eco Hero status achieved!</div>'}
+      <div style="background:white;border-radius:10px;padding:0.875rem;border:1px solid rgba(75,124,95,0.12)">
+        <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--fern);margin-bottom:0.6rem">🎁 Redeem Green Points</div>
+        <div style="display:flex;flex-direction:column;gap:0.4rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:rgba(75,124,95,0.05);border-radius:7px;border:1px solid rgba(75,124,95,0.1)">
+            <span style="font-size:0.78rem;font-weight:600">🏷️ 10% off next ticket</span>
+            <button onclick="redeemPoints(50,'10% ticket discount')" style="background:var(--g-eco);color:white;border:none;padding:0.25rem 0.7rem;border-radius:5px;font-size:0.65rem;font-weight:800;cursor:pointer;font-family:'Instrument Sans',sans-serif">50 pts</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:rgba(75,124,95,0.05);border-radius:7px;border:1px solid rgba(75,124,95,0.1)">
+            <span style="font-size:0.78rem;font-weight:600">🍮 Free pasalubong voucher</span>
+            <button onclick="redeemPoints(150,'Pasalubong voucher')" style="background:var(--g-eco);color:white;border:none;padding:0.25rem 0.7rem;border-radius:5px;font-size:0.65rem;font-weight:800;cursor:pointer;font-family:'Instrument Sans',sans-serif">150 pts</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem;background:rgba(75,124,95,0.05);border-radius:7px;border:1px solid rgba(75,124,95,0.1)">
+            <span style="font-size:0.78rem;font-weight:600">🌱 Plant a tree in your name</span>
+            <button onclick="redeemPoints(200,'Tree planting')" style="background:var(--g-eco);color:white;border:none;padding:0.25rem 0.7rem;border-radius:5px;font-size:0.65rem;font-weight:800;cursor:pointer;font-family:'Instrument Sans',sans-serif">200 pts</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function redeemPoints(cost, reward) {
+  if (PointsSystem.spend(cost)) {
+    showToast(`🎁 Redeemed: ${reward}! Check your email for details.`, 'success');
+    setTimeout(() => renderGreenImpactCard('greenImpactCard'), 500);
+  }
+}
+window.redeemPoints = redeemPoints;
+
+// ─── CARBON FOOTPRINT CALCULATOR UI ─────────────────────
+function renderCarbonCalc(containerId, eventId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = `
+    <div style="background:white;border-radius:14px;padding:1.5rem;border:1px solid rgba(75,124,95,0.18);box-shadow:0 2px 12px rgba(18,8,8,0.06)">
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--ink)">🌍 Carbon Footprint Calculator</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:0.875rem">
+        <div>
+          <label style="font-size:0.62rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.3rem">Distance (km)</label>
+          <input type="number" id="carbonDist" value="10" min="1" max="200" style="width:100%;padding:0.55rem 0.75rem;border:1.5px solid rgba(212,146,10,0.2);border-radius:8px;font-family:'Instrument Sans',sans-serif;font-size:0.85rem;outline:none" oninput="calcCarbon(${eventId})">
+        </div>
+        <div>
+          <label style="font-size:0.62rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.3rem">Transport</label>
+          <select id="carbonMode" style="width:100%;padding:0.55rem 0.75rem;border:1.5px solid rgba(212,146,10,0.2);border-radius:8px;font-family:'Instrument Sans',sans-serif;font-size:0.82rem;outline:none;background:white" onchange="calcCarbon(${eventId})">
+            <option value="jeepney">🚐 Jeepney</option>
+            <option value="tricycle">🛺 Tricycle</option>
+            <option value="car">🚗 Private Car</option>
+            <option value="bicycle">🚲 Bicycle</option>
+            <option value="walking">🚶 Walking</option>
+          </select>
+        </div>
+      </div>
+      <div id="carbonResult"></div>
+    </div>`;
+  calcCarbon(eventId);
+}
+
+function calcCarbon(eventId) {
+  const dist = parseFloat(document.getElementById('carbonDist')?.value) || 10;
+  const mode = document.getElementById('carbonMode')?.value || 'jeepney';
+  const ev = PampangaDB.events.find(e => e.id === eventId);
+  const r = CarbonCalc.calculate(dist, mode, ev);
+  const res = document.getElementById('carbonResult');
+  if (!res) return;
+  const barW = Math.min(100, r.greenScore);
+  const barCol = r.greenScore >= 70 ? 'var(--g-eco)' : r.greenScore >= 40 ? 'linear-gradient(90deg,var(--gold),var(--amber))' : 'linear-gradient(90deg,var(--ember),var(--crimson))';
+  res.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.875rem">
+      <div style="background:rgba(196,30,58,0.07);border-radius:8px;padding:0.65rem;text-align:center;border:1px solid rgba(196,30,58,0.12)">
+        <div style="font-weight:700;font-size:1rem;color:var(--ember)">${r.travelCO2}</div>
+        <div style="font-size:0.58rem;color:var(--sage);font-weight:700;text-transform:uppercase;letter-spacing:0.06em">kg Travel CO₂</div>
+      </div>
+      <div style="background:rgba(75,124,95,0.08);border-radius:8px;padding:0.65rem;text-align:center;border:1px solid rgba(75,124,95,0.15)">
+        <div style="font-weight:700;font-size:1rem;color:var(--moss)">${r.totalSaved}</div>
+        <div style="font-size:0.58rem;color:var(--sage);font-weight:700;text-transform:uppercase;letter-spacing:0.06em">kg Eco Saved</div>
+      </div>
+      <div style="background:rgba(212,146,10,0.08);border-radius:8px;padding:0.65rem;text-align:center;border:1px solid rgba(212,146,10,0.15)">
+        <div style="font-weight:700;font-size:1rem;color:var(--gold)">${r.netFootprint}</div>
+        <div style="font-size:0.58rem;color:var(--sage);font-weight:700;text-transform:uppercase;letter-spacing:0.06em">kg Net CO₂</div>
+      </div>
+    </div>
+    <div style="margin-bottom:0.4rem;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--sage)">Green Score</span>
+      <span style="font-size:0.75rem;font-weight:800;color:${r.greenScore>=70?'var(--moss)':r.greenScore>=40?'var(--gold)':'var(--ember)'}">${r.greenScore}/100</span>
+    </div>
+    <div style="height:8px;background:rgba(75,124,95,0.1);border-radius:50px;overflow:hidden">
+      <div style="height:100%;width:${barW}%;background:${barCol};border-radius:50px;transition:width 0.6s ease"></div>
+    </div>
+    <div style="margin-top:0.6rem;font-size:0.7rem;color:var(--sage);text-align:center">
+      ${r.greenScore >= 70 ? '🌿 Great choice! Your travel is eco-friendly.' : r.greenScore >= 40 ? '🚐 Try jeepney or bike to improve your score.' : '🚶 Consider walking or cycling if possible!'}
+    </div>`;
+}
+window.calcCarbon = calcCarbon;
+
+// Override business rendering to include eco badge
+document.addEventListener('DOMContentLoaded', () => {
+  // Patch the businesses grid to show eco badges
+  setTimeout(() => {
+    const grid = document.getElementById('businessesGrid');
+    if (!grid) return;
+    grid.innerHTML = PampangaDB.businesses.map(b => `
+      <div style="background:rgba(255,255,255,0.06);border:1px solid ${b.isEcoFriendly ? 'rgba(75,124,95,0.35)' : 'rgba(75,124,95,0.2)'};border-radius:14px;padding:1.75rem;transition:all 0.3s;position:relative;overflow:hidden" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+        ${b.isEcoFriendly ? '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--g-eco)"></div>' : ''}
+        <div style="display:flex;gap:0.875rem;align-items:flex-start;margin-bottom:1.1rem">
+          <div style="width:52px;height:52px;border-radius:12px;background:${b.isEcoFriendly ? 'var(--g-eco)' : 'var(--g-fire)'};display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🏪</div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.2rem">
+              <h3 style="font-weight:700;font-size:0.95rem;color:white">${b.name}</h3>
+              ${b.verified ? '<span style="background:rgba(27,58,45,0.5);color:#7EC8A0;padding:0.15rem 0.5rem;border-radius:4px;font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">✓ Verified</span>' : '<span style="background:rgba(212,146,10,0.2);color:var(--amber);padding:0.15rem 0.5rem;border-radius:4px;font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">⏳ Pending</span>'}
+              ${b.isEcoFriendly ? '<span style="background:rgba(75,124,95,0.3);color:#A8DFA0;padding:0.15rem 0.55rem;border-radius:4px;font-size:0.6rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border:1px solid rgba(75,124,95,0.4)">🍃 Plastic-Free</span>' : ''}
+            </div>
+            <div style="font-size:0.75rem;color:rgba(200,221,208,0.5);margin-top:0.15rem">${b.type} · ${b.location}</div>
+            ${b.isEcoFriendly && b.ecoReason ? `<div style="font-size:0.68rem;color:rgba(107,158,122,0.7);margin-top:0.2rem;font-style:italic">🌿 ${b.ecoReason}</div>` : ''}
+          </div>
+        </div>
+        <div style="padding:0.6rem;background:${b.isEcoFriendly ? 'rgba(27,58,45,0.35)' : 'rgba(212,146,10,0.1)'};border-radius:8px;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:0.68rem;color:${b.isEcoFriendly ? 'rgba(168,223,160,0.8)' : 'rgba(200,221,208,0.5)'};font-weight:700">
+            💰 Platform Fee: <span style="font-size:0.85rem;color:${b.isEcoFriendly ? '#7EC8A0' : 'var(--amber)'}">₱${b.platformFee}/txn</span>
+          </div>
+          ${b.isEcoFriendly ? '<span style="font-size:0.62rem;color:rgba(168,223,160,0.7);font-weight:700">🏷️ Eco discount applied!</span>' : '<span style="font-size:0.62rem;color:rgba(200,221,208,0.4)">Go plastic-free for ₱5 rate</span>'}
+        </div>
+        <div style="padding-top:0.875rem;border-top:1px solid rgba(75,124,95,0.15)">
+          <div style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(107,158,122,0.6);font-weight:800;margin-bottom:0.5rem">Products</div>
+          <div style="display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:0.875rem">
+            ${b.products.map(pid => { const p = PampangaDB.products.find(x => x.id === pid); return p ? `<span style="background:rgba(27,58,45,0.4);border:1px solid rgba(75,124,95,0.2);padding:0.2rem 0.55rem;border-radius:4px;font-size:0.7rem;color:rgba(200,221,208,0.7)">${p.image} ${p.name}</span>` : ''; }).join('')}
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem">
+            <div style="font-size:0.72rem;color:rgba(200,221,208,0.4)">📞 ${b.contact}</div>
+            <button class="btn-eco" style="font-size:0.7rem;padding:0.4rem 0.875rem" onclick="viewBusiness(${b.id})">View Profile →</button>
+          </div>
+        </div>
+      </div>`).join('');
+  }, 200);
+});
+
+</script>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal-overlay" style="z-index:9100">
+  <div class="modal" style="max-width:520px;padding:0;overflow:hidden;border-radius:20px">
+    <!-- Header -->
+    <div style="background:var(--g-split);padding:1.4rem 1.6rem;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:white">💳 Secure Checkout</div>
+        <div style="font-size:0.68rem;color:rgba(200,221,208,0.5);margin-top:0.15rem;letter-spacing:0.08em;text-transform:uppercase">Step <span id="checkoutStep">1</span> of 2</div>
+      </div>
+      <button onclick="closeModal('checkoutModal')" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:8px;width:32px;height:32px;cursor:pointer;color:rgba(200,221,208,0.7);font-size:0.9rem">✕</button>
+    </div>
+
+    <!-- Step indicators -->
+    <div style="display:flex;background:rgba(18,8,8,0.4);border-bottom:1px solid rgba(212,146,10,0.12)">
+      <div id="stepTab1" style="flex:1;padding:0.65rem;text-align:center;font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);border-bottom:2px solid var(--amber);transition:all 0.2s">📋 Details</div>
+      <div id="stepTab2" style="flex:1;padding:0.65rem;text-align:center;font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:rgba(200,221,208,0.3);border-bottom:2px solid transparent;transition:all 0.2s">💳 Payment</div>
+    </div>
+
+    <!-- Step 1: Order Summary + Delivery -->
+    <div id="checkoutPage1" style="padding:1.4rem 1.6rem">
+      <div style="font-size:0.62rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem">Order Summary</div>
+      <div id="checkoutSummary" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.1rem;max-height:160px;overflow-y:auto"></div>
+      <div style="border-top:1px solid rgba(212,146,10,0.12);padding-top:0.875rem;margin-bottom:1.25rem">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--sage);margin-bottom:0.3rem"><span>Subtotal</span><span id="co-subtotal">₱0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--sage);margin-bottom:0.3rem"><span>🌿 Eco/Admin Fee</span><span id="co-ecofee">₱0</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:1rem;font-weight:800;color:var(--ink);padding-top:0.5rem;border-top:1px solid rgba(212,146,10,0.12)"><span>Total</span><span id="co-total" style="color:var(--ember)">₱0</span></div>
+      </div>
+
+      <div style="font-size:0.62rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem">Delivery Details</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:0.65rem">
+        <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">First Name</label><input type="text" id="co-fname" class="form-input" placeholder="Juan" style="font-size:0.82rem;padding:0.55rem 0.75rem"></div>
+        <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">Last Name</label><input type="text" id="co-lname" class="form-input" placeholder="dela Cruz" style="font-size:0.82rem;padding:0.55rem 0.75rem"></div>
+      </div>
+      <div style="margin-bottom:0.65rem"><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">📍 Delivery Address</label><input type="text" id="co-address" class="form-input" placeholder="e.g. 123 Pampanga St, San Fernando" style="font-size:0.82rem;padding:0.55rem 0.75rem"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:1.1rem">
+        <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">📞 Phone</label><input type="tel" id="co-phone" class="form-input" placeholder="09XX-XXX-XXXX" style="font-size:0.82rem;padding:0.55rem 0.75rem"></div>
+        <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">✉️ Email</label><input type="email" id="co-email" class="form-input" placeholder="you@email.com" style="font-size:0.82rem;padding:0.55rem 0.75rem"></div>
+      </div>
+      <button onclick="goToPayment()" class="btn-fire" style="width:100%;justify-content:center;padding:0.8rem;font-size:0.85rem">Continue to Payment →</button>
+    </div>
+
+    <!-- Step 2: Payment -->
+    <div id="checkoutPage2" style="padding:1.4rem 1.6rem;display:none">
+      <div style="font-size:0.62rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.875rem">Payment Method</div>
+
+      <!-- Method tabs -->
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.25rem" id="payMethodGroup">
+        <button type="button" class="filter-tab active" data-method="gcash" onclick="selectPayMethod(this)">📱 GCash</button>
+        <button type="button" class="filter-tab" data-method="maya" onclick="selectPayMethod(this)">💜 Maya</button>
+        <button type="button" class="filter-tab" data-method="card" onclick="selectPayMethod(this)">💳 Card</button>
+        <button type="button" class="filter-tab" data-method="cod" onclick="selectPayMethod(this)">💵 COD</button>
+      </div>
+
+      <!-- GCash -->
+      <div id="pay-gcash" style="display:block">
+        <div style="background:linear-gradient(135deg,rgba(0,119,255,0.08),rgba(0,119,255,0.04));border:1px solid rgba(0,119,255,0.2);border-radius:14px;padding:1.25rem;text-align:center;margin-bottom:1rem">
+          <div style="font-size:2.2rem;margin-bottom:0.4rem">📱</div>
+          <div style="font-weight:800;font-size:0.92rem;color:#1d4ed8;margin-bottom:0.2rem">GCash Payment</div>
+          <div style="font-size:0.75rem;color:var(--sage);margin-bottom:0.875rem">Send to the GCash number below, then enter your reference number.</div>
+          <div style="background:white;border:1px solid rgba(0,119,255,0.18);border-radius:10px;padding:0.875rem;display:inline-block;min-width:200px">
+            <div style="font-size:0.6rem;color:var(--sage);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.25rem">GCash Number</div>
+            <div style="font-size:1.25rem;font-weight:900;color:#1d4ed8;letter-spacing:0.05em">0917-CONFEST</div>
+            <div style="font-size:0.68rem;color:var(--sage);margin-top:0.15rem">Maria Santos · Confest</div>
+          </div>
+        </div>
+        <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">GCash Reference Number</label><input type="text" id="pay-gcash-ref" class="form-input" placeholder="e.g. 1234567890" style="font-size:0.85rem;padding:0.6rem 0.875rem"></div>
+      </div>
+
+      <!-- Maya -->
+      <div id="pay-maya" style="display:none">
+        <div style="background:linear-gradient(135deg,rgba(93,0,190,0.08),rgba(93,0,190,0.04));border:1px solid rgba(93,0,190,0.2);border-radius:14px;padding:1.25rem;text-align:center;margin-bottom:1rem">
+          <div style="font-size:2.2rem;margin-bottom:0.4rem">💜</div>
+          <div style="font-weight:800;font-size:0.92rem;color:#5d00be;margin-bottom:0.2rem">Maya Payment</div>
+          <div style="font-size:0.75rem;color:var(--sage);margin-bottom:0.875rem">Send to the Maya account below, then enter your reference number.</div>
+          <div style="background:white;border:1px solid rgba(93,0,190,0.18);border-radius:10px;padding:0.875rem;display:inline-block;min-width:200px">
+            <div style="font-size:0.6rem;color:var(--sage);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.25rem">Maya Account</div>
+            <div style="font-size:1.25rem;font-weight:900;color:#5d00be;letter-spacing:0.05em">0915-CONFEST</div>
+            <div style="font-size:0.68rem;color:var(--sage);margin-top:0.15rem">Maria Santos · Confest</div>
+          </div>
+        </div>
+        <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">Maya Reference Number</label><input type="text" id="pay-maya-ref" class="form-input" placeholder="e.g. MYA-1234567" style="font-size:0.85rem;padding:0.6rem 0.875rem"></div>
+      </div>
+
+      <!-- Card -->
+      <div id="pay-card" style="display:none">
+        <div style="margin-bottom:0.75rem"><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">Cardholder Name</label><input type="text" id="pay-card-name" class="form-input" placeholder="JUAN DELA CRUZ" style="font-size:0.85rem;padding:0.6rem 0.875rem;text-transform:uppercase"></div>
+        <div style="margin-bottom:0.75rem"><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">Card Number</label>
+          <div style="position:relative"><input type="text" id="pay-card-num" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNum(this)" style="font-size:0.9rem;padding:0.6rem 2.5rem 0.6rem 0.875rem;letter-spacing:0.08em"><span style="position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);font-size:1rem">💳</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem;margin-bottom:0.75rem">
+          <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">Expiry Date</label><input type="text" id="pay-card-exp" class="form-input" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)" style="font-size:0.85rem;padding:0.6rem 0.875rem"></div>
+          <div><label style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage);display:block;margin-bottom:0.28rem">CVV</label><input type="password" id="pay-card-cvv" class="form-input" placeholder="•••" maxlength="4" style="font-size:0.85rem;padding:0.6rem 0.875rem"></div>
+        </div>
+        <div style="background:rgba(27,58,45,0.07);border-radius:8px;padding:0.65rem;display:flex;align-items:center;gap:0.5rem;border:1px solid rgba(75,124,95,0.15)">
+          <span style="font-size:0.9rem">🔒</span><span style="font-size:0.68rem;color:var(--sage)">Your card details are secured with 256-bit SSL encryption. We never store full card numbers.</span>
+        </div>
+      </div>
+
+      <!-- COD -->
+      <div id="pay-cod" style="display:none">
+        <div style="background:linear-gradient(135deg,rgba(27,58,45,0.08),rgba(75,124,95,0.05));border:1px solid rgba(75,124,95,0.2);border-radius:14px;padding:1.5rem;text-align:center">
+          <div style="font-size:2.5rem;margin-bottom:0.75rem">💵</div>
+          <div style="font-weight:800;font-size:1rem;color:var(--moss);margin-bottom:0.5rem">Cash on Delivery</div>
+          <div style="font-size:0.78rem;color:var(--sage);line-height:1.6;margin-bottom:0.875rem">Pay in cash when your order arrives. Available within Pampanga only.</div>
+          <div style="display:flex;justify-content:space-between;background:white;border-radius:10px;padding:0.875rem 1.1rem;border:1px solid rgba(75,124,95,0.15)">
+            <span style="font-size:0.8rem;font-weight:700">Amount to prepare:</span>
+            <span id="cod-amount" style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ember)">₱0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total recap -->
+      <div style="margin-top:1.1rem;padding:0.875rem 1rem;background:rgba(212,146,10,0.05);border:1px solid rgba(212,146,10,0.15);border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+        <div>
+          <div style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage)">Amount Due</div>
+          <div id="co-total2" style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--ember)">₱0</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:0.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage)">Items</div>
+          <div id="co-itemcount" style="font-weight:700;font-size:0.9rem;color:var(--ink)">0 items</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0.65rem">
+        <button onclick="backToDetails()" class="btn-ghost" style="flex:0 0 auto;padding:0.75rem 1rem;font-size:0.78rem">← Back</button>
+        <button onclick="confirmOrder()" class="btn-fire" style="flex:1;justify-content:center;padding:0.8rem;font-size:0.88rem">✅ Confirm & Pay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER CONFIRMED MODAL -->
+<div id="orderConfirmedModal" class="modal-overlay" style="z-index:9200">
+  <div class="modal" style="max-width:420px;text-align:center;padding:2.5rem 2rem">
+    <div style="width:72px;height:72px;background:var(--g-eco);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:2rem;box-shadow:0 0 30px rgba(27,58,45,0.3)">✅</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--ink);margin-bottom:0.5rem">Order Confirmed!</h2>
+    <p style="font-size:0.82rem;color:var(--sage);line-height:1.6;margin-bottom:1.5rem">Thank you for supporting local Kapampangan businesses. Your order is being processed and you will receive a confirmation via email shortly.</p>
+    <div id="orderConfirmDetails" style="background:rgba(212,146,10,0.05);border:1px solid rgba(212,146,10,0.15);border-radius:12px;padding:1rem;text-align:left;margin-bottom:1.5rem"></div>
+    <div style="display:flex;gap:0.65rem;justify-content:center">
+      <button onclick="closeModal('orderConfirmedModal')" class="btn-fire" style="flex:1;justify-content:center">🛍️ Continue Shopping</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
